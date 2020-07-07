@@ -61,3 +61,56 @@ header{
     align-items: flex-end;
     height: 366px;
 }
+
+/*==========mais acessadas===========*/
+
+.mais-acessadas{
+    max-width: 940px;
+    width: 90%;
+    margin: 45px auto;
+}
+
+.mais-acessadas h1{
+    font-weight: bold;
+    font-size: 24px;
+    color: #111111;
+    margin-bottom: 20px;
+   
+}
+
+.mais-acessadas .cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.cards .card img{
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.info-card{
+    margin-bottom: 8px;
+}
+
+.cards .card .info-card p{
+    font-size: 18px;
+    color: #111111;
+}
+
+.cards .card .info-card .criador{
+    font-size: 14px;
+     color: #777777;
+     margin-top: 6px;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 62px;
+    background: #EEEEEE;
+}
+
