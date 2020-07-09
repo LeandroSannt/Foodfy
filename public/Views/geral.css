@@ -11,7 +11,7 @@ body{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    max-width: 940px;
+    max-width: 1400px;
     width: 85%;
 
 }
@@ -23,21 +23,30 @@ header{
     padding: 25px 0;
 }
 
+header .logo a{
+    height: 100px;
+
+
+}
+
 .menu nav a{
     text-decoration: none;
-    font-size: 16px;
+    font-size: 26px;
     color: #111111;
     padding: 10px;
     margin-left: 10px;
+}
 
+.menu nav a:hover {
+
+    font-weight: 700;
 }
 
 .chamada{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 40px;
-    width: 90%;
+    justify-content: space-around;
+    width: 100%;
     background-color: #FBDFDB;
     border-radius: 30px;
 }
@@ -46,22 +55,21 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 316px;
-    
-    position: relative;
+    max-width: 430px;
+
 }
 
 .chamada .intro h1{
-    font-size: 32px;
+    font-size: 44px;
     font-weight: 700;
     margin-bottom: 15px;
 }
 
 .chamada .intro p{
     opacity: 0.7;
-    font-size: 18px;
+    font-size: 28px;
     color: #000000;
-    line-height: 28px;
+    line-height: 38px;
 }
 
 .chamada .img-intro{
@@ -73,23 +81,23 @@ header{
 
 /*==========mais acessadas===========*/
 
-.mais-acessadas{
-    width: 100%;
-    margin: 40px 0;
-}
 
-.mais-acessadas h1{
+ h1{
     font-weight: bold;
-    font-size: 24px;
+    font-size: 44px;
     color: #111111;
     margin-bottom: 20px;
    
 }
 
-.mais-acessadas .cards{
+.cards{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    gap: 30px;
+    cursor: pointer;
+    margin: 50px 0;
+    width: 100%;
+    
 }
 
 .cards .card img{
@@ -103,12 +111,12 @@ header{
 }
 
 .cards .card .info-card p{
-    font-size: 18px;
+    font-size: 28px;
     color: #111111;
 }
 
 .cards .card .info-card .criador{
-    font-size: 14px;
+    font-size: 20px;
      color: #777777;
      margin-top: 6px;
 
@@ -127,6 +135,90 @@ footer{
 footer .direitos{
     font-size: 14pt;
 }
+
+/*======Sobre=====*/
+
+h1{
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+h2{
+    margin-bottom: 25px;
+}
+
+.lorem{
+    opacity: 0.7;
+    font-size: 28px;
+    line-height: 38px;
+    margin-bottom: 35px;
+    color: #444444;
+}
+
+/*=====modal=====*/
+.modal-overlay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.603);
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+   
+}
+
+.modal-overlay .modal{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    position: relative;
+    border-radius: 16px;
+    width: 50vw;
+    height: 60vh;
+    background-color: white; 
+}
+
+.modal-overlay .close-modal span{
+   color: #999999;
+   font-size: 28px;
+   cursor: pointer;
+}
+
+.active {
+    visibility: visible;
+}
+
+.modal-overlay .modal-itens{
+    width:70%;
+    text-align: center;
+}
+
+.modal-overlay .receive-card img{
+    position: relative;
+    width:100% ;
+    height: auto;
+    border-radius: 16px;
+}
+
+.modal-overlay .receive-card p{
+    color: #111111;
+    font-size: 34px;
+    margin: 10px 0;
+}
+
+.modal-overlay .receive-card .criador{
+    color: #777777;
+    font-size: 28px;
+
+}
+
+
 /*=======responsive=====*/
 
 @media (max-width:440px){
@@ -146,8 +238,12 @@ footer .direitos{
         text-align: center;
     }
 
-    .mais-acessadas .cards{
+    .cards{
         grid-template-columns: 1fr 1fr
+    }
+
+    .lorem{
+        text-align: justify;
     }
 
 footer .direitos{
