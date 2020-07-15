@@ -1,0 +1,28 @@
+{
+  "name": "Foodfy",
+  "version": "1.0.0",
+  "description": "Projeto feito no com os ensinamentos e imagens do curso lauchbase da rocketseat",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeandroSannt/Foodfy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeandroSannt/Foodfy/issues"
+  },
+  "homepage": "https://github.com/LeandroSannt/Foodfy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
