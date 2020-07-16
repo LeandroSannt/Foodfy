@@ -20,6 +20,7 @@ const detalhes = document.querySelector(".detalhes")
     click3.innerHTML="Mostrar"
  }) 
 
+ 
 
    
 
