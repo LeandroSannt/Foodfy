@@ -1,20 +1,19 @@
 {% extends "layout.njk" %}
 
 {% block title %}
-    <title>Receitas-Foodfy</title>
+    <title>{{item.title}}</title>
 {% endblock %}
 
 {% block content %}
     <div class="content">
         <div class="info_receita">
-
             <div class="loja">
                 <div class="img_receita">
-                    <img src="/assets/burger.png" alt="Burger">
+                    <img class="img-r" src="{{item.image}}" alt="{{item.title}}">
                 </div>
                 <div class="vendedor">
-                    <h1 class="nome_receita">Triplo bacon burguer</h1>
-                    <p >por Jorge Relato</p>
+                    <h1 class="nome_receita">{{item.title}}</h1>
+                    <p >{{item.author}}</p>
                 </div>
             </div>
 
@@ -22,45 +21,35 @@
                 <div class="ingredientes ">
                     <div class="btn">
                         <h2 class="ingre">Ingredientes</h2>
-                        <span class="revelacao">Esconder</span>
+                        <span>ESCONDER</span>
                     </div>
-                    <ul  class=" lista1 ">
-                        <li>'3 kg de carne moída (escolha uma carne magra e macia)',</li>
-                        <li>'300 g de bacon moído',</li>
-                        <li>'1 ovo',</li>
-                        <li>'3 colheres (sopa) de farinha de trigo',</li>
-                        <li>'3 colheres (sopa) de tempero caseiro: feito com alho, cebola, pimenta e cheiro verde;processados no liquidificador</li>
-                        <li>30 ml de água gelada;</li>
+                    <ul class=" lista ">
+                        {% for ingredients in item.ingredients %}
+                            <li>{{ingredients}}</li>
+                        {% endfor %}
                     </ul>
                 </div>
 
-                <div class="modo_preparo">
+                <div class="ingredientes">
                     <div class="btn">
                         <h2 class="ingre">Modo de preparo</h2>
-                        <span class="revelacao2">Esconder</span>
+                        <span class="">ESCONDER</span>
                     </div>
-                    <ul class=" lista2">
-                        <li>'Misture todos os ingredientes muito bem e amasse para que fique tudo muito bem misturado.</li>
-                        <li>Faça porções de 90 g a 100 g.</li>
-                        <li>Forre um plástico molhado em uma bancada e modele os hambúrgueres utilizando um aro como base.</li>
-                        <li>Faça um de cada vez e retire o aro logo em seguida.
-                        </li>
-                        <li>Forre uma assadeira de metal com plástico, coloque os hambúrgueres e intercale camadas de carne e plásticos (sem apertar).</li>
-                        <li>Faça no máximo 4 camadas por forma e leve para congelar.</li>
-                        <li>'Retire do congelador, frite ou asse e está pronto.</li>
+                    <ul class=" lista">
+                        {% for preparation in item.preparation %}
+                            <li>{{preparation}}</li>
+                        {% endfor %}
                     </ul>
                 </div>
 
-                <div class="informacoes_adicionais">
+                <div class="ingredientes">
                     <div class="btn">
                         <h2 class="ingre">Informaçoes adicionais</h2>
-                        <span class="revelacao3">Esconder</span>
+                        <span >ESCONDER</span>
                     </div>
-                    <p class="detalhes">
-                        Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres!
-                        <br>
-                        <br>
-                        Você sabia que a receita que precede o hambúrguer surgiu no século XIII, na Europa? A ideia de moer a carne chegou em Hamburgo no século XVII, onde um açogueiro resolveu também temperá-la. Assim, a receita foi disseminada nos Estados Unidos por alemães da região. Lá surgiu a ideia de colocar o hambúrguer no meio do pão e adicionar outros ingredientes, como queijom tomates e alface.
+                    <ul class="lista">
+                        <li>{{item.information}}</li>
+
                     </p>
                 </div>
             </div>

@@ -1,141 +1,30 @@
 {% extends "layout.njk" %}
 
- {% block title %}
+{% block title %}
     <title>Receitas-Foodfy</title>
-    {% endblock  %}
+{% endblock %}
 
- {% block content %}
- <div class="content">
+{% block content %}
+    <div class="content">
         <aside class="cards">
-            
-        <div class="card" id="burger">
-            <div class="img-card">
-                <img src="/assets/burger.png" alt="burguer">
-            </div>
-            <div class="info-card">
-                <p>Triplo bacon burger</p>
-                <p class ="criador">por Jorge relato</p>
-            </div>
-        </div>
 
-        <div class="card" id="pizza">
-            <div class="img-card">
-                <img src="/assets/pizza.png" alt="pizza">
-            </div>
+            {% for item in items %}
+                <div class="card" id={{items.indexOf(item)}}>
+                    <div class="img-card">
+                        <img src={{item.image}} alt="{{item.title}}">
+                    </div>
+                    <div class="info-card">
+                        <p>{{item.title}}</p>
+                        <p class="criador">{{item.author}}</p>
+                    </div>
+                </div>
+            {% endfor %}
 
-            <div class="info-card">
-                <p>Pizza 4 estações</p>
-                <p class ="criador">por Fabiana Melo</p>
-            </div>
-        </div>
-
-        <div class="card" id="espaguete">
-            <div class="img-card">
-                <img src="/assets/espaguete.png" alt="espaguete">
-            </div>
-            <div class="info-card">
-                <p>Espaguete ao alho</p>
-                <p class ="criador">Julia Kinoto</p>
-            </div>
-        </div>
-
-        <div class="card" id="lasanha">
-            <div class="img-card">
-                <img src="/assets/lasanha.png" alt="lasanha">
-            </div>
-            <div class="info-card">
-                <p>Lasanha mac n' cheese</p>
-                <p class ="criador">por Juliano Vieira</p>
-            </div>
-        </div>
-
-        <div class="card" id="doce">
-            <div class="img-card">
-                <img src="/assets/doce.png" alt="chocolate">
-            </div>
-            <div class="info-card">
-                <p>Docinhos pão-do-céu</p>
-                <p class ="criador">por Ricardo Golvea</p>
-            </div>
-        </div>
-
-        <div class="card" id="asinhas">
-            <div class="img-card">
-                <img src="/assets/asinhas.png" alt="asinhas">
-            </div>
-            <div class="info-card">
-                <p>Asinhas de frango ao barbecue</p>
-                <p class ="criador">Viana Steroski</p>
-            </div>
-        </div>
-
-        <div class="card" id="burger">
-            <div class="img-card">
-                <img src="/assets/burger.png" alt="burguer">
-            </div>
-            <div class="info-card">
-                <p>Triplo bacon burger</p>
-                <p class ="criador">por Jorge relato</p>
-            </div>
-        </div>
-
-        <div class="card" id="pizza">
-            <div class="img-card">
-                <img src="/assets/pizza.png" alt="pizza">
-            </div>
-            <div class="info-card">
-                <p>Pizza 4 estações</p>
-                <p class ="criador">por Fabiana Melo</p>
-            </div>
-        </div>
-
-        <div class="card" id="espaguete">
-            <div class="img-card">
-                <img src="/assets/espaguete.png" alt="espaguete">
-            </div>
-            <div class="info-card">
-                <p>Espaguete ao alho</p>
-                <p class ="criador">Julia Kinoto</p>
-            </div>
-        </div>
-
-        <div class="card" id="lasanha">
-            <div class="img-card">
-                <img src="/assets/lasanha.png" alt="lasanha">
-            </div>
-            <div class="info-card">
-                <p>Lasanha mac n' cheese</p>
-                <p class ="criador">por Juliano Vieira</p>
-            </div>
-        </div>
-
-        <div class="card" id="doce">
-            <div class="img-card">
-                <img src="/assets/doce.png" alt="chocolate">
-            </div>
-            <div class="info-card">
-                <p>Docinhos pão-do-céu</p>
-                <p class ="criador">por Ricardo Golvea</p>
-            </div>
-        </div>
-
-        <div class="card"  id="asinhas">
-            <div class="img-card">
-                <img src="/assets/asinhas.png" alt="asinhas">
-            </div>
-            <div class="info-card">
-                <p>Asinhas de frango ao barbecue</p>
-                <p class ="criador">Viana Steroski</p>
-            </div>
-        </div>
-
-    </aside>
+        </aside>
     </div>
-        
-        
-    {% endblock  %}
+
+{% endblock %}
 
 {%block script%}
- <script src="/scripts.js"></script>
-{%endblock%}
-   
+    <script src="/scripts-card.js"></script>
+    {%endblock%}

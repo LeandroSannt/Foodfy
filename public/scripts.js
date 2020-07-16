@@ -1,27 +1,16 @@
-const click = document.querySelector(".revelacao")
-const lista1 = document.querySelector(".lista1")
-click.addEventListener("click", function(){
-   lista1.classList.toggle("active")
-   click.innerHTML="Mostrar"
-})
+const click = document.querySelectorAll("span")
+const lista = document.querySelectorAll(".lista")
 
-const click2=document.querySelector(".revelacao2")
-const lista2 = document.querySelector(".lista2")
-click2.addEventListener("click", function(){
-    lista2.classList.toggle("active")
-    click2.innerText="Mostrar"
-    
- })
 
-const click3=document.querySelector(".revelacao3")
-const detalhes = document.querySelector(".detalhes")
- click3.addEventListener("click", function(){
-    detalhes.classList.toggle("active")
-    click3.innerHTML="Mostrar"
- }) 
-
- 
-
-   
-
+for (let i = 0; i < click.length; i++) {
+    click[i].addEventListener("click", function () {
+        if (click[i].textContent == 'ESCONDER') {
+            click[i].innerHTML = 'MOSTRAR'
+            lista[i].classList.toggle('active')
+        } else {
+            click[i].innerHTML = 'ESCONDER'
+            lista[i].classList.remove('active')
+        }
+    })
+}
 

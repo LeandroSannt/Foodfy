@@ -4,16 +4,18 @@
 }
 
 body {
+    height: 100%;
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
 
 .content {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     width: 65%;
-
 }
 
 header {
@@ -54,6 +56,7 @@ header .logo a {
     flex-direction: column;
     justify-content: center;
     max-width: 430px;
+    margin: 0 15px;
 }
 
 .chamada .intro h1 {
@@ -95,6 +98,7 @@ header .logo a {
 
 .cards .card img {
     width: 100%;
+    height: 120px;
     border-radius: 15px;
     margin-bottom: 15px;
 }
@@ -116,14 +120,13 @@ header .logo a {
 }
 
 footer {
-    
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 62px;
     background: #EEEEEE;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 footer .direitos {
@@ -153,91 +156,102 @@ h2 {
 
 /*=====receita=====*/
 
-.info_receita .loja{
+.info_receita .loja {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
 }
 
-.loja .img_receita{
+.loja .img_receita {
     width: 100%;
     border-radius: 16px;
     margin: 20px 0;
 }
 
-.loja img{
+.loja img {
     width: 100%;
-    height: 60vh;
+    height: 50vh;
     border-radius: 16px;
     object-fit: cover;
     object-position: center;
 }
 
-.loja .vendedor{
+.loja .vendedor {
     text-align: center;
 }
 
-.loja .vendedor .nome_receita{
+.loja .vendedor .nome_receita {
     margin-bottom: 5px;
 }
 
-.nome_receita p{
+.nome_receita p {
     font-size: 20px;
     color: #777777;
     margin-top: 6px;
 }
 
-.info_receita .ingredientes_receita  .btn{
+.info_receita .ingredientes_receita .btn {
     display: flex;
     margin-bottom: 20px;
 }
 
-.ingredientes_receita  .btn .ingre{
+.ingredientes_receita .btn .ingre {
     display: flex;
-    align-items:flex-end;
+    align-items: flex-end;
     margin: 0;
     height: -2px;
 }
 
+.ingredientes_receita .ingredientes {
+    margin-bottom: 30px;
+}
 
-.ingredientes_receita  .btn span{
+.ingredientes_receita .btn span {
     display: flex;
     align-items: flex-end;
     margin-left: 7px;
-    font-size: 12.5px ;
+    font-size: 12.5px;
     cursor: pointer;
+    color: #999999;
+    ;
 }
 
-
-.ingredientes_receita .lista1,
-.lista2{
+.ingredientes_receita .lista1, .lista2 {
     line-height: 23px;
     margin-bottom: 20px;
-
 }
 
-.ingredientes_receita ul li{
+.ingredientes_receita ul li {
     list-style-position: inside;
+    margin-bottom: 5px;
 }
 
-.ingredientes_receita p{
+.ingre span {}
+
+.ingredientes_receita p {
     line-height: 23px;
 }
 
-.active{
+.active {
     display: none;
-
 }
-
 
 /*=======responsive=====*/
 
-@media (max-width:440px) {
-.content{
-    width: 90%;
+@media (max-width:1055px) {
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr
+    }
+    .chamada {
+        text-align: center;
+    }
 }
-
+@media (max-width:440px) {
+    .content {
+        width: 90%;
+    }
     .chamada {
         justify-content: center;
         align-items: center;
@@ -254,6 +268,9 @@ h2 {
     }
     .cards {
         grid-template-columns: 1fr 1fr
+    }
+    .cards .card img {
+        height: 90px;
     }
     .lorem {
         text-align: justify;

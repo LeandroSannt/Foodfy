@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/geral.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    {% block style %}{% endblock %}
     {% block title %}
-    <title>Foodfy</title>
+        <title>Foodfy</title>
     {% endblock  %}
     
 </head>
@@ -23,16 +24,12 @@
         </div>
     </header>
 
-    {% block content %}
+    {% block content %} {% endblock %}
 
-    {% endblock %}
- 
          <footer>
             <p class="direitos">Todos os direitos reservados, receitas Foodfy.</p>
         </footer>
 
-        {%block script%}
-        <script src="/scripts.js"></script>
-         {%endblock%}
+        {%block script%}{%endblock%}
     </body>
 </html>

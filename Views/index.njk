@@ -4,80 +4,34 @@
 {% endblock %}
 
 {% block content %}
-<div class="content">
-    <section class="chamada">
-        <div class="intro">
-            <h1>As melhores receitas</h1>
-            <p>aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
-        </div>
-        <div class="img-intro">
-            <img src="/assets/chef.png" alt="chefe">
-        </div>
-    </section>
 
-    <aside class="mais-acessadas">
-        <h1>Mais acessadas</h1>
-        <div class="cards">
-            <div class="card">
-                <div class="img-card">
-                    <img src="/assets/burger.png" alt="burguer">
-                </div>
-                <div class="info-card">
-                    <p>Triplo bacon burger</p>
-                    <p class="criador">por Jorge relato</p>
-                </div>
+    <div class="content">
+        <section class="chamada">
+            <div class="intro">
+                <h1>As melhores receitas</h1>
+                <p>aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
             </div>
+            <div class="img-intro">
+                <img src="/assets/chef.png" alt="chefe">
+            </div>
+        </section>
 
-            <div class="card">
-                <div class="img-card">
-                    <img src="/assets/pizza.png" alt="pizza">
-                </div>
-                <div class="info-card">
-                    <p>Pizza 4 estações</p>
-                    <p class="criador">por Fabiana Melo</p>
-                </div>
+        <aside class="mais-acessadas">
+            <h1>Mais acessadas</h1>
+            <div class="cards">
+                {% for item in items %}
+                    <div class="card">
+                        <div class="img-card">
+                            <img src={{item.image}} alt="{{item.title}}">
+                        </div>
+                        <div class="info-card">
+                            <p>{{item.title}}</p>
+                            <p class="criador">{{item.author}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-
-            <div class="card">
-                <div class="img-card">
-                    <img src="/assets/espaguete.png" alt="espaguete">
-                </div>
-                <div class="info-card">
-                    <p>Espaguete ao alho</p>
-                    <p class="criador">Julia Kinoto</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-card">
-                    <img src="/assets/lasanha.png" alt="lasanha">
-                </div>
-                <div class="info-card">
-                    <p>Lasanha mac n' cheese</p>
-                    <p class="criador">por Juliano Vieira</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-card">
-                    <img src="/assets/doce.png" alt="chocolate">
-                </div>
-                <div class="info-card">
-                    <p>Docinhos pão-do-céu</p>
-                    <p class="criador">por Ricardo Golvea</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-card">
-                    <img src="/assets/asinhas.png" alt="asinhas">
-                </div>
-                <div class="info-card">
-                    <p>Asinhas de frango ao barbecue</p>
-                    <p class="criador">Viana Steroski</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-</div>
+        </aside>
+    </div>
+    
 {% endblock %}
