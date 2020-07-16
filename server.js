@@ -1,5 +1,6 @@
 const express = require("express")
 const nunjucks = require("nunjucks")
+const receitas = require("./data")
 
 const server = express()
 
@@ -26,7 +27,9 @@ server.get("/receitas",function(req,res){
     return res.render("receitas")
 })
 
-
+server.get("/receita", function(req,res){
+    return res.render("receita")
+})
 
 
 /*==================*/

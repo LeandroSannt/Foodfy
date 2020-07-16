@@ -1,25 +1,26 @@
-const  cards = document.querySelectorAll(".card")
-const modalOverlay  = document.querySelector(".modal-overlay")
-const modal =document.querySelector(".modal")
-
-for(let card of cards){
-    card.addEventListener("click", function(){
-        modalOverlay.classList.add("active")
-
-
-       const imgId = card.getAttribute("id")
-       modalOverlay.querySelector("img").src =`/assets/${imgId}.png`
-
-       const title =card.querySelector("p").textContent
-       modalOverlay.querySelector("p").innerHTML =title
-
-       const criador =card.querySelector(".criador").textContent
-       modalOverlay.querySelector(".criador").innerHTML =criador
-
-    })
-}
-
-document.querySelector(".close-modal").addEventListener("click", function(){
-    modalOverlay.classList.remove("active")
-    modalOverlay.querySelector("img").src = ""
+const click = document.querySelector(".revelacao")
+const lista1 = document.querySelector(".lista1")
+click.addEventListener("click", function(){
+   lista1.classList.toggle("active")
+   click.innerHTML="Mostrar"
 })
+
+const click2=document.querySelector(".revelacao2")
+const lista2 = document.querySelector(".lista2")
+click2.addEventListener("click", function(){
+    lista2.classList.toggle("active")
+    click2.innerText="Mostrar"
+    
+ })
+
+const click3=document.querySelector(".revelacao3")
+const detalhes = document.querySelector(".detalhes")
+ click3.addEventListener("click", function(){
+    detalhes.classList.toggle("active")
+    click3.innerHTML="Mostrar"
+ }) 
+
+
+   
+
+
