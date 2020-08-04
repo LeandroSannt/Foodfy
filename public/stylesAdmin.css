@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    background-color: black;
+    height: 80px;
+}
+
+header .menu{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 75vw;
+    height: 100%;
+    margin: 0 auto;
+
+}
+
+.title{
+    width: 75vw;
+    margin: 50px auto;
+}
+
+.title .cabecalho{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title .cabecalho h1{
+    color:#111111;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.title .cabecalho button{
+    background-color:  #6558C3;
+    border-radius: 4px;
+    width: 139px;
+    height:37px;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+
+
