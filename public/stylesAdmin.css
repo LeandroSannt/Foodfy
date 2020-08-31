@@ -12,8 +12,11 @@ body{
 
 header{
     background-color: black;
+    width: 100%;
     height: 80px;
 }
+
+
 
 header .menu{
     display: flex;
@@ -43,7 +46,8 @@ header .menu{
 }
 
 .title .cabecalho button,
-.title #form-delete .delete{
+.title #form-delete .delete,
+.title .cabecalho .editDetails{
     background-color:  #6558C3;
     border-radius: 4px;
     width: 139px;
@@ -53,11 +57,25 @@ header .menu{
     line-height: 19px;
     transition: 0.6s;
     cursor: pointer;
+    border: none;
+    font-family: 'Roboto', sans-serif;
 }
+.title .cabecalho .editDetails:hover,
 .title .cabecalho button:hover{
     background-color: #554b9e;
    
 }
+
+.title .cabecalho .editDetails{
+  
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
 
 .title #form-delete .delete{
     background-color: #DC4747;
@@ -65,6 +83,8 @@ header .menu{
     right: 295px;
     top: 130;
     cursor: pointer;
+    border: none;
+  
     
 }
 
@@ -125,7 +145,156 @@ textarea{
 
 
 
+.content  h3{
+    font-size: 24px;
+    color: #111111;
+}
 
+.content
+
+.title .cabecalhoDetails {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+.info_receita .loja {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.loja .img_receita {
+    width: 100%;
+    border-radius: 16px;
+    margin: 20px 0;
+}
+
+.loja img {
+    width: 100%;
+    height: 50vh;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.loja .vendedor {
+    text-align: center;
+}
+
+.loja .vendedor .nome_receita {
+    margin-bottom: 5px;
+}
+
+.nome_receita p {
+    font-size: 20px;
+    color: #777777;
+    margin-top: 6px;
+}
+
+.info_receita .ingredientes_receita .btn {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.ingredientes_receita .btn .ingre {
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+    height: -2px;
+}
+
+.ingredientes_receita .ingredientes {
+    margin-bottom: 30px;
+}
+
+.ingredientes_receita .btn span {
+    display: flex;
+    align-items: flex-end;
+    margin-left: 7px;
+    font-size: 12.5px;
+    cursor: pointer;
+    color: #999999;
+    ;
+}
+
+.ingredientes_receita .lista1, .lista2 {
+    line-height: 23px;
+    margin-bottom: 20px;
+}
+
+.ingredientes_receita ul li {
+    list-style-position: inside;
+    margin-bottom: 5px;
+}
+
+
+.ingredientes_receita p {
+    line-height: 23px;
+}
+
+.active {
+    display: none;
+}
+
+.title .cabecalho h1{
+    margin-bottom: 30px;
+}
+
+.title .cards{
+    display: grid;
+    grid-template-columns:  1fr 1fr ;
+    gap: 10px;
+    
+}
+
+.title .cards .card{
+    display: flex;
+}
+
+.title .card-infos{
+    margin: 12px 0;
+    margin-left: 20px;
+}
+
+.title .card-infos h1{
+    font-size: 18px;
+    color: #111111;
+    line-height: 21px;
+   
+}
+
+.title .card-infos p{
+    font-size: 14px;
+    color: #777777;
+    line-height: 16px;
+    margin:10px 0;
+}
+
+.title .card-infos .visu{
+    color: #6558C3;
+    font-size: 14px;
+    line-height: 16px;
+    cursor: pointer;
+    transition:0.4s
+}
+
+.title .card-infos .visu:hover{
+    font-weight: bold;
+    transform:translateX(5px) ;
+}
+
+
+
+.title .cards .card img{
+    width: 280px;
+    height: 120px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
 
 
 

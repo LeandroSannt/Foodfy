@@ -15,4 +15,3 @@ for (let i = 0; i < click.length; i++) {
 }
 
 
-console.log("oi")

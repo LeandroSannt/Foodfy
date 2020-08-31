@@ -1,7 +1,7 @@
 
 
 exports.listing = function (req,res){
-    return res.render("instructors/create")
+    return res.render("admin/listing")
 }
 
 exports.create = function (req,res){
