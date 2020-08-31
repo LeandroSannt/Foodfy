@@ -9,9 +9,9 @@ exports.create = function (req,res){
 }
 
 exports.details = function (req,res){
-    return res.render("instructors/create")
+    return res.render("admin/details")
 }
 
 exports.edit = function (req,res){
-    return res.render("instructors/create")
+    return res.render("admin/edit")
 }

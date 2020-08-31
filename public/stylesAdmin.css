@@ -33,6 +33,7 @@ header .menu{
 .title .cabecalho{
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .title .cabecalho h1{
@@ -41,7 +42,8 @@ header .menu{
     line-height: 28px;
 }
 
-.title .cabecalho button{
+.title .cabecalho button,
+.title #form-delete .delete{
     background-color:  #6558C3;
     border-radius: 4px;
     width: 139px;
@@ -49,7 +51,84 @@ header .menu{
     color: #FFFFFF;
     font-size: 16px;
     line-height: 19px;
+    transition: 0.6s;
+    cursor: pointer;
 }
+.title .cabecalho button:hover{
+    background-color: #554b9e;
+   
+}
+
+.title #form-delete .delete{
+    background-color: #DC4747;
+    position: absolute;
+    right: 295px;
+    top: 130;
+    cursor: pointer;
+    
+}
+
+.title #form-delete .delete:hover{
+    background-color: #b14040;
+}
+
+
+.receitas input,
+textarea{
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    padding: 10px 5px;
+}
+
+
+
+.receitas h3{
+    font-size: 16px;
+    line-height: 19px;
+    color: #111111 ;
+    margin: 22px 0 10px 0;
+}
+
+.receitas .modPrep {
+    font-size: 16px;
+    color: #6558C3;
+    text-align: right;
+    margin-top:10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.receitas .newIngre{
+    font-size: 16px;
+    color: #6558C3;
+    text-align: right;
+    margin-top:10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.receitas .newIngre:hover{
+    transform:translateX(5px) ;
+    font-weight: 700;
+
+}
+
+.receitas .modPrep:hover{
+    transform:translateX(5px) ;
+    font-weight: 700;
+
+}
+
+
+
+
+
+
+
 
 
 

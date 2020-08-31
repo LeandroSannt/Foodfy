@@ -1,10 +1,32 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-   edit
-</body>
-</html>
+{% extends "admin/layoutAdmin.njk" %}
+
+{% block content %}
+
+
+      
+
+    <section class="title">
+
+           
+
+
+        <form class ="card" method ="POST" action="/admin" required >
+        <div class="cabecalho">
+            <h1>Editando Receita</h1>
+                <div class="edition">
+                    <button type="submit">Salva Receita</button>
+                </div>
+        </div>
+        {%include "admin/fields.njk" %}
+        </form>
+
+           <form id="form-delete"   method="POST" action="/recipes?_method=DELETE">
+                <button class="delete" type="submit">Deletar</button> 
+            <input type="hidden" name="id">        
+        </form>
+
+
+
+    </section>
+
+{% endblock content %}

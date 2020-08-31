@@ -1,10 +1,63 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    details
-</body>
-</html>
+{% extends "layout.njk" %}
+
+{% block title %}
+    <title>Detalhes da receita</title>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="info_receita">
+            <div class="loja">
+                <div class="img_receita">
+                    <img class="img-r" src="{{item.image}}" alt="{{item.title}}">
+                </div>
+                <div class="vendedor">
+                    <h1 class="nome_receita">{{item.title}}</h1>
+                    <p >{{item.author}}</p>
+                </div>
+            </div>
+
+            <div class="ingredientes_receita">
+                <div class="ingredientes ">
+                    <div class="btn">
+                        <h2 class="ingre">Ingredientes</h2>
+                        <span>ESCONDER</span>
+                    </div>
+                    <ul class=" lista ">
+                        {% for ingredients in item.ingredients %}
+                            <li>{{ingredients}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="ingredientes">
+                    <div class="btn">
+                        <h2 class="ingre">Modo de preparo</h2>
+                        <span class="">ESCONDER</span>
+                    </div>
+                    <ul class=" lista">
+                        {% for preparation in item.preparation %}
+                            <li>{{preparation}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="ingredientes">
+                    <div class="btn">
+                        <h2 class="ingre">Informaçoes adicionais</h2>
+                        <span >ESCONDER</span>
+                    </div>
+                    <ul class="lista">
+                        <li>{{item.information}}</li>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{%block script%}
+    <script src="/scripts.js"></script>
+    {%endblock%}
