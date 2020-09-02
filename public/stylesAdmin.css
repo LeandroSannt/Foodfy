@@ -16,8 +16,6 @@ header{
     height: 80px;
 }
 
-
-
 header .menu{
     display: flex;
     justify-content: right;
@@ -25,7 +23,6 @@ header .menu{
     width: 75vw;
     height: 100%;
     margin: 0 auto;
-
 }
 
 .title{
@@ -60,43 +57,37 @@ header .menu{
     border: none;
     font-family: 'Roboto', sans-serif;
 }
+
 .title .cabecalho .editDetails:hover,
 .title .cabecalho button:hover{
     background-color: #554b9e;
-   
 }
 
 .title .cabecalho .editDetails{
-  
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
 }
-
 
 .title #form-delete .delete{
     background-color: #DC4747;
     position: absolute;
-    right: 295px;
+    right: 310px;
     top: 130;
     cursor: pointer;
     border: none;
-  
-    
 }
 
 .title #form-delete .delete:hover{
     background-color: #b14040;
 }
 
-
 .receitas input,
 textarea{
     width: 100%;
-    background: #FFFFFF;
+    background: #fffefe;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     padding: 10px 5px;
@@ -119,6 +110,7 @@ textarea{
     transition: 0.4s;
 }
 
+.receitas .newPrep,
 .receitas .newIngre{
     font-size: 16px;
     color: #6558C3;
@@ -129,22 +121,21 @@ textarea{
     transition: 0.4s;
 }
 
+.receitas .newPrep:hover,
 .receitas .newIngre:hover{
     transform:translateX(5px) ;
     font-weight: 700;
-
 }
 
 .receitas .modPrep:hover{
     transform:translateX(5px) ;
     font-weight: 700;
-
 }
 
+.preparation,
 #ingredients .ingredient{
-    margin-bottom: 15px;
+    margin-bottom: 11px;
     display: flex;
-
 }
 
 #ingredients .ingredient #addIngre{
@@ -167,13 +158,11 @@ textarea{
     justify-content: center;
     transition: 0.6s;
     cursor: pointer;
-    display: none;
 }
 
 #ingredients .ingredient  img.visible{
     display: block;
 }
-
 
 .content  h3{
     font-size: 24px;
@@ -184,7 +173,6 @@ textarea{
     display: flex;
     justify-content: space-between;
 }
-
 
 .info_receita .loja {
     display: flex;
@@ -244,7 +232,6 @@ textarea{
     font-size: 12.5px;
     cursor: pointer;
     color: #999999;
-    ;
 }
 
 .ingredientes_receita .lista1, .lista2 {
@@ -256,7 +243,6 @@ textarea{
     list-style-position: inside;
     margin-bottom: 5px;
 }
-
 
 .ingredientes_receita p {
     line-height: 23px;
@@ -274,7 +260,6 @@ textarea{
     display: grid;
     grid-template-columns:  1fr 1fr ;
     gap: 10px;
-    
 }
 
 .title .cards .card{
@@ -290,7 +275,6 @@ textarea{
     font-size: 18px;
     color: #111111;
     line-height: 21px;
-   
 }
 
 .title .card-infos p{
@@ -312,8 +296,6 @@ textarea{
     font-weight: bold;
     transform:translateX(5px) ;
 }
-
-
 
 .title .cards .card img{
     width: 280px;
