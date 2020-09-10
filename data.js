@@ -133,9 +133,8 @@ module.exports = [
       preparation: [
         'Cozinhe a batata-doce numa panela de pressão, com meio litro de água, por cerca de 20 minutos. Descasque e passe pelo espremedor, ainda quente.',
         'Junte a manteiga,os ovos, o coco ralado,o açúcar, o Leite Moça e o fermento em pó, mexendo bem após cada adição.',
-        'Despeje em assadeira retangular média, untada e leve ao forno médio (180°C), por aproximadamente 45 minutos. Depois de frio, polvilhe, com o',
-        'açúcar de confeiteiro e corte em quadrados.'
+        'Despeje em assadeira retangular média, untada e leve ao forno médio (180°C), por aproximadamente 45 minutos. Depois de frio, polvilhe, com o açúcar de confeiteiro e corte em quadrados.'
       ],
-      information: ' Docinho do céu, é um doce de leite condensado com coco,  muito requintado. Sua textura,  fica entre o pudim e a torta, bem  molhadinho,  para lá de saboroso e   muito  simples de fazer. E bota simples nisso.  Basta bater os ingredientes no liquidificador,   levar ao forno e  após  30 minutinhos  está pronto.r'
+      information: ' Docinho do céu, é um doce de leite condensado com coco,  muito requintado. Sua textura,  fica entre o pudim e a torta, bem  molhadinho,  para lá de saboroso e   muito  simples de fazer. E bota simples nisso.  Basta bater os ingredientes no liquidificador,   levar ao forno e  após  30 minutinhos  está pronto.'
     }
   ];

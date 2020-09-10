@@ -8,50 +8,20 @@
         </div>
 
         <div class="cards">
-
+            {%for  recipe in recipes%}
             <div class="card">
                 <div class="img-receita">
-                    <img src="/assets/burger.png" alt="burger">
+                    <img src="{{recipe.image}}" alt="burger">
                 </div>
                 <div class="card-infos">
-                    <h3>Triplo bacon burger</h3>
-                    <p>por Jorge Relato</p>
-                    <p class="visu">Visualizar<p> 
+                    <h3>{{recipe.title}}</h3>
+                    <p>{{recipe.author}}</p>
+                   <a class="visu" href="/admin/details/:id">Visualizar</a> 
                 </div>
              </div>
-
-    <div class="card">
-                <div class="img-receita">
-                    <img src="/assets/burger.png" alt="burger">
-                </div>
-                <div class="card-infos">
-                    <h3>Triplo bacon burger</h3>
-                    <p>por Jorge Relato</p>
-                    <p class="visu">Visualizar<p> 
-                </div>
-             </div>
-
-             <div class="card">
-                <div class="img-receita">
-                    <img src="/assets/burger.png" alt="burger">
-                </div>
-                <div class="card-infos">
-                    <h3>Triplo bacon burger</h3>
-                    <p>por Jorge Relato</p>
-                    <p class="visu">Visualizar<p> 
-                </div>
-             </div>
-
-         <div class="card">
-                <div class="img-receita">
-                    <img src="/assets/burger.png" alt="burger">
-                </div>
-                <div class="card-infos">
-                    <h3>Triplo bacon burger</h3>
-                    <p>por Jorge Relato</p>
-                    <p class="visu">Visualizar<p> 
-                </div>
-             </div>
+             {%endfor%}
+        </div>
+  
 
     </section>
        

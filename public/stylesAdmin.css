@@ -289,7 +289,9 @@ textarea{
     font-size: 14px;
     line-height: 16px;
     cursor: pointer;
-    transition:0.4s
+    transition:0.4s;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .title .card-infos .visu:hover{

@@ -2,7 +2,8 @@ const fs = require("fs")
 const data =require("../data.json")
 
 exports.listing = function (req,res){
-    return res.render("admin/listing")
+
+    return res.render("admin/listing",{recipes:data.recipes})
 }
 
 exports.create = function (req,res){
@@ -25,12 +26,14 @@ exports.post =function(req,res){
                 return res.send("Dados Faltando")
             }
             
-           let{ image,ingredients,preparation,information}= req.body
+           let{ image,title,author,ingredients,preparation,information}= req.body
            const id =Number(data.recipes.length +1)
   
                 data.recipes.push({
                     id,
                     image,
+                    title,
+                    author,
                     ingredients,
                     preparation,
                     information
