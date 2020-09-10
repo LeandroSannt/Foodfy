@@ -19,14 +19,14 @@
         <aside class="mais-acessadas">
             <h1>Mais acessadas</h1>
             <div class="cards">
-                {% for item in items %}
+                {% for recipe in recipes %}
                     <div class="card">
                         <div class="img-card">
-                            <img src={{item.image}} alt="{{item.title}}">
+                            <img src={{recipe.image}} alt="{{recipe.title}}">
                         </div>
                         <div class="info-card">
-                            <p>{{item.title}}</p>
-                            <p class="criador">{{item.author}}</p>
+                            <p>{{recipe.title}}</p>
+                            <p class="criador">{{recipe.author}}</p>
                         </div>
                     </div>
                 {% endfor %}
