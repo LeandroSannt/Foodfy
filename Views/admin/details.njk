@@ -1,28 +1,27 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 
-
 {% block title %}
-    <title>Detalhes da receita</title>
+    <title>Detalhes: {{foundRecipes.title}}</title>
 {% endblock %}
 
 {% block content %}
     <section class="title">
         <div class="cabecalho">
-            <h1 >Receita:Triplo Bacon Burger</h1>
+            <h1 >{{foundRecipes.title}}</h1>
             <a  class="editDetails" href="">Editar receita</a>
         </div>
 
         <div class="info_receita">
             <div class="loja">
                 <div class="img_receita">
-                    <img class="img-r" src="{{item.image}}" alt="{{item.title}}">
+                    <img class="img-r" src="{{foundRecipes.image}}" alt="{{foundRecipes.title}}">
                 </div>
                 <div class="vendedor">
-                    <h1 class="nome_receita">{{item.title}}</h1>
-                    <p >{{item.author}}</p>
+                    <h1 class="nome_receita">{{foundRecipes.title}}</h1>
+                    <p >{{foundRecipes.author}}</p>
                 </div>
-            </div>
+            </div>  
 
             <div class="ingredientes_receita">
                 <div class="ingredientes ">
@@ -31,7 +30,7 @@
                         <span>ESCONDER</span>
                     </div>
                     <ul class=" lista ">
-                        {% for ingredients in item.ingredients %}
+                        {% for ingredients in foundRecipes.ingredients %}
                             <li>{{ingredients}}</li>
                         {% endfor %}
                     </ul>
@@ -43,7 +42,7 @@
                         <span class="">ESCONDER</span>
                     </div>
                     <ul class=" lista">
-                        {% for preparation in item.preparation %}
+                        {% for preparation in foundRecipes.preparation %}
                             <li>{{preparation}}</li>
                         {% endfor %}
                     </ul>
@@ -55,7 +54,7 @@
                         <span >ESCONDER</span>
                     </div>
                     <ul class="lista">
-                        <li>{{item.information}}</li>
+                        <li>{{foundRecipes.information}}</li>
 
                     </p>
                 </div>

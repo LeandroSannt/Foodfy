@@ -11,11 +11,18 @@ exports.create = function (req,res){
 }
 
 exports.details = function (req,res){
-    return res.render("admin/details")
+    const {id} = req.params
+    const foundRecipes = data.recipes.find(function(recipes){
+        return id == recipes.id
+    })
+    if(!foundRecipes)return res.send("Receita não encontrada")
+
+
+    return res.render("admin/details",{foundRecipes})
 }
 
 exports.edit = function (req,res){
-    return res.render("admin/edit")
+    return res.render("admin/edit",{recipes:data.recipes})
 }
 
 exports.post =function(req,res){
