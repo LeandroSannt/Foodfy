@@ -1,24 +1,27 @@
 <aside class="receitas">
     <div>
         <h3>Imagem da receita</h3>
-        <input type="text" name="image" value="{{recipes.image}}">
+        <input type="text" name="image" value="{{foundRecipes.image}}">
     </div>
 
     <div>
         <h3>Nome da receita</h3>
-        <input type="text" name="title">
+        <input type="text" name="title" value="{{foundRecipes.title}}">
     </div>
 
     <div>
         <h3>Criador da receita</h3>
-        <input type="text" name="author">
+        <input type="text" name="author"  value="{{foundRecipes.author}}">
     </div>
 
 <div class="item">
     <div id="ingredients">
         <h3>Ingredientes</h3>
             <div class="ingredient">
-                <input type="text" name="ingredients[]" value ="" id="addIngre">
+                {% for ingredients in foundRecipes.ingredients %}
+                <input type="text" name="ingredients[]" value="{{ingredients}}" id="addIngre">
+                
+                {%endfor%}
             </div>
     </div>
     </div>
@@ -28,7 +31,9 @@
     <div id="preparation">
         <h3>Modo de preparo</h3>
             <div class="preparation">
-                <input type="text" name="preparation[]" value="" id="addPrep">
+                {% for preparation in foundRecipes.preparation %}
+                 <input type="text" name="preparation[]" value="{{preparation}}" id="addPrep">
+                {% endfor %}
             </div> 
     </div>
     </div>
@@ -37,8 +42,8 @@
     <div class="item">
     <div>
         <h3>informaçoes adicionais</h3>
-        <textarea name="information"  cols="30" rows="10" n>
-            
+        <textarea name="information"  cols="30" rows="10" n >
+            {{foundRecipes.information}}
         </textarea>
     </div>
     </div>

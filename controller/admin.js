@@ -22,7 +22,15 @@ exports.details = function (req,res){
 }
 
 exports.edit = function (req,res){
-    return res.render("admin/edit",{recipes:data.recipes})
+
+    const { id } = req.params
+    
+    const foundRecipes = data.recipes.find(function (recipes) {
+        return id == recipes.id
+    })
+    if (!foundRecipes) return res.send("Recipes.not found")
+
+    return res.render("admin/edit",{foundRecipes})
 }
 
 exports.post =function(req,res){
@@ -53,8 +61,37 @@ exports.post =function(req,res){
 }
 
 exports.put =function(req,res){
-    return res.render()
+
+    const{id}= req.body
+    let index = 0
+
+    const foundRecipes = data.recipes.find(function (recipes, foundIndex) {
+        if (recipes.id == id){
+        index = foundIndex
+        return true
+    }
+    })
+    if (!foundRecipes) return res.send("Recipes not found")
+
+    const recipe ={
+        ...foundRecipes,
+        ...req.body,
+        id:Number(req.body.id)
+    }
+
+    data.recipes[index] = recipe
+
+    fs.writeFile("data.json", JSON.stringify(data,null,2),function(err){
+        if(err) return res.send("Write error")
+    })
+    return res.redirect(`/admin/details`)  
 }
+        
+
+
+        
+
+
 
 exports.delete =function(req,res){
     return res.render()

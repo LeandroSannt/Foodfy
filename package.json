@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm-run-all -p nodemon browsersync",
-    "nodemon":"nodemon server.js",
+    "nodemon": "nodemon server.js",
     "browsersync": "browser-sync start --proxy http://localhost:5000 --files 'public, Views'"
-
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,7 @@
   "homepage": "https://github.com/LeandroSannt/Foodfy#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "method-override": "^3.0.0",
     "nunjucks": "^3.2.1"
   },
   "devDependencies": {

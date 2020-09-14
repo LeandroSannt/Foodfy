@@ -2,11 +2,14 @@ const express = require("express")
 const nunjucks = require("nunjucks")
 const receitas = require("./data")
 const routes = require("./routes")
+const methodOverride = require("method-override")
 
 const server = express()
 server.use(express.urlencoded({extendend:true}))
 server.use(express.static("public"))
+server.use(methodOverride("_method"))
 server.use(routes)
+
 
 server.get("/", function (req, res) {
     return res.render("index", { items: receitas })

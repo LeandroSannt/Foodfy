@@ -5,19 +5,22 @@
 
     <section class="title">
 
-        <form class ="card" method ="POST" action="/admin" required >
+        <form class ="card" method ="POST" action="/admin/details?_method=PUT" required >
         <div class="cabecalho">
             <h1>Editando Receita</h1>
                 <div class="edition">
                     <button type="submit">Salva Receita</button>
+                      <input type="hidden" name="id" value ={{foundRecipes.id}}>     
                 </div>
         </div>
         {%include "admin/fields.njk" %}
+        
         </form>
 
            <form id="form-delete"   method="POST" action="/recipes?_method=DELETE">
                 <button class="delete" type="submit">Deletar</button> 
-            <input type="hidden" name="id">        
+                <input type="hidden" name="id" value ={{recipes.id}}>       
+             
         </form>
 
 
