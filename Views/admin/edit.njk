@@ -3,28 +3,71 @@
 {% block content %}
 
 
+<div class ="card">
+    <form  method ="POST" action="/admin?_method=PUT" >
     <section class="title">
-
-        <form class ="card" method ="POST" action="/admin/details?_method=PUT" required >
         <div class="cabecalho">
-            <h1>Editando Receita</h1>
-                <div class="edition">
-                    <button type="submit">Salva Receita</button>
-                      <input type="hidden" name="id" value ={{foundRecipes.id}}>     
-                </div>
+            <h1>Criando Receita</h1>
+            <button type="submit">Salvar receita</button>
         </div>
-        {%include "admin/fields.njk" %}
-        
-        </form>
+    <aside class="receitas">
+            <div>
+                <h3>Imagem da receita</h3>
+                <input type="text" name="image" value="{{recipes.image}}">
+            </div>
 
-           <form id="form-delete"   method="POST" action="/recipes?_method=DELETE">
-                <button class="delete" type="submit">Deletar</button> 
-                <input type="hidden" name="id" value ={{recipes.id}}>       
-             
-        </form>
+            <div>
+                <h3>Nome da receita</h3>
+                <input type="text" name="title" value="{{recipes.title}}">
+            </div>
+
+             <div>
+                <h3>Criador da receita</h3>
+                <input type="text" name="author"  value="{{recipes.author}}">
+            </div>
+
+             <div class="item">
+                <div id="ingredients">
+                    <h3>Ingredientes</h3>
+                        <div class="ingredient">
+                            {% for ingredients in recipes.ingredients %}
+                             <input type="text" name="ingredients[]" value="{{ingredients}}" id="addIngre">
+                            {%endfor%}
+                        </div>
+                </div>
+            </div>
+            <p class="newIngre">+ Adicionar novo ingrediente</p>
+
+            <div class="item">
+                <div id="preparation">
+                    <h3>Modo de preparo</h3>
+                        <div class="preparation">
+                            {% for preparation in recipes.preparation %}
+                                <input type="text" name="preparation[]" value="{{preparation}}" id="addPrep">
+                            {% endfor %}
+                        </div> 
+                </div>
+            </div>
+            <p class="newPrep" >+ Adicionar novo passo</p>
+                    
+            <div class="item">
+                <div>
+                    <h3>informaçoes adicionais</h3>
+                    <textarea name="information"  cols="30" rows="10" n >
+                        {{recipes.information}}
+                    </textarea>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{{recipes.id}}">
+    </aside>
+    </section>  
+</form>
+
+<form id="form-delete"   method="POST" action="/admin?_method=DELETE">
+    <button class="delete" type="submit">Deletar</button> 
+    <input type="hidden" name="id" value ={{recipes.id}}>        
+</form>
 
 
-
-    </section>
-
+</div>
 {% endblock content %}

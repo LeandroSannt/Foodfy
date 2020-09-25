@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm-run-all -p nodemon browsersync",
+    "start": " nodemon browsersync",
     "nodemon": "nodemon server.js",
-    "browsersync": "browser-sync start --proxy http://localhost:5000 --files 'public, Views'"
+    "browsersync": "browser-sync start --proxy http://localhost:5000 --files 'public,Views,controller'"
   },
   "repository": {
     "type": "git",

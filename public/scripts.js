@@ -38,15 +38,12 @@ console.log(newIngre)
     fields.forEach(function(field){
         field.value =""
 
+        
+
 })
 document.querySelector("#preparation").appendChild(newFieldContainer)
 })
-/*
-    document.querySelector(".ingredient img").addEventListener("click",function(){
-    const removeIngre =document.querySelector("#addIngre")
-    removeIngre.removeChild(removeIngre.childNodes[1])
-   
-})*/
+
 
 
 

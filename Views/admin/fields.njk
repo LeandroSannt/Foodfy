@@ -20,7 +20,6 @@
             <div class="ingredient">
                 {% for ingredients in foundRecipes.ingredients %}
                 <input type="text" name="ingredients[]" value="{{ingredients}}" id="addIngre">
-                
                 {%endfor%}
             </div>
     </div>
@@ -31,6 +30,7 @@
     <div id="preparation">
         <h3>Modo de preparo</h3>
             <div class="preparation">
+                <input type="text" name="preparation[]" value="{{preparation}}" id="addPrep">
                 {% for preparation in foundRecipes.preparation %}
                  <input type="text" name="preparation[]" value="{{preparation}}" id="addPrep">
                 {% endfor %}
