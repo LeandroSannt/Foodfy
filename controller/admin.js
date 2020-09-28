@@ -110,7 +110,7 @@ exports.put =function(req,res){
 
     data.recipes[index] = recipes
 
-    fs.writeFile("data.json", JSON.stringify(data,null,2),function(err){
+    fs.writeFile("controller/data.json", JSON.stringify(data,null,2),function(err){
         if(err) return res.send("Write error")
     })
     return res.redirect(`/admin/details/${id}`)  
@@ -123,7 +123,7 @@ exports.delete =function(req,res){
     })
     data.recipes= filteredRecipes
 
-    fs.writeFile("data.json", JSON.stringify(data,null,2), function(err){
+    fs.writeFile("controller/data.json", JSON.stringify(data,null,2), function(err){
         if (err) return res.send("Erro")
 
         return res.redirect ("/admin/listing")

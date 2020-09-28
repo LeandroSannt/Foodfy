@@ -10,17 +10,17 @@
                 <aside class="receitas">
                     <div>
                         <h3>Imagem da receita</h3>
-                        <input type="text" name="image" value="{{foundRecipes.image}}"required>
+                        <input type="text" name="image" placeholder='https://' value="{{foundRecipes.image}}"required>
                     </div>
 
                     <div>
                         <h3>Nome da receita</h3>
-                        <input type="text" name="title" value="{{foundRecipes.title}}"required>
+                        <input type="text" name="title" placeholder="Nome da receita" value="{{foundRecipes.title}}"required>
                     </div>
 
                     <div>
                         <h3>Criador da receita</h3>
-                        <input type="text" name="author"  value="{{foundRecipes.author}}"required>
+                        <input type="text" name="author" placeholder="Criador da receita" value="{{foundRecipes.author}}"required>
                     </div>
 
                 <div class="item">
@@ -28,7 +28,7 @@
                         <h3>Ingredientes</h3>
                             <div class="ingredient">
                             
-                                <input type="text" name="ingredients[]" value="{{ingredients}}" id="addIngre">
+                                <input type="text" name="ingredients[]" placeholder="Descreva os ingredientes um a um" value="{{ingredients}}" id="addIngre">
                             
                             </div>
                     </div>
@@ -39,7 +39,7 @@
                     <div id="preparation">
                         <h3>Modo de preparo</h3>
                             <div class="preparation">
-                                <input type="text" name="preparation[]" value="{{preparation}}" id="addPrep">
+                                <input type="text" name="preparation[]" placeholder="Descreva os passos bem detalhadamente um a um" value="{{preparation}}" id="addPrep">
                             </div> 
                     </div>
                     </div>
@@ -48,12 +48,17 @@
                     <div class="item">
                     <div>
                     <h3>informaçoes adicionais</h3>
-                    <textarea name="information"   wrap="of" cols="50" rows="10" n >
-                        {{foundRecipes.information}}
-                    </textarea>
+
+                    <textarea name="information" rows="10" cols="50" placeholder="Descreva sua receita.">{{foundRecipes.information}}</textarea>
                 </div>
                 </div>
             </aside>
     </section>  
 </form>
+
+{% if saved %}
+    {%include "admin/modal.njk"%}
+{% endif %}
+
+
 {% endblock content %}

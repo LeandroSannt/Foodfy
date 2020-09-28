@@ -3,7 +3,7 @@
     {
       "id": 1,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/burger.png",
-      "title": "Triplo bacon burger",
+      "title": "Triplo bacon burger ",
       "author": "Jorge Relato",
       "ingredients": [
         "3 kg de carne moída (escolha uma carne magra e macia)",
@@ -22,7 +22,7 @@
         "Faça no máximo 4 camadas por forma e leve para congelar.",
         "Retire do congelador, frite ou asse e está pronto."
       ],
-      "information": "Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres! \\n\\n Você sabia que a receita que precede o hambúrguer surgiu no século XIII, na Europa? A ideia de moer a carne chegou em Hamburgo no século XVII, onde um açogueiro resolveu também temperá-la. Assim, a receita foi disseminada nos Estados Unidos por alemães da região. Lá surgiu a ideia de colocar o hambúrguer no meio do pão e adicionar outros ingredientes, como queijom tomates e alface.            \r\n        "
+      "information": "                                                                                                Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres! \\n\\n Você sabia que a receita que precede o hambúrguer surgiu no século XIII, na Europa? A ideia de moer a carne chegou em Hamburgo no século XVII, onde um açogueiro resolveu também temperá-la. Assim, a receita foi disseminada nos Estados Unidos por alemães da região. Lá surgiu a ideia de colocar o hambúrguer no meio do pão e adicionar outros ingredientes, como queijom tomates e alface.            \r\n        \r\n                    \r\n                    \r\n                    \r\n                    "
     },
     {
       "id": 2,
@@ -141,42 +141,29 @@
     },
     {
       "id": 7,
-      "image": "https://i.ytimg.com/vi/ZGMJqxIkAb0/maxresdefault.jpg",
-      "title": "teste 1",
-      "author": "assaf",
+      "image": "https://img.cybercook.com.br/receitas/931/banana-split-5.jpeg",
+      "title": "Banana Split",
+      "author": "Tudo gostoso",
       "ingredients": [
-        "trh"
+        "2 bananas, nanicas",
+        "6 bolas de sorvete, do seu sabor preferido",
+        "1 xícara (chá) de creme de leite fresco",
+        "4 cerejas em calda",
+        "2 colheres (sopa) de castanha de caju picada",
+        "Calda de chocolate a gosto"
       ],
       "preparation": [
-        "rhrh"
+        "Coloque o creme de leite fresco num recipiente e bata até o ponto de chantilly.",
+        "Reserve.",
+        "Descasque as bananas e corte ao meio, no sentido do comprimento.",
+        "Coloque duas metades de banana em cada recipiente.",
+        "Distribua 3 bolas de sorvete sobre cada porção.",
+        "Coloque chantilly entre as bolas de sorvete.",
+        "Acrescente 2 cerejas em cada porção.",
+        "Acrescente a calda de chocolate e a castanha de caju.",
+        "Sirva a seguir."
       ],
-      "information": "    etet                    \r\n                    "
-    },
-    {
-      "id": 8,
-      "image": "https://i.ytimg.com/vi/ZGMJqxIkAb0/maxresdefault.jpg",
-      "title": "teste 2",
-      "author": "leandro",
-      "ingredients": [
-        "2 kg de carne moída (escolha uma carne magra e macia)"
-      ],
-      "preparation": [
-        "misture o arroz e o feijao "
-      ],
-      "information": "  wfwf                     \r\n                    "
-    },
-    {
-      "id": 9,
-      "image": "https://i.ytimg.com/vi/ZGMJqxIkAb0/maxresdefault.jpg",
-      "title": "teste 3",
-      "author": "leandro",
-      "ingredients": [
-        "2 kg de carne moída (escolha uma carne magra e macia)"
-      ],
-      "preparation": [
-        "misture o arroz e o feijao "
-      ],
-      "information": "fwvf\r\n                        \r\n                    "
+      "information": "                                                Servir bem gelado\r\n                    \r\n                    "
     }
   ]
 }
