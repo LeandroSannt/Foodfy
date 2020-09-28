@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block title %}
-    <title>{{item.title}}</title>
+    <title>{{foundRecipes.title}}</title>
 {% endblock %}
 
 {% block content %}
@@ -9,11 +9,11 @@
         <div class="info_receita">
             <div class="loja">
                 <div class="img_receita">
-                    <img class="img-r" src="{{item.image}}" alt="{{item.title}}">
+                    <img class="img-r" src="{{foundRecipes.image}}" alt="{{foundRecipes.title}}">
                 </div>
                 <div class="vendedor">
-                    <h1 class="nome_receita">{{item.title}}</h1>
-                    <p >{{item.author}}</p>
+                    <h1 class="nome_receita">{{foundRecipes.title}}</h1>
+                    <p >{{foundRecipes.author}}</p>
                 </div>
             </div>
 
@@ -24,7 +24,7 @@
                         <span>ESCONDER</span>
                     </div>
                     <ul class=" lista ">
-                        {% for ingredients in item.ingredients %}
+                        {% for ingredients in foundRecipes.ingredients %}
                             <li>{{ingredients}}</li>
                         {% endfor %}
                     </ul>
@@ -36,7 +36,7 @@
                         <span class="">ESCONDER</span>
                     </div>
                     <ul class=" lista">
-                        {% for preparation in item.preparation %}
+                        {% for preparation in foundRecipes.preparation %}
                             <li>{{preparation}}</li>
                         {% endfor %}
                     </ul>
@@ -48,7 +48,7 @@
                         <span >ESCONDER</span>
                     </div>
                     <ul class="lista">
-                        <li>{{item.information}}</li>
+                        <li>{{foundRecipes.information}}</li>
 
                     </p>
                 </div>

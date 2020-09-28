@@ -1,6 +1,35 @@
 const fs = require("fs")
-const { filter } = require("../data")
-const data =require("./data.json")
+const data =require("../controller/data.json")
+
+
+exports.index = function(req,res){
+    return res.render("index", {recipes:data.recipes})
+}
+
+exports.sobre =function (req, res) {
+    return res.render("sobre")
+}
+
+exports.receitas= function (req, res) {
+    return res.render("receitas", {recipes:data.recipes})
+}
+
+exports.abrirReceita = function (req, res) {
+
+    const {id }= req.params
+
+    const foundRecipes =data.recipes.find(function(recipes){
+        return id == recipes.id
+    })
+
+    if(!foundRecipes) return res.render("not-found")
+
+    return res.render(`receita`,{foundRecipes})
+}
+
+
+//=======RECEITAS========*/
+
 
 exports.listing = function (req,res){
     return res.render("admin/listing",{recipes:data.recipes})
@@ -17,7 +46,7 @@ exports.details = function (req,res){
         return id == recipes.id
     })
 
-    if(!foundRecipes) return res.send("Recipes not found")
+    if(!foundRecipes) return res.render("not-found")
 
     return res.render("admin/details",{foundRecipes})
 }
@@ -29,7 +58,7 @@ exports.edit = function (req,res){
     const foundRecipes = data.recipes.find(function (recipes) {
         return id == recipes.id
     })
-    if (!foundRecipes) return res.send("Recipes.not found")
+    if (!foundRecipes) return res.render("not-found")
 
     const recipes ={
         ...foundRecipes
@@ -70,7 +99,7 @@ exports.put =function(req,res){
         return true
     }
     })
-    if (!foundRecipes) return res.send("students not found")
+    if (!foundRecipes) return res.render("not-found")
 
     const recipes ={
         ...foundRecipes,
@@ -89,10 +118,10 @@ exports.put =function(req,res){
 
 exports.delete =function(req,res){
     const {id} = req.body
-    const filteredTeachers = data.recipes.filter(function(teacher){
-        return id != teacher.id
+    const filteredRecipes = data.recipes.filter(function(recipes){
+        return id != recipes.id
     })
-    data.recipes= filteredTeachers
+    data.recipes= filteredRecipes
 
     fs.writeFile("data.json", JSON.stringify(data,null,2), function(err){
         if (err) return res.send("Erro")

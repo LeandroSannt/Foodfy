@@ -42,9 +42,11 @@ header .menu{
     line-height: 28px;
 }
 
+
 .title .cabecalho button,
 .card #form-delete .delete,
-.title .cabecalho .editDetails{
+.title .cabecalho .editDetails,
+.title .cabecalho .createReceita{
     background-color:  #6558C3;
     border-radius: 4px;
     width: 139px;
@@ -57,7 +59,15 @@ header .menu{
     border: none;
     font-family: 'Roboto', sans-serif;
 }
-
+.title .cabecalho .createReceita {
+    background-color: #6558C3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+.title .cabecalho .createReceita:hover,
 .title .cabecalho .editDetails:hover,
 .title .cabecalho button:hover{
     background-color: #554b9e;
@@ -78,6 +88,7 @@ header .menu{
     top: 130;
     cursor: pointer;
     border: none;
+    width: 116.12px;
 }
 
 .card #form-delete .delete:hover{
@@ -91,6 +102,7 @@ textarea{
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     padding: 10px 5px;
+    resize: none;
 }
 
 .receitas h3{
@@ -306,6 +318,64 @@ textarea{
     margin-bottom: 15px;
 }
 
+.title .cabecalho .save{
+    width: 120px;
+    padding:4px;
+    box-sizing: border-box;
+
+}
+@media (max-width:1020px){
+    .title .cards .card img  {
+        width: 250px;
+    }
+}
+@media (max-width:760px) {
+    .title .cards {
+        display:block
+    }
+    
+    .title .cards .card{
+        display: block;
+    }
+
+    .title .cards .card .card-infos{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+ 
+    .title .cards .card img{
+        width: 100%;
+    }
+
+   .card #form-delete .delete{
+       width: 116.12px;
+       top: 170;
+       right: 47;
+    }
+
+    .title .cabecalho .save{
+        width: 120px;
+        padding:4px;
+        box-sizing: border-box;
+    }
+    
+}
+@media (max-width:360px){
+    .card #form-delete .delete{
+        right: 40px;
+        width: 116.12px;
+    }
+
+    .title .cabecalho .save{
+        width: 120px;
+        padding:4px;
+        box-sizing: border-box;
+
+    }
+}
 
 
 

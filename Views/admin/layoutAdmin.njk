@@ -3,9 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesAdmin.css">
-    {% block styles %}
-     
-    {% endblock styles %}
+    {% block styles %} {% endblock styles %}
     
     {% block title %}
          <title>Admin-Foodfy</title>
@@ -15,13 +13,11 @@
 <body>
     <header >
         <div class="menu">
-            <img src="/assets/logo-white.png" alt="logo-foodfy">
+          <a href="/admin/listing"> <img src="/assets/logo-white.png" alt="logo-foodfy"></a>
         </div>
     </header>
 
     {% block content %}{% endblock content %}
-
-
 <script src="/scripts.js"></script>
 </body>
 </html>

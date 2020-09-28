@@ -1,6 +1,6 @@
 const click = document.querySelectorAll("span")
 const lista = document.querySelectorAll(".lista")
-console.log(click)
+
 
 for (let i = 0; i < click.length; i++) {
     click[i].addEventListener("click", function () {
@@ -16,7 +16,7 @@ for (let i = 0; i < click.length; i++) {
     const newIngre = document.querySelector(".newIngre")
     console.log(newIngre)
 
-   // for(let a = 0; a<newIngre.length; a++){
+  
         newIngre.addEventListener("click",function(){
         const newFieldContainer = document.querySelector(".ingredient").cloneNode(true)
         const fileds = newFieldContainer.querySelectorAll("input")
@@ -37,13 +37,18 @@ console.log(newIngre)
     const fields = newFieldContainer.querySelectorAll("input")
     fields.forEach(function(field){
         field.value =""
-
-        
-
 })
 document.querySelector("#preparation").appendChild(newFieldContainer)
 })
 
+const formDelete= document.querySelector("#form-delete")
+
+formDelete.addEventListener("submit",function(event){
+    const confirmation = confirm("Deseja deletar a receita ?")
+    if(!confirmation){
+        event.preventDefault()
+    }
+})
 
 
 

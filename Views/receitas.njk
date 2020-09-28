@@ -6,25 +6,36 @@
 
 {% block content %}
     <div class="content">
-        <aside class="cards">
-
-            {% for item in items %}
-                <div class="card" id={{items.indexOf(item)}}>
-                    <div class="img-card">
-                        <img src={{item.image}} alt="{{item.title}}">
+        <aside class="cards" id="cursor">
+                {% for recipe in recipes %}
+                    <div class="card" id="{{recipe.id}}">
+                        <div class="img-card">
+                            <img src={{recipe.image}} alt="{{recipe.title}}">
+                        </div>
+                        <div class="info-card">
+                            <p>{{recipe.title}}</p>
+                            <p class="criador">{{recipe.author}}</p>
+                        </div>
                     </div>
-                    <div class="info-card">
-                        <p>{{item.title}}</p>
-                        <p class="criador">{{item.author}}</p>
-                    </div>
-                </div>
-            {% endfor %}
-
+                {% endfor %}
         </aside>
     </div>
+
+    <script>
+
+        const cards = document.querySelectorAll(".card")
+        for (let card of cards) {
+    card.addEventListener("click", () => {
+        const cardId = card.getAttribute("id")
+        window.location.href = `/receita/${cardId}`
+        console.log(cardId)
+    })
+}
+
+    </script>
 
 {% endblock %}
 
 {%block script%}
-    <script src="/scripts-card.js"></script>
+    <script src="/scripts.js"></script>
     {%endblock%}

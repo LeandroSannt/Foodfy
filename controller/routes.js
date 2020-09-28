@@ -1,6 +1,12 @@
 const express = require("express")
 const routes =express.Router()
-const recipes = require("./controller/admin")
+const recipes = require("./admin")
+
+
+routes.get("/",recipes.index )
+routes.get("/sobre", recipes.sobre)
+routes.get("/receitas", recipes.receitas)
+routes.get("/receita/:id", recipes.abrirReceita)
 
 /*=========ADMIN========*/
 
@@ -12,6 +18,11 @@ routes.get("/admin/details/:id/edit", recipes.edit); // Mostrar formulário de e
 routes.post("/admin", recipes.post); // Cadastrar nova receita
 routes.put("/admin", recipes.put); // Editar uma receita
 routes.delete("/admin", recipes.delete); // Deletar uma receita
+
+
+routes.get('not-found', function(req, res) {
+    res.render("/Views/not-found");
+  });
 
 
 module.exports = routes

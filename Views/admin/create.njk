@@ -10,17 +10,17 @@
                 <aside class="receitas">
                     <div>
                         <h3>Imagem da receita</h3>
-                        <input type="text" name="image" value="{{foundRecipes.image}}">
+                        <input type="text" name="image" value="{{foundRecipes.image}}"required>
                     </div>
 
                     <div>
                         <h3>Nome da receita</h3>
-                        <input type="text" name="title" value="{{foundRecipes.title}}">
+                        <input type="text" name="title" value="{{foundRecipes.title}}"required>
                     </div>
 
                     <div>
                         <h3>Criador da receita</h3>
-                        <input type="text" name="author"  value="{{foundRecipes.author}}">
+                        <input type="text" name="author"  value="{{foundRecipes.author}}"required>
                     </div>
 
                 <div class="item">
@@ -39,10 +39,7 @@
                     <div id="preparation">
                         <h3>Modo de preparo</h3>
                             <div class="preparation">
-                                
-                            
                                 <input type="text" name="preparation[]" value="{{preparation}}" id="addPrep">
-                            
                             </div> 
                     </div>
                     </div>
@@ -51,7 +48,7 @@
                     <div class="item">
                     <div>
                     <h3>informaçoes adicionais</h3>
-                    <textarea name="information"  cols="30" rows="10" n >
+                    <textarea name="information"   wrap="of" cols="50" rows="10" n >
                         {{foundRecipes.information}}
                     </textarea>
                 </div>
