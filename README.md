@@ -13,10 +13,10 @@
 <img src="public/assets/site.gif">
 <h2>
 
-<p align="justify">Nesse site é possivel ver uma relação de receitas  e chefs onde cada chef vai registrar sua receita e exibir no site, alem disso tamem é possivel ver uma area onde mostra quantas receitas cada chef possui, alem de possuir uma paginação e um filtro por receita e nome do chef </p>
+<p align="justify">Nesse site é possivel ver uma relação de receitas  e chefs onde cada chef vai registrar sua receita e exibir no site, alem disso tambem é possivel ver uma area onde apresenta quantas receitas cada chef possui. </p>
 
 ### **Diferenciais**: <br>
-Filtro por receita ou chef | paginação por numero de paginas   
+Filtro por receita ou chef | Paginação por numero de paginas  | Totalmente responsivo
 <br>
 
 
