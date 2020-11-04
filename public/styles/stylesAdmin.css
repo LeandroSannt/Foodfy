@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style-type: circle;
 }
 
 body{
@@ -11,29 +12,41 @@ body{
 }
 
 header{
+    display: grid;
+    grid-template-columns: 1fr ;
     background-color: black;
-    width: 100%;
     height: 80px;
 }
+
+header .headerContainer{
+    max-width: 75vw;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+}
+
 
 header .menu{
     display: flex;
     justify-content: right;
     align-items: center;
-    width: 75vw;
+    width: 55vw;
     height: 100%;
-    margin: 0 auto;
+    margin-left: 40px;
 }
 
 .title{
     width: 75vw;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
 .title .cabecalho{
     display: flex;
     justify-content: space-between;
     position: relative;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .title .cabecalho h1{
@@ -58,6 +71,10 @@ header .menu{
     cursor: pointer;
     border: none;
     font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 10px;
+   
+    
 }
 .title .cabecalho .createReceita {
     background-color: #6558C3;
@@ -81,21 +98,20 @@ header .menu{
     cursor: pointer;
 }
 
-.card #form-delete .delete{
+.card .cabecalho .form_position  .delete{
     background-color: #DC4747;
-    position: absolute;
-    right: 310px;
-    top: 130;
     cursor: pointer;
     border: none;
-    width: 116.12px;
+    width: 120px;
+    outline: none;
 }
 
-.card #form-delete .delete:hover{
-    background-color: #b14040;
+.card .cabecalho .form_position  .delete:hover{
+    background-color: #c74848;
 }
 
 .receitas input,
+select,
 textarea{
     width: 100%;
     background: #fffefe;
@@ -104,6 +120,10 @@ textarea{
     padding: 10px 5px;
     resize: none;
 }
+
+select:invalid {
+    color: #991515;
+  }
 
 .receitas h3{
     font-size: 16px;
@@ -144,21 +164,21 @@ textarea{
     font-weight: 700;
 }
 
-.preparation,
+#preparation .preparation,
 #ingredients .ingredient{
     margin-bottom: 11px;
     display: flex;
 }
-
+#preparation .preparation #addPrep,
 #ingredients .ingredient #addIngre{
     border-radius:  4px 0px 0px 4px;
 }
-
+#preparation .preparation img:hover,
 #ingredients .ingredient img:hover{
     border-radius: 0 4px 4px 0;
     background-color:rgb(233, 14, 14);
 }
-
+#preparation .preparation img,
 #ingredients .ingredient  img{
     width: 24px;
     height: 37.6px;
@@ -181,6 +201,8 @@ textarea{
     color: #111111;
 }
 
+
+
 .title .cabecalhoDetails {
     display: flex;
     justify-content: space-between;
@@ -196,7 +218,8 @@ textarea{
 .loja .img_receita {
     width: 100%;
     border-radius: 16px;
-    margin: 20px 0;
+    margin:0 0 20px 0;
+
 }
 
 .loja img {
@@ -260,18 +283,11 @@ textarea{
     line-height: 23px;
 }
 
-.active {
-    display: none;
-}
-
-.title .cabecalho h1{
-    margin-bottom: 30px;
-}
 
 .title .cards{
     display: grid;
     grid-template-columns:  1fr 1fr ;
-    gap: 10px;
+    gap: 20px;
 }
 
 .title .cards .card{
@@ -279,9 +295,24 @@ textarea{
 }
 
 .title .card-infos{
-    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+   
     margin-left: 20px;
 }
+
+.title .card-infos h3{
+    font-family: Roboto-Regular;
+    font-size: 24px;
+    color: #111111;
+    margin-bottom: 10px;
+
+}
+
+
 
 .title .card-infos h1{
     font-size: 18px;
@@ -290,10 +321,10 @@ textarea{
 }
 
 .title .card-infos p{
-    font-size: 14px;
+    font-size: 18px;
     color: #777777;
     line-height: 16px;
-    margin:10px 0;
+    margin-bottom:10px ;
 }
 
 .title .card-infos .visu{
@@ -315,21 +346,51 @@ textarea{
     width: 280px;
     height: 120px;
     border-radius: 15px;
-    margin-bottom: 15px;
+    
+    object-fit: fill;
 }
+
+
 
 .title .cabecalho .save{
-    width: 120px;
+    width: 116.12px;
     padding:4px;
     box-sizing: border-box;
+    
 
 }
+
+.menu a.active {
+    font-weight: bold;
+    color: white; 
+}
+
+
 @media (max-width:1020px){
+    
+
     .title .cards .card img  {
         width: 250px;
     }
 }
 @media (max-width:760px) {
+
+    .title .cabecalho h1 {
+       
+        font-size: 20px;
+        text-align: center;
+        
+    }
+
+    .card .cabecalho .form_position {
+  
+        display: flex;
+        flex-direction: column;
+    }
+ 
+    .title{
+        width: 75vw;
+    }
     .title .cards {
         display:block
     }
@@ -351,30 +412,24 @@ textarea{
     }
 
    .card #form-delete .delete{
-       width: 116.12px;
+       width: 120px;
        top: 170;
        right: 47;
     }
 
     .title .cabecalho .save{
-        width: 120px;
-        padding:4px;
-        box-sizing: border-box;
+      margin-bottom: 5px;
+     
     }
     
 }
 @media (max-width:360px){
+ 
     .card #form-delete .delete{
         right: 40px;
         width: 116.12px;
     }
 
-    .title .cabecalho .save{
-        width: 120px;
-        padding:4px;
-        box-sizing: border-box;
-
-    }
 }
 
 

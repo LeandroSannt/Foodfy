@@ -1,0 +1,74 @@
+
+
+.header .logo,
+.menu,
+.filter{
+    display: flex;
+    align-items: center;
+
+}
+
+header .filter{
+   justify-content: flex-end;
+}
+
+header input{
+    box-sizing: border-box;
+    padding: 0 10px;
+    width: 246px;
+    height: 36px;
+    outline: none;
+    margin-right: 5px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    border-radius: 4px
+
+}
+
+
+ .menu .menuAdmin{
+    font-family: Roboto-Bold;
+    font-size: 15px;
+    color: #999999;
+    text-align: left;
+    transition: color 200ms;
+
+}
+
+.menu .menuAdmin:hover{
+    color: white;
+}
+
+
+
+.menu nav a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #111111;
+   
+}
+
+.menu nav a+a{
+    margin-left: 20px;
+}
+
+.menu nav a:hover {
+    font-weight: 700;
+    transition: all 500ms;
+}
+
+
+.filter button{
+    background-color:  #6558C3;
+    border-radius: 4px;
+    width: 91px;
+    height:37px;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 19px;
+    transition: 0.6s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+}

@@ -1,30 +1,36 @@
-{% extends "layout.njk" %}
+{% extends "admin/layoutAdmin.njk" %}
+
 
 {% block title %}
-    <title>{{foundRecipes.title}}</title>
+    <title>Detalhes: {{recipes.title}}</title>
 {% endblock %}
 
 {% block content %}
-    <div class="content">
-        <div class="info_receita">
+    <section class="title">
+        <div class="cabecalho">
+            <h1 >Receita: {{recipes.title}}</h1>
+            <a  class="editDetails" href="/admin/recipes/details/{{recipes.id}}/edit">Editar receita</a>
+        </div>
+
+        <div class="info_receita" id ={{recipes.id}}>
             <div class="loja">
                 <div class="img_receita">
-                    <img class="img-r" src="{{foundRecipes.image}}" alt="{{foundRecipes.title}}">
+                    <img class="img-r" src="{{recipes.image}}" alt="{{recipes.title}}">
                 </div>
                 <div class="vendedor">
-                    <h1 class="nome_receita">{{foundRecipes.title}}</h1>
-                    <p >{{foundRecipes.author}}</p>
+                    <h1 class="nome_receita">{{recipes.title}}</h1>
+                    <p >{{recipes.chef_recipes}}</p>
                 </div>
-            </div>
+            </div>  
 
             <div class="ingredientes_receita">
                 <div class="ingredientes ">
                     <div class="btn">
                         <h2 class="ingre">Ingredientes</h2>
-                        <span>ESCONDER</span>
+                        
                     </div>
                     <ul class=" lista ">
-                        {% for ingredients in foundRecipes.ingredients %}
+                        {% for ingredients in recipes.ingredients %}
                             <li>{{ingredients}}</li>
                         {% endfor %}
                     </ul>
@@ -33,10 +39,10 @@
                 <div class="ingredientes">
                     <div class="btn">
                         <h2 class="ingre">Modo de preparo</h2>
-                        <span class="">ESCONDER</span>
+                        
                     </div>
                     <ul class=" lista">
-                        {% for preparation in foundRecipes.preparation %}
+                        {% for preparation in recipes.preparation %}
                             <li>{{preparation}}</li>
                         {% endfor %}
                     </ul>
@@ -45,19 +51,19 @@
                 <div class="ingredientes">
                     <div class="btn">
                         <h2 class="ingre">Informaçoes adicionais</h2>
-                        <span >ESCONDER</span>
+                        
                     </div>
                     <ul class="lista">
-                        <li>{{foundRecipes.information}}</li>
+                        <li>{{recipes.information}}</li>
 
                     </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 {% endblock %}
 
 {%block script%}
-    <script src="/scripts.js"></script>
+    
     {%endblock%}

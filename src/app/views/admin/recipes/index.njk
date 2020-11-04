@@ -5,26 +5,28 @@
     <section class="title">
         <div class="cabecalho">
             <h1>Gerenciar receitas</h1>
-            <a class ="createReceita" href="/admin/create">Cadastrar receita</a>
+            <a class ="createReceita" href="/admin/recipes/create">Cadastrar receita</a>
         </div>
 
         <div class="cards">
             {%for  recipe in recipes%}
-            <div class="card">
+            <div class="card" id="{{recipe.id}}">
                 <div class="img-receita">
                     <img src="{{recipe.image}}" alt="burger">
                 </div>
                 <div class="card-infos">
                     <h3>{{recipe.title}}</h3>
-                    <p>{{recipe.author}}</p>
-                   <a class="visu" href="/admin/details/{{recipe.id}}">Visualizar</a> 
+                    <p>{{recipe.chefs_name}}</p>
+                   <a class="visu" href="/admin/recipes/details/{{recipe.id}}">Visualizar</a> 
                 </div>
              </div>
              {%endfor%}
         </div>
-  
-
     </section>
        
 
 {% endblock content %}
+
+
+
+

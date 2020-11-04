@@ -1,19 +1,16 @@
 {
-  "name": "Foodfy",
+  "name": "foodfy",
   "version": "1.0.0",
-  "description": "Projeto feito no com os ensinamentos e imagens do curso lauchbase da rocketseat",
-  "main": "server.js",
+  "description": "Projeto feito com os ensinamentos do curso lauchbase da rocketseat",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": " nodemon browsersync",
-    "nodemon": "nodemon server.js",
-    "browsersync": "browser-sync start --proxy http://localhost:4000 --files 'public,Views,controller'"
+    "start": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LeandroSannt/Foodfy.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -23,11 +20,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "method-override": "^3.0.0",
-    "nunjucks": "^3.2.1"
+    "nunjucks": "^3.2.2",
+    "pg": "^8.4.2"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.12",
-    "nodemon": "^2.0.4",
-    "npm-run-all": "^4.1.5"
+    "nodemon": "^2.0.6"
   }
 }

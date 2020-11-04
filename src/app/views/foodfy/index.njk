@@ -1,7 +1,17 @@
-{% extends "layout.njk" %}
+{% extends "foodfy/layout.njk" %}
 {% block title %}
     <title>Foodfy</title>
 {% endblock %}
+
+
+{% block filter %}
+    <div class="filter">
+       <form action="/buscar" method="GET">
+            <input type="text" placeholder="Receita ou Chef" name="filter" value="{{filter}}">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+{% endblock filter %}
 
 {% block content %}
 
@@ -26,7 +36,7 @@
                         </div>
                         <div class="info-card">
                             <p>{{recipe.title}}</p>
-                            <p class="criador">{{recipe.author}}</p>
+                            <p class="criador">{{recipe.chefs_name}}</p>
                         </div>
                     </div>
                 {% endfor %}

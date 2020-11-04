@@ -1,0 +1,29 @@
+{% extends "admin/layoutAdmin.njk" %}
+
+{% block content %}
+
+    <section class="title">
+        <div class="cabecalho">
+            <h1>Gerenciar chefs</h1>
+            <a class ="createReceita" href="/admin/chefs/create">Cadastrar chef</a>
+        </div>
+
+        <div class="cards_chefs">
+            {%for  chef in chefs%}
+            <div class="card">
+                <div class="img-chefs">
+                    <img class="img-chefs" src="{{chef.avatar_url}}" alt="{{chef.name}}">
+                </div>
+                <div class="card-infos">
+                    <p>{{chef.name}}</p>
+                   <a class="visu" href="/admin/chefs/details/{{chef.id}}">Visualizar</a> 
+                </div>
+             </div>
+             {%endfor%}
+        </div>
+  
+
+    </section>
+       
+
+{% endblock content %}

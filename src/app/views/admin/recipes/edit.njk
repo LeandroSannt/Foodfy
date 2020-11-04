@@ -1,0 +1,103 @@
+{% extends "admin/layoutAdmin.njk" %}
+
+{% block content %}
+
+<div class ="card order">
+    <div class="">
+        <form  method ="POST" action="/admin/recipes?_method=PUT" >
+            <section class="title">
+                <div class="cabecalho">
+                    <h1>Criando Receita</h1>
+                    <div class="form_Position">
+                        <button class="save" type="submit">Salvar receita</button>
+                        <button class="delete" form="form-delete" type="submit">Deletar</button> 
+                    </div>
+                </div>
+                <aside class="receitas">
+                        <div>
+                            <h3>Imagem da receita</h3>
+                            <input type="text" name="image" value="{{recipes.image}}">
+                        </div>
+
+                        <div>
+                            <h3>Nome da receita</h3>
+                                <input type="text" name="title" placeholder='Nome para sua receita' value="{{recipes.title}}"required>
+                        </div>
+                     <div class="item">
+                        <h3>Selecione o Chef</h3>
+                            <select name="chef" >
+                                {% for chef in chefOptions %}
+                                    <option value="{{chef.id}}"
+                                        {% if recipes.chef_id == chef.id %}selected {%endif%} > 
+                                        {{chef.name}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                    </div>
+
+                        <div class="item">
+                            <div id="ingredients">
+                                <h3>Ingredientes</h3>
+                                {% for ingredients in recipes.ingredients %}
+                                    <div class="ingredient">
+                                        <input type="text" name="ingredients[]" value="{{ingredients}}" id="addIngre">
+                                        <div class="delete_field" onclick ="deleteField(event)">
+                                             <img src="/assets/close.svg" alt="">
+                                         </div>
+                                    </div>
+                                    {%endfor%}
+                            </div>
+                        </div>
+                        <p class="newIngre">+ Adicionar novo ingrediente</p>
+
+                        <div class="item">
+                            <div id="preparation">
+                                <h3>Modo de preparo</h3>
+                                {% for preparation in recipes.preparation %}
+                                    <div class="preparation">
+                                            <input type="text" name="preparation[]" value="{{preparation}}" id="addPrep">
+                                            <div class="delete_field" onclick ="deletePreparation(event)">
+                                                <img src="/assets/close.svg" alt="">
+                                            </div>
+                                    </div> 
+                                    {% endfor %}
+                            </div>
+                        </div>
+                        <p class="newPrep" >+ Adicionar novo passo</p>
+                                
+                        <div class="item">
+                            <div>
+                                <h3>informaçoes adicionais</h3>
+                                <textarea name="information"  cols="30" rows="10" n >
+                                    {{recipes.information}}
+                                </textarea>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id" value="{{recipes.id}}">
+                </aside>
+            </section>  
+        </form>
+
+        <form id="form-delete"   method="POST" action="/admin/recipes?_method=DELETE">
+            
+            <input type="hidden" name="id" value ={{recipes.id}}>        
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+{% block confirmDelete %}
+    <script>
+        const formDelete= document.querySelector("#form-delete")
+        formDelete.addEventListener("submit",function(event){
+            const confirmation = confirm("Deseja deletar a receita ?")
+            if(!confirmation){
+                event.preventDefault()
+        }
+    })
+    </script>
+
+{% endblock confirmDelete %}
+
+
+

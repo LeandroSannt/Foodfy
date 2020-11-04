@@ -1,0 +1,76 @@
+{% extends "admin/layoutAdmin.njk" %}
+
+{% block content %}
+<form class ="card" method ="POST" action="/admin/recipes" >
+        <section class="title">
+            <div class="cabecalho">
+                <h1>Criando Receita</h1>
+                <button type="submit">Criar receita</button>
+            </div>
+                <aside class="receitas">
+                    <div>
+                        <h3>Imagem da receita</h3>
+                        <input type="text" name="image" placeholder='https://' required>
+                    </div>
+
+                    <div>
+                        <h3>Nome da receita</h3>
+                        <input type="text" name="title" placeholder='Nome para sua receita' required>
+                    </div>
+
+                     <div class="item">
+                        <h3>Selecione o Chef</h3>
+                        
+                            <select name="chef" >
+                                <option value="" >Selecione o chef</option>
+                                {% for chef in chefOptions %}
+                                    <option value="{{chef.id}}"
+                                        {% if recipes.chefs_id == chef.id %}selected {%endif%} > 
+                                        {{chef.name}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                    </div>
+
+                 
+                <div class="item">
+                    <div id="ingredients">
+                        <h3>Ingredientes</h3>
+                            <div class="ingredient">
+                                <input type="text" name="ingredients[]" placeholder="Descreva os ingredientes um a um"  id="addIngre">
+                                <div class="delete_field" onclick ="deleteField(event)">
+                                    <img src="/assets/close.svg" alt="">
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                    <p class="newIngre">+ Adicionar novo ingrediente</p>
+
+                <div class="item">
+                    <div id="preparation">
+                        <h3>Modo de preparo</h3>
+                            <div class="preparation">
+                                <input type="text" name="preparation[]" placeholder="Descreva os passos bem detalhadamente um a um" id="addPrep" class=>
+                                <div class="delete_field" onclick ="deletePreparation(event)">
+                                    <img src="/assets/close.svg" alt="">
+                                </div>
+                            </div> 
+                    </div>
+                    </div>
+                    <p class="newPrep" >+ Adicionar novo passo</p>
+                    
+                    <div class="item">
+                    <div>
+                    <h3>informaçoes adicionais</h3>
+
+                    <textarea name="information" rows="10" cols="50" placeholder="Descreva sua receita."></textarea>
+                </div>
+                </div>
+            </aside>
+    </section>  
+</form>
+
+
+
+
+{% endblock content %}

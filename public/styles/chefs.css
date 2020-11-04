@@ -1,0 +1,131 @@
+.title .height-container{
+    height: 100vh;
+}
+
+.title{
+    width: 75vw;
+    margin: 30px auto;
+}
+
+
+.title .cards_chefs{
+    display: grid ;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    gap: 20px;
+   
+}
+
+.title .cards_chefs .card{
+    height: 64px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.img-chefs{
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.title .card-infos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+   
+    margin-left: 20px;
+}
+
+.info_chef {
+    width: 55vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info_chef .img_chef_detail{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.info_chef .vendedor{
+    text-align: center;
+}
+
+.info_chef .vendedor h1{
+    font-family: Roboto-Bold;
+    font-size: 36px;
+    color: #111111;
+
+}
+
+.info_chef .vendedor p{
+    font-family: Roboto-Regular;
+font-size: 20px;
+color: #777777;
+text-align: center;
+}
+
+@media (max-width:760px) {
+    .title{
+        width: 75vw;
+    }
+    .title .cards {
+        display:block
+    }
+    
+    .title .cards .card{
+        display: block;
+    }
+
+    .title .cards .card .card-infos{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+        margin-bottom: 20px;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+ 
+    .title .cards .card img{
+        width: 100%;
+    }
+
+   .card #form-delete .delete{
+       width: 120px;
+       top: 170;
+       right: 47;
+    }
+
+    .title .cabecalho .save{
+        width: 120px;
+        padding:4px;
+        box-sizing: border-box;
+    }
+
+    .title .cards_chefs{
+        display: grid ;
+        grid-template-columns: 1fr 1fr  ;
+        width: 100%;
+        gap: 10px;
+       
+    }
+
+    .title .cards_chefs .card{
+        height: auto;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+}

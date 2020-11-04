@@ -1,0 +1,31 @@
+{% extends "admin/layoutAdmin.njk" %}
+
+{% block content %}
+<form class ="card" method ="POST" action="/admin/chefs" >
+        <section class="title">
+            <div class="cabecalho">
+                <h1>Criando chef</h1>
+                <button type="submit">Salvar chef</button>
+            </div>
+                <aside class="receitas">
+
+                    <div>
+                        <h3>Nome</h3>
+                        <input type="text" name="name" placeholder="Nome do chef" required>
+                    </div>
+
+                    <div>
+                        <h3>Avatar</h3>
+                        <input type="text" name="avatar_url" placeholder='https://' required>
+                    </div>
+                    
+            </aside>
+    </section>  
+</form>
+
+{% if saved %}
+    {%include "admin/modal.njk"%}
+{% endif %}
+
+
+{% endblock content %}

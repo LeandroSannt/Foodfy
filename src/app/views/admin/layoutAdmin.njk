@@ -1,0 +1,38 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/stylesAdmin.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/chefs.css">
+    {% block styles %} {% endblock styles %}
+    
+    {% block title %}
+         <title>Admin-Foodfy</title>
+    {% endblock title %}
+    
+</head>
+<body>
+    <header>
+        <div class="headerContainer">
+            <div class="logo">
+            <a href="/admin/recipes"> <img src="/assets/logo-white.png" alt="logo-foodfy"></a>
+            </div>
+            <div class="menu">
+                <nav class="navAdmin">
+                    <a class="menuAdmin" href="/admin/recipes">Receitas</a>     
+                    <a class="menuAdmin" href="/admin/chefs">Chefs</a>     
+
+                </nav>
+            </div>
+        </div>
+
+    </header>
+
+    {% block content %}{% endblock content %}
+    {% block confirmDelete %}{% endblock confirmDelete %}
+<script src="/scripts.js"></script>
+
+</body>
+</html>
+
