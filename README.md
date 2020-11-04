@@ -9,7 +9,7 @@
 
 **<h3>Site</h3>**
 
-<h2> 
+<h2 align ="center"> 
 <img src="public/assets/site.gif">
 <h2>
 
@@ -22,7 +22,7 @@ Filtro por receita ou chef | paginação por numero de paginas
 
 **<h3>Admin</h3>**
 
-<h2> 
+<h2 align ="center"> 
 <img src="public/assets/admin.gif">
 <h2>
 
