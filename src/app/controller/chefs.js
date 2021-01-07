@@ -3,62 +3,62 @@ var Chefs =require("../models/chefsModel")
 
 module.exports={
     
-index(req,res){
-        Chefs.all(function(chefs){
-            return res.render("admin/chefs/index",{chefs})
-        })
+async index(req,res){
+        results =await Chefs.all(req.body)
+        const chefs = results.rows
+            return res.render("admin/chefs/index",{chefs})    
     },
 
 create(req,res){
         return res.render("admin/chefs/create")
     },
     
-post(req,res){
+async post(req,res){
             const keys = Object.keys(req.body)
             for (key of keys) {
                 if (req.body[key] == "") 
                     return res.send("Dados Faltando")
                 }
-                Chefs.create(req.body,function(chefs){
-                    return res.redirect(`/admin/chefs/details/${chefs.id}`)
-                })
+
+                let results = await Chefs.create(req.body)
+                const chefId = results.rows[0].id
+                    return res.redirect(`/admin/chefs/details/${chefId}`)
     },
     
-details(req,res){ 
-    Chefs.find(req.params.id,function(chefs){
+async details(req,res){ 
+    let results = await Chefs.find(req.params.id)
+    const chefs = results.rows[0]
         if(!chefs) return res.send("chef não encontrado")
-            Chefs.findRecipes(chefs.id,function(recipes){
-                chefs.created_at = date(chefs.created_at).format
+
+        results = await Chefs.findRecipes(req.params.id)
+        const recipes =results.rows[0]
+
+        chefs.created_at = date(chefs.created_at).format
+        
                 return res.render("admin/chefs/details",{chefs,recipes})    
-            })
-        })
     },
 
-    edit(req,res){
-        Chefs.find(req.params.id,function(chefs){
+async edit(req,res){
+        let results = await Chefs.find(req.params.id)
+        const chefs = results.rows[0]
             if(!chefs) return res.send("chef não encontrado")
                 return res.render("admin/chefs/edit",{chefs})    
-       })
     },
 
-  
-put(req,res){
+async put(req,res){
     const keys = Object.keys(req.body)
     for (key of keys) {
         if (req.body[key] == "") 
             return res.send("Dados Faltando")
         }
-
-        Chefs.update(req.body,function(){
+        await Chefs.update(req.body)
             return res.redirect(`/admin/chefs`)  
 
-        })
     },
     
-delete(req,res){
-        Chefs.delete(req.body.id,function(){
-            return res.redirect ("/admin/chefs")
-        })
+async delete(req,res){
+    await Chefs.delete(req.body.id)
+            return res.redirect ("/admin/chefs")  
     }
 }
 

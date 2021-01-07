@@ -4,12 +4,14 @@ var Recipes =require("../models/recipesModel")
 
 module.exports ={
 
-index(req,res){
-    Recipes.all(function(recipes){
-        Chefs.findRecipes(recipes.id,function(chefs){
+async index(req,res){
+    let results = await Recipes.all(req.body)
+    const recipes = results.rows
+
+    results = await Chefs.findRecipes(req.params.id)
+    const chefs =results.rows[0]
+
             return res.render("foodfy/index",{chefs,recipes})
-            })
-        })
     },
     
 sobre(req, res) {
@@ -39,31 +41,33 @@ receitas(req, res) {
     Recipes.paginate(params)
 },
 
-chefs(req,res){
-    Chefs.all(function(chefs){
+async chefs(req,res){
+    results =await Chefs.all(req.body)
+    const chefs = results.rows
         return res.render("foodfy/chefs",{chefs})
-        })
+
     },
     
-abrirReceita(req, res) {
-    Recipes.find(req.params.id,function(recipes){
+async abrirReceita(req, res) {
+    let results = await Recipes.find(req.params.id)
+    const recipes = results.rows[0]
         if(!recipes) return res.send("Receita não encontrada")
         return res.render(`foodfy/receita`,{recipes})
-        })
+
     },
 
-searchRecipes(req,res){
+async searchRecipes(req,res){
    const {filter} = req.query
 
    if(filter){
-       Recipes.findBy(filter,function(recipes){
+    let results = await Recipes.findBy(filter)
+    const recipes = results.rows
         return res.render(`foodfy/searchRecipes`,{recipes,filter})
-       })
 
    }else{
-    Recipes.all(function(recipes){
+    let results = await Recipes.all(req.body)
+    const recipes = results.rows
             return res.render("foodfy/searchRecipes",{recipes})
-            })
         }
     }
 }

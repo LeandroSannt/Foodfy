@@ -2,24 +2,24 @@
 
 
 {% block title %}
-    <title>Detalhes: {{recipes.title}}</title>
+    <title>Detalhes: {{recipe.title}}</title>
 {% endblock %}
 
 {% block content %}
     <section class="title">
         <div class="cabecalho">
-            <h1 >Receita: {{recipes.title}}</h1>
-            <a  class="editDetails" href="/admin/recipes/details/{{recipes.id}}/edit">Editar receita</a>
+            <h1 >Receita: {{recipe.title}}</h1>
+            <a  class="editDetails" href="/admin/recipes/details/{{recipe.id}}/edit">Editar receita</a>
         </div>
 
-        <div class="info_receita" id ={{recipes.id}}>
+        <div class="info_receita" id ={{recipe.id}}>
             <div class="loja">
                 <div class="img_receita">
-                    <img class="img-r" src="{{recipes.image}}" alt="{{recipes.title}}">
+                    <img class="img-r" src="{{recipe.image}}" alt="{{recipe.title}}">
                 </div>
                 <div class="vendedor">
-                    <h1 class="nome_receita">{{recipes.title}}</h1>
-                    <p >{{recipes.chef_recipes}}</p>
+                    <h1 class="nome_receita">{{recipe.title}}</h1>
+                    <p >{{recipe.chef_recipe}}</p>
                 </div>
             </div>  
 
@@ -30,7 +30,7 @@
                         
                     </div>
                     <ul class=" lista ">
-                        {% for ingredients in recipes.ingredients %}
+                        {% for ingredients in recipe.ingredients %}
                             <li>{{ingredients}}</li>
                         {% endfor %}
                     </ul>
@@ -42,7 +42,7 @@
                         
                     </div>
                     <ul class=" lista">
-                        {% for preparation in recipes.preparation %}
+                        {% for preparation in recipe.preparation %}
                             <li>{{preparation}}</li>
                         {% endfor %}
                     </ul>
@@ -54,7 +54,7 @@
                         
                     </div>
                     <ul class="lista">
-                        <li>{{recipes.information}}</li>
+                        <li>{{recipe.information}}</li>
 
                     </p>
                 </div>

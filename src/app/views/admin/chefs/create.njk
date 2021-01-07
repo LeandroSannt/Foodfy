@@ -14,10 +14,36 @@
                         <input type="text" name="name" placeholder="Nome do chef" required>
                     </div>
 
-                    <div>
-                        <h3>Avatar</h3>
-                        <input type="text" name="avatar_url" placeholder='https://' required>
-                    </div>
+                    <div class="item">
+            <div>Fotos</div>
+            <div>
+                <div id="photos-upload">
+                    <input 
+                    id="photos-input"
+                    type="file" 
+                    name="photos" 
+                    multiple 
+                    accept="image/*"
+                    onChange='PhotosUpload.handleFileInput(event)'
+                    >
+                    <p>Selecione ate 6 fotos</p>
+                </div>
+
+                <div id="photos-preview">
+                    {% if files %}
+                        {% for image in files %}
+                            <div class="photo" id="{{image.id}}">
+                                <img src="{{image.src}}" alt="{{image.name}}">
+                                <i class="material-icons"
+                                    onClick="PhotosUpload.removeOldPhoto(event)"
+                                >close</i>
+                            </div>
+                        {% endfor %}
+                        <input type="hidden" name="removed_files">
+                    {% endif %}
+                </div>
+        </div>
+
                     
             </aside>
     </section>  

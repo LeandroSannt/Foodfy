@@ -1,16 +1,44 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 {% block content %}
-<form class ="card" method ="POST" action="/admin/recipes" >
+<form class ="card" method ="POST" action="/admin/recipes" enctype="multipart/form-data">
         <section class="title">
             <div class="cabecalho">
                 <h1>Criando Receita</h1>
                 <button type="submit">Criar receita</button>
             </div>
                 <aside class="receitas">
-                    <div>
+
+                    <div class="item">
                         <h3>Imagem da receita</h3>
-                        <input type="text" name="image" placeholder='https://' required>
+                        <div>
+                            <div id="photos-preview">
+                                <div id="photos-upload">
+                                    <input 
+                                    id="photos-input"
+                                    type="file" 
+                                    name="photos" 
+                                    multiple 
+                                    accept="image/*"
+                                    onChange='PhotosUpload.handleFileInput(event)'>
+                                    <p>
+                                        <span class="material-icons">
+                                            add
+                                        </span>
+                                    </p>
+                                </div>
+                                {% if files %}
+                                    {% for image in files %}
+                                        <div class="photo" id="{{image.id}}">
+                                            <img src="{{image.src}}" alt="{{image.name}}">
+                                            <i class="material-icons"
+                                                onClick="PhotosUpload.removeOldPhoto(event)"
+                                            >close</i>
+                                        </div>
+                                    {% endfor %}
+                                    <input type="hidden" name="removed_files">
+                                {% endif %}
+                            </div>
                     </div>
 
                     <div>
@@ -69,8 +97,6 @@
             </aside>
     </section>  
 </form>
-
-
 
 
 {% endblock content %}
