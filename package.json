@@ -4,6 +4,7 @@
   "description": "Projeto feito com os ensinamentos do curso lauchbase da rocketseat",
   "main": "index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "ini": "^2.0.0",
     "method-override": "^3.0.0",
