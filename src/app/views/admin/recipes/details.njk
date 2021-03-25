@@ -12,10 +12,10 @@
             <a  class="editDetails" href="/admin/recipes/details/{{recipe.id}}/edit">Editar receita</a>
         </div>
 
-        <div class="info_receita" id ={{recipe.id}}>
+        <div class="info_receita" id ="{{recipe.id}}">
             <div class="loja">
                 <div class="img_receita">
-                    <img class="img-r" src="{{recipe.image}}" alt="{{recipe.title}}">
+                    <img class="img-r" src="{{ images[0].src }}" alt="{{recipe.title}}">
                 </div>
                 <div class="vendedor">
                     <h1 class="nome_receita">{{recipe.title}}</h1>

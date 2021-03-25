@@ -121,6 +121,50 @@ module.exports= {
             })
         },
 
+        paginate(params){
+            try {
+                const { filter, limit, offset } = params;
+          
+                let totalQuery = `(
+                      SELECT count(*) FROM recipes
+                  ) AS total`;
+          
+                let endQuery = `
+                      ORDER BY recipes.created_at DESC
+                      LIMIT ${limit} OFFSET ${offset}
+                  `;
+          
+                if (filter) {
+                  const filterQuery = `
+                          WHERE title ILIKE '%${filter}%'
+                          OR chefs.name ILIKE '%${filter}%'
+                      `;
+          
+                  totalQuery = `(
+                          SELECT count(*) FROM recipes
+                          ${filterQuery}
+                      ) AS total`;
+          
+                  endQuery = `
+                        ${filterQuery}
+                        ORDER BY recipes.updated_at DESC
+                        LIMIT ${limit} OFFSET ${offset}
+                      `;
+                }
+          
+                const query = `
+                      SELECT recipes.*, ${totalQuery}, chefs.name AS chef_name
+                      FROM recipes
+                      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+                      ${endQuery}
+                  `;
+          
+                return db.query(query);
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+
     files(id){
         return db.query(`
         SELECT files.*, recipe_files.file_id AS file_id
