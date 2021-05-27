@@ -5,7 +5,7 @@
     <img src="public/assets/chef.png">
 </h1>
 
-<h1 align ="center">Uma aplicação feita para apresentar receitas de chefs profisionais de todo o mundo.</h1>
+<h1 align ="center">Uma aplicação feita para apresentar receitas de chefs profissionais de todo o mundo.</h1>
 
 **<h3>Site</h3>**
 
