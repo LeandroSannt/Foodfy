@@ -40,10 +40,11 @@ module.exports= {
 
     findRecipes(id){
        return db.query(`
-            SELECT recipes.*, chefs.name AS chefs_name
-            FROM recipes
-            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-            WHERE chef_id = $1`, [id])
+       SELECT *
+       FROM chefs 
+       LEFT JOIN recipes
+       ON (recipes.chef_id = chefs.id) 
+       WHERE chefs.id = $1`,[id])
     },
 
     update(data){
@@ -63,6 +64,15 @@ module.exports= {
 
     delete(id){
       return  db.query(`DELETE  FROM chefs WHERE id = $1`,[id])
-    }
+    },
+
+    //  files(id){
+    //     return db.query(`
+    //     SELECT files.*, recipe_files.file_id AS file_id
+    //     FROM files 
+    //     LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)
+    //     WHERE recipe_files.recipe_id = $1
+    //   `,[id]);
+    // },
   
 }

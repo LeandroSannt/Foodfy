@@ -8,7 +8,8 @@ module.exports= {
        return db.query(`
         SELECT recipes.*, chefs.name AS chefs_name
         FROM recipes
-        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)`
+        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+        ORDER BY created_at desc`
         )
     },
 
@@ -84,86 +85,42 @@ module.exports= {
        return db.query(`SELECT name,id FROM chefs`)
     },
 
-    paginate(params){
-        const {filter,limit,offset,callback} = params
+    async paginate(params) {
+        let { filter, limit, offset } = params
 
-        let query ="",
-            filterQuery ="",
-            totalQuery=`(
-            SELECT count(*) FROM recipes
-        ) AS total `
+        let query = '',
+            filterQuery = '',
+            totalQuery = `(
+                SELECT count(*)
+                FROM recipes 
+            ) AS total`
 
-            if(filter){
-                filterQuery =`
-                WHERE recipes.title ILIKE '%${filter}%'
-                 OR chefs.name ILIKE '%${filter}%'
-                `
-                totalQuery =`(
-                    SELECT count (*) FROM recipes
-                     ${filterQuery}
-                ) as total`
-            }
-
-            queryFind =`
+        if (filter) {
+            filterQuery = `
+                WHERE recipes.name ILIKE '%${filter}%'
             `
 
-            query =`
-            SELECT recipes. *, ${totalQuery}, chefs.name AS chefs_name
-            FROM recipes
-            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-            ${filterQuery}
-            LIMIT $1 OFFSET $2`
+            totalQuery = `(
+                SELECT count(*)
+                FROM recipes 
+                ${filterQuery}
+            ) AS total`
+        }
 
-            db.query(query,[limit,offset],function(err,results){
-                if(err) throw "Database error"
+        query = `
+        SELECT recipes.*,
+        chefs.name AS chef_name,
+        ${totalQuery}
+        FROM recipes
+        ${filterQuery}
+        LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
+        LIMIT $1 OFFSET $2
+        `
 
-                callback(results.rows)
-            })
-        },
+        const results = await db.query(query, [limit, offset])
 
-        paginate(params){
-            try {
-                const { filter, limit, offset } = params;
-          
-                let totalQuery = `(
-                      SELECT count(*) FROM recipes
-                  ) AS total`;
-          
-                let endQuery = `
-                      ORDER BY recipes.created_at DESC
-                      LIMIT ${limit} OFFSET ${offset}
-                  `;
-          
-                if (filter) {
-                  const filterQuery = `
-                          WHERE title ILIKE '%${filter}%'
-                          OR chefs.name ILIKE '%${filter}%'
-                      `;
-          
-                  totalQuery = `(
-                          SELECT count(*) FROM recipes
-                          ${filterQuery}
-                      ) AS total`;
-          
-                  endQuery = `
-                        ${filterQuery}
-                        ORDER BY recipes.updated_at DESC
-                        LIMIT ${limit} OFFSET ${offset}
-                      `;
-                }
-          
-                const query = `
-                      SELECT recipes.*, ${totalQuery}, chefs.name AS chef_name
-                      FROM recipes
-                      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-                      ${endQuery}
-                  `;
-          
-                return db.query(query);
-            } catch (error) {
-                throw new Error(error);
-            }
-        },
+        return results.rows
+    },
 
     files(id){
         return db.query(`

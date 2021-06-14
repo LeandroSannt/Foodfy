@@ -1,5 +1,3 @@
-var {age, date} =require("../lib/configs/utils")
-const { findRecipes } = require("../models/recipesModel")
 var Recipes =require("../models/recipesModel")
 var RecipeFiles =require("../models/recipeFiles")
 var Files =require("../models/file")
@@ -10,7 +8,7 @@ async index(req,res){
     let results = await Recipes.all()
     const recipes = results.rows
 
-    if (!recipes) return res.send("produtos não encontrado")
+    if (!recipes) return res.send("receitas não encontradas")
 
 
     async function getImage(RecipeId){
@@ -30,7 +28,6 @@ async index(req,res){
         return res.render("admin/recipes/index",{recipes:lastAdded})
     },
         
-
 async create(req,res){
     let results = await Recipes.chefSelectOptions(req.body)
     const options = results.rows
@@ -66,8 +63,12 @@ async post(req,res){
 
 async details(req,res){ 
     try{
+
         let results = await Recipes.find(req.params.id)
         let recipe = results.rows[0]
+        const chef = results
+
+
         let files = (await Files.findRecipeFiles(recipe.id)).rows
 
         files = files.map((file) => ({
@@ -81,7 +82,7 @@ async details(req,res){
             files
         }
 
-        return res.render('admin/recipes/details', { recipe, images: recipe.files})
+        return res.render('admin/recipes/details', {recipe,chef, images:recipe.files})
 
     }catch(error){
         throw new Error(error)
@@ -154,8 +155,7 @@ async put(req,res){
         throw new Error(error)
     }
     
-},
-        
+},      
         
 async delete(req, res){
     try{

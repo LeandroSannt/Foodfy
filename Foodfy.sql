@@ -89,8 +89,6 @@ EXECUTE PROCEDURE trigger_set_timestamp();
 -- INSERT INTO recipes(name, file_id) VALUES('Cleide, ');
 
 
-
-
 SELECT files.*, chefs.file_id AS file_id
         FROM files 
         LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)

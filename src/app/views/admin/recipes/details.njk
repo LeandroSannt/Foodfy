@@ -17,11 +17,20 @@
                 <div class="img_receita">
                     <img class="img-r" src="{{ images[0].src }}" alt="{{recipe.title}}">
                 </div>
+
                 <div class="vendedor">
                     <h1 class="nome_receita">{{recipe.title}}</h1>
                     <p >{{recipe.chef_recipe}}</p>
                 </div>
             </div>  
+
+            <div class="galery">
+                {%for image  in images %}
+                    <div class="container-img">
+                        <img src = "{{image.src}}">
+                    </div>
+                {%endfor%}
+                </div>
 
             <div class="ingredientes_receita">
                 <div class="ingredientes ">
