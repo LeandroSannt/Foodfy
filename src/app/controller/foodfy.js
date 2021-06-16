@@ -21,7 +21,7 @@ async index(req,res){
             recipe.img = await getImage(recipe.id)
 
             return recipe
-        }).filter((recipe,index)  => index > 2 ? false : true)
+        }).filter((recipe,index)  => index > 5 ? false : true)
         
         
         results = await Chefs.findRecipes(req.params.id)

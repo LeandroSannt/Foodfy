@@ -96,9 +96,14 @@ async put(req,res){
 
     },
     
-async delete(req,res){
-    await Chefs.delete(req.body.id)
-            return res.redirect ("/admin/chefs")  
+    async delete(req, res) {
+        try {
+            await Chefs.delete(req.body.id)
+
+            return res.redirect(`/admin/chefs`)
+        } catch (err) {
+            console.log(err)
+        }
     }
 }
 

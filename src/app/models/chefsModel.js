@@ -1,5 +1,8 @@
 var {age, date} =require("../lib/configs/utils")
 var db = require("../lib/configs/db")
+const Recipes = require("../models/recipesModel")
+
+const fs = require('fs')
 
 
 module.exports= {
@@ -62,9 +65,36 @@ module.exports= {
       return  db.query(query, values)
     },
 
-    delete(id){
-      return  db.query(`DELETE  FROM chefs WHERE id = $1`,[id])
-    },
+    async delete(id){
+        //pegar todos os produtos 
+        let results = await db.query("SELECT * FROM chefs LEFT JOIN recipes ON (recipes.chef_id = chefs.id) WHERE chefs.id = $1", [id])
+            const products = results.rows
+        
+        //pegar todas as imagens dos produtos
+        const allFilesPromise = products.map(product =>
+            Recipes.files(product.id))
+
+        let promiseResults = await Promise.all(allFilesPromise)
+
+        //rodar a remoção do usuario
+
+        await db.query('DELETE FROM chefs WHERE id = $1',[id])
+
+        //remover as imagens das pastas
+
+        promiseResults.map(results => {
+            results.rows.map(file =>{
+                try{
+                    fs.unlinkSync(file.path)
+                }catch(err){
+                    console.error(err)
+                }
+
+            })
+            
+        })
+        
+    }
 
     //  files(id){
     //     return db.query(`

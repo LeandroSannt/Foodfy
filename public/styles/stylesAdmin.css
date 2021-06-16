@@ -13,9 +13,11 @@ body{
 
 header{
     display: grid;
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr 15rem ;
     background-color: black;
     height: 80px;
+    place-items: center;
+    margin: 0 auto;
 }
 
 header .headerContainer{
@@ -34,6 +36,15 @@ header .menu{
     width: 55vw;
     height: 100%;
     margin-left: 40px;
+}
+
+header .destroy{
+    text-decoration: none;
+    color: white;
+}
+
+header .destroy:hover{
+    font-weight: bold;
 }
 
 .title{

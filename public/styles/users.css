@@ -1,0 +1,88 @@
+.user-edit,
+.user-register{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 60px auto;
+    min-height: 100%;
+    width: 60%;
+}
+
+.user-register .header{
+    text-align: center;
+    font-size: 1.9rem;
+    margin-bottom: 40px;
+}
+
+.user-edit .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+
+.user-edit h1{
+    font-size: 1.8rem;
+}
+
+.user-edit .fields{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.user-edit div + .input{
+    margin-bottom:15px;
+}
+
+.user-register form{
+     min-width: 500px;
+     margin: 0 auto;
+}
+
+
+
+.user-edit form input,
+.user-register form input {
+    width: 100%;
+    background: #fffefe;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    padding: 15px 5px;
+    font-size: 1.1rem;
+    resize: none;
+}
+
+.item div:first-child{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+div + .input{
+    margin-bottom: 25px;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ button{
+    background-color:  #6558C3;
+    border-radius: 4px;
+    width: 10rem;
+    height:37px;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 19px;
+    transition: 0.4s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+button:hover{
+    filter: brightness(.9);
+}
