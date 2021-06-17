@@ -1,4 +1,6 @@
 const User = require('../models/usersModel')
+const { hash } = require('bcryptjs')
+
 module.exports ={
 
     async list(req,res){
@@ -6,7 +8,7 @@ module.exports ={
     },
     
     async create(req,res){
-
+        
         
 
         return res.render('admin/users/create')    
@@ -16,19 +18,22 @@ module.exports ={
 
     async post(req,res){
 
-        const userId = await User.create(req.body)
+        try{
+            
+            let results = await User.create(req.body)
+            const chefId = results.rows[0].id
+            return res.redirect(`/admin/users/profile/${chefId}`)
 
-        req.session.userId = userId
-
-        return res.render('/users/create')    
-
+        }catch(err){
+            console.error(err)
+        }
     },
 
     async profile(req,res){
 
-        
+        const {user} = req
 
-        return res.render('admin/users/profile')    
+        return res.render('admin/users/profile',{user})    
         
 
     },
