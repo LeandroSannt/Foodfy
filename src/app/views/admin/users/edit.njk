@@ -14,9 +14,9 @@
 
 <section class="container user-edit form">
 
-    <form  method ="POST" action="/users/register?_method=PUT" enctype="multipart/form-data">
+    <form  method ="POST" action="/admin/users/edit?_method=PUT" enctype="multipart/form-data">
         <div class="header">
-            <h1>Olá Leandro Santos!</h1>
+            <h1>{{user.name}}</h1>
             <button class="button" type ="submit">Salvar</button>
          </div>
 

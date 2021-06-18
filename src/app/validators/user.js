@@ -14,33 +14,57 @@ function checkAllFields(body){
 }
 
 async function post(req,res,next){
-
     const fillAllFields =  checkAllFields(req.body)
-        if(fillAllFields){
-            return res.render("admin/users/create",fillAllFields)
-        }
+    if(fillAllFields){
+        return res.render("admin/users/create",fillAllFields)
+    }
+
+    let {email, password, passwordRepeat} = req.body
     
-        let { email, password, passwordRepeat} = req
 
-        const user = await User.findOne({
-            where:{email},
+    const user = await User.findOne({
+        where:{email}
+    })
+
+    if(user) return res.render("admin/users/create",{
+        user: req.body,
+        error:'Usuario ja existe'
+    })
+
+    if (password != passwordRepeat)
+        return res.render("admin/users/create",{
+            user: req.body,
+            error:'Senha não é igual'
         })
 
-        if(user) return res.render("admin/user/create",{
-            user: body,
-            error:'Preencha todos os campos'
+    next()
+}
 
+
+async function show(req,res,next){
+    try{
+        const {userId: id} = req.session
+
+        const user = await User.findOne({where: {id} })
+
+        if(!user) return res.render("user/register",{
+            error:"Usuario não encontrado"
         })
 
-        if (password != passwordRepeat)
-            return res.render("admin/user/create",{
-                user: req.body,
-                error:'Senha não é igual'
-            })
+        req.user = user
+
+        console.log(req.user)
 
         next()
+
+    }catch(err){
+        console.error(err)
+        
+    }
+    
 }
 
 module.exports={
-    post
+    post,
+    show
 }

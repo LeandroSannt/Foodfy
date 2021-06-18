@@ -4,17 +4,18 @@
   "description": "Projeto feito com os ensinamentos do curso lauchbase da rocketseat",
   "main": "index.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-pg-simple": "^6.2.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "ini": "^2.0.0",
     "method-override": "^3.0.0",
     "multer": "^1.4.2",
     "node-bcrypt": "0.0.1",
     "nodemon": "^2.0.6",
     "nunjucks": "^3.2.2",
-    "pg": "^8.4.2",
-    "bcryptjs": "^2.4.3",
-    "express-session": "^1.17.2"
+    "pg": "^8.4.2"
   },
   "devDependencies": {},
   "scripts": {

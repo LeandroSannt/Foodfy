@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="/styles/header.css">
     <link rel="stylesheet" href="/styles/users.css">
+        <link rel="stylesheet" href="/styles/messages.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     {% block style %}{% endblock %}
     {% block styleChefs %}{% endblock styleChefs %}
@@ -27,7 +29,7 @@
                         <a href="/receitas">Receitas</a>     
                         <a href="/sobre">Sobre</a> 
                         <a href="/chefs">Chefs</a> 
-                        <a href="/#">Entrar</a> 
+                        <a href="/admin/login">Entrar</a> 
                     </nav>
                 </div>
                 {% block filter %}{% endblock filter %}
@@ -42,6 +44,7 @@
             {% endblock pagination %}
 
             <script src="/scripts.js"></script>
+            <script src="/validates.js"></script>
         </div>
     </body>
 </html>

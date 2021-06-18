@@ -1,1 +1,47 @@
-.error{background: red;}
+
+.messages{
+    position: fixed;
+    top: 45px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 9rem;
+    border-radius: 4px;
+    color: white !important;
+
+    animation: hidemessage 400ms 5s ease-out forwards;
+}
+
+
+.messages.error{
+    background-color:rgb(204, 49, 49) ; 
+}
+
+.messages.success{
+    background-color:rgb(27, 139, 32) ;
+}
+
+
+.error{
+    color: red;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.inputdiv{
+    border: solid red 1px;
+}
+
+input{
+    outline: none;
+}
+
+
+@keyframes hidemessage{
+    to {
+        top:-50px;
+        opacity:0
+    }
+}

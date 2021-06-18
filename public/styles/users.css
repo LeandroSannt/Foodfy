@@ -69,6 +69,18 @@ div + .input{
     justify-content: space-between;
 }
 
+
+.buttons a {
+    text-decoration: none;
+    color: #706d6d;
+    font-weight: bold;
+}
+
+.buttons a:hover{
+    color:#6558C3 ;
+    transition: 400ms;
+}
+
  button{
     background-color:  #6558C3;
     border-radius: 4px;
