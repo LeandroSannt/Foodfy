@@ -1,5 +1,8 @@
 const User = require('../models/usersModel')
+const crypto = require("crypto")
+const mailer = require("../lib/configs/mailer")
 const { hash } = require('bcryptjs')
+
 
 module.exports ={
 
@@ -19,12 +22,13 @@ module.exports ={
         },
     
         forgotForm(req,res){
-            return res.render("session/forgot-password")
+            return res.render("admin/session/forgot-password")
         },
     
         async forgot(req,res){
-    
-            const user = req.user
+            
+            try{
+                const user = req.user
     
             const token = crypto.randomBytes(20).toString("hex")
     
@@ -43,20 +47,24 @@ module.exports ={
                 html: `<h2>Redefina sua senha </h2>
                 <p>clique no link a baixo para recuperar a senha </p>
                 <p>
-                    <a href ="http://localhost:5000/users/password-reset?token=${token}" target ="_blank">
+                    <a href ="http://localhost:5000/admin/password-reset?token=${token}" target ="_blank">
                     RECUPERAR SENHA
                     </a>
                 </p>
                 `
             })
             
-            return res.render("session/forgot-password",{
+            return res.render("admin/session/forgot-password",{
                 success: "Verifique seu email para resetar sua senha!"
             })
+
+            }catch(err){
+                console.error(err)
+            }  
         },
     
         resetForm(req,res){
-            return res.render("session/password-reset",{token:req.query.token})
+            return res.render("admin/session/password-reset",{token:req.query.token})
         },
         
         async reset(req,res){
@@ -71,14 +79,14 @@ module.exports ={
                     reset_token_expires: ""
                 })
     
-                return res.render("session/login",{
+                return res.render("admin/session/login",{
                     user:req.body,
                     success: "Senha atualizada, faça seu login"
                 })
                 
             }catch(err){
                 console.error(err)
-                return res.render("session/password-reset",{
+                return res.render("admin/session/password-reset",{
                     token,
                     error: "Erro inesperado, tente novamente"
                 })

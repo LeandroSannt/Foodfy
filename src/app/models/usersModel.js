@@ -21,18 +21,17 @@ module.exports={
         return results.rows[0]
     },
 
-       async findUser(id) {
-        try {
-          const results = await db.query(`SELECT * FROM users WHERE id = $1`, [id]);
+    async findUser(id) {
+    try {
+      const results = await db.query(`SELECT * FROM users WHERE id = $1`, [id]);
+
+      return results.rows[0];
+    } catch (err) {
+      console.log("erro no findUser");
+      console.error(err);
+    }
+    },
     
-          return results.rows[0];
-        } catch (err) {
-          console.log("erro no findUser");
-          console.error(err);
-        }
-      },
-    
-   
    async create(data){
     var query =`
     INSERT INTO users (
@@ -54,5 +53,25 @@ module.exports={
     ]
        return db.query(query,values)
     },
+
+    async update(id,fields){
+      let query = "UPDATE users SET"
+
+      Object.keys(fields).map((key,index,array)=>{
+          if((index+1) < array.length){
+              query = `${query} 
+                  ${key} = '${fields[key]}',
+              `
+          }else{
+              query= `${query}
+              ${key} = '${fields[key]}'
+              WHERE id = ${id}
+              `
+          }
+      })
+      await db.query(query)
+      return
+
+  },
 
 }

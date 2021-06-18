@@ -4,9 +4,9 @@ const multer = require("./app/middlewares/multer")
 const foodfy = require("./app/controller/foodfy")
 const recipes = require("./app/controller/recipes")
 const chefs = require("./app/controller/chefs")
+
 const UserController = require("./app/controller/user")
 const SessionController = require("./app/controller/session")
-
 
 const UserValidator = require("./app/validators/user")
 const SessionValidator = require("./app/validators/session")
@@ -17,7 +17,7 @@ routes.get("/", function (req,res){
 
 /*=========FOODFY=========*/
 
-routes.get("/foodfy",foodfy.index )
+routes.get("/foodfy",foodfy.index)
 routes.get("/sobre", foodfy.sobre)
 routes.get("/receitas", foodfy.receitas)
 routes.get("/chefs", foodfy.chefs)
@@ -52,10 +52,10 @@ routes.get('/admin/login',SessionController.loginForm)
 routes.post('/admin/login',SessionValidator.login,SessionController.login)
 routes.post('/logout',SessionController.logout)
 
-routes.get('/forgot-password',SessionController.forgotForm)
-routes.get('/password-reset',SessionController.resetForm)
-routes.post('/forgot-password',SessionController.forgot)
-routes.post('/password-reset',SessionController.reset)
+routes.get('/admin/forgot-password',SessionValidator.forgot,SessionController.forgotForm)
+routes.get('/admin/password-reset',SessionController.resetForm)
+routes.post('/admin/forgot-password',SessionValidator.forgot,SessionController.forgot)
+routes.post('/admin/password-reset',SessionValidator.reset,SessionController.reset)
 
 /*=========Users========*/
 
