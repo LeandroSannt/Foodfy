@@ -83,18 +83,85 @@ div + .input{
 
  button{
     background-color:  #6558C3;
+    font-weight: bold;
     border-radius: 4px;
     width: 10rem;
     height:37px;
     color: #FFFFFF;
     font-size: 16px;
     line-height: 19px;
-    transition: 0.4s;
+    transition: 0.2s;
     cursor: pointer;
     border: none;
     font-family: 'Roboto', sans-serif;
 }
 
+
+.submit-buttons .button.cancel{
+    margin-left: 20px;
+    background-color: gray;
+}
+
+.submit-buttons .button.delete{
+    margin-left: 20px;
+    background-color: red;
+}
+
+.destroy{
+    background: transparent;
+    width: initial;
+    letter-spacing: 2px;
+
+}
+
 button:hover{
     filter: brightness(.9);
+}
+
+.card-user{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 50px;
+}
+
+
+.infor-user h3{
+    margin-bottom: 5px;
+
+}
+
+.infor-user p{
+    margin-bottom: 15px;
+    font-size: .9rem;
+    color: rgb(138, 135, 135);
+    font-weight: 500px;
+}
+
+.infor-user .actions-user a{
+    text-decoration: none;
+    font-weight: bold;
+    color:red;
+    font-size: .9rem;
+
+}
+
+.infor-user .actions-user a:first-child{
+    color:#6558C3; 
+    margin-right: 20px;
+}
+
+
+.user-edit input[type="checkbox"]{
+    width: initial;
+
+}
+
+.input.checkbox{
+    display: flex;
+    align-items: center;
+}
+
+.input.checkbox label{
+    margin-left: 20px;
 }

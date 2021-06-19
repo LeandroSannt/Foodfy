@@ -28,12 +28,14 @@
                 <nav class="navAdmin">
                     <a class="menuAdmin" href="/admin/recipes">Receitas</a>     
                     <a class="menuAdmin" href="/admin/chefs">Chefs</a>     
-                    <a class="menuAdmin" href="/admin/users/edit">Minha conta</a>     
-                    <a class="menuAdmin" href="/admin/users">Usuários</a>     
+                    <a class="menuAdmin" href="/admin/profile">Minha conta</a> 
+                    <a class="menuAdmin" href="/admin/users">Usuários</a>    
                 </nav>
             </div>
         </div>
-        <a class="destroy" href="/admin/users">Sair</a>     
+        <form action="/admin/logout" method="POST">
+            <button class="destroy">Sair</button>
+        </form>  
     </header>
 
     {% block content %}{% endblock content %}

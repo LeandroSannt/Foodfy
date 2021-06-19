@@ -1,0 +1,26 @@
+{% extends "admin/layoutAdmin.njk" %}
+
+{% block content %}
+
+<section class="container user-edit form">
+
+    <form  method ="POST" action="/admin/users">
+        <div class="header">
+            <h1>Criar Usuário</h1>
+            <div class="submit-buttons">
+                <button class="button" type ="submit">Salvar</button>
+                <button class="button cancel" type ="submit">Cancelar</button>
+            </div>
+         </div>
+
+        <div class="fields">
+             {%include "admin/users/fields-account.njk" %}  
+        </div>
+        
+    </form>
+</section>
+
+
+{% endblock  %}
+
+    

@@ -4,6 +4,10 @@ const fs = require("fs")
 
 
 module.exports={
+
+    all(){
+        return db.query(`SELECT * FROM users`)
+    },
     
     async findOne(filters){
         let query = "SELECT * FROM users"

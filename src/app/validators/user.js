@@ -14,7 +14,8 @@ function checkAllFields(body){
 }
 
 async function post(req,res,next){
-    const fillAllFields =  checkAllFields(req.body)
+    try{
+        const fillAllFields =  checkAllFields(req.body)
     if(fillAllFields){
         return res.render("admin/users/create",fillAllFields)
     }
@@ -38,12 +39,15 @@ async function post(req,res,next){
         })
 
     next()
+
+    }catch(err){
+        console.error(err)
+    }
+    
 }
 
-
 async function show(req,res,next){
-    try{
-        const {userId: id} = req.session
+    const {userId: id} = req.session
 
         const user = await User.findOne({where: {id} })
 
@@ -53,18 +57,41 @@ async function show(req,res,next){
 
         req.user = user
 
-        console.log(req.user)
+        next()
+}
+
+async function find(req,res,next){
+    let user = await User.findUser(req.params.id);
+
+        if (!user) return res.render("admin/users/index",{
+            error:"Usuário não encontrado"
+        })
+
+        req.user = user
+
+        next()
+}
+
+async function findUser(req,res,next){
+    try{
+        const {userId: id} = req.body
+        const user = await User.findUser({where: {id} })
+
+        if(!user) return res.render("user/register",{
+            error:"Usuario não encontrado"
+        })
+
+        req.user = user
 
         next()
 
     }catch(err){
         console.error(err)
-        
     }
-    
 }
 
 module.exports={
     post,
-    show
+    show,
+    find
 }
