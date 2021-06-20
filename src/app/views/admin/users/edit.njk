@@ -4,7 +4,7 @@
 
 <section class="container user-edit form">
 
-    <form  method ="POST" action="/admin/users/edit?_method=PUT" enctype="multipart/form-data">
+    <form  method ="POST" action="/admin/users?_method=PUT">
         <div class="header">
             <h1>Atualizar Usuário</h1>
             <div class="submit-buttons">
@@ -16,7 +16,7 @@
         <div class="fields">
             {%include "admin/users/fields-account.njk" %}
         </div>
-        
+        <input type="hidden" name="id"value={{user.id}}>    
     </form>
 </section>
 

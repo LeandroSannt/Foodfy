@@ -2,6 +2,7 @@ const db =require("../lib/configs/db")
 const { hash } = require('bcryptjs')
 const fs = require("fs")
 
+
 module.exports={
 
     all(){
@@ -75,24 +76,5 @@ module.exports={
         await db.query(query)
         return
     },
-
-    updateuser(data){
-        var query = `
-        UPDATE users SET
-            name = ($1),
-            email = ($2),
-            is_admin =($3),
-            password = ($4)
-            WHERE id = $5
-            `
-        var values =[
-            data.name,
-            data.email,
-            data.is_admin,
-            data.password,
-            data.id
-        ]
-      return  db.query(query, values)
-    }, 
 
 }

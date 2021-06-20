@@ -1,4 +1,5 @@
 const User = require('../models/usersModel')
+const  {compare} = require("bcryptjs")
 
 function checkAllFields(body){
     const keys =Object.keys(body)
@@ -44,6 +45,33 @@ async function post(req,res,next){
         console.error(err)
     }
     
+}
+
+async function update(req,res,next){
+    try{
+
+        const {email , id} = req.body
+
+        const user = await User.findOne({where:{id}})
+
+
+
+        const fillAllFields =  checkAllFields(req.body)
+        if(fillAllFields){
+            return res.render(`admin/users/${id}/edit`,fillAllFields)
+        }
+
+        
+
+        req.user = user 
+        
+        next()
+
+    }catch(err){
+        console.error(err)
+    }
+
+
 }
 
 async function show(req,res,next){
@@ -92,6 +120,7 @@ async function findUser(req,res,next){
 
 module.exports={
     post,
+    update,
     show,
     find
 }

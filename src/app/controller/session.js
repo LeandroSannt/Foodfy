@@ -25,13 +25,10 @@ module.exports ={
         },
     
         async forgot(req,res){
-            
-            try{
-                const user = req.user
+
+            const user = req.user
     
             const token = crypto.randomBytes(20).toString("hex")
-
-            
     
             let now = new Date()
             now = now.setHours(now.getHours() + 1)
@@ -40,8 +37,6 @@ module.exports ={
                 reset_token: token,
                 reset_token_expires:now
             })
-
-            console.log(reset_token)
     
             await mailer.sendMail({
                 to:user.email,
@@ -60,12 +55,8 @@ module.exports ={
             return res.render("admin/session/forgot-password",{
                 success: "Verifique seu email para resetar sua senha!"
             })
-
-            }catch(err){
-                console.error(err)
-            }  
         },
-    
+
         resetForm(req,res){
             console.log(req.query.token)
             return res.render("admin/session/password-reset",{token:req.query.token})

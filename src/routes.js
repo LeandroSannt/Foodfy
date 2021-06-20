@@ -6,9 +6,11 @@ const recipes = require("./app/controller/recipes")
 const chefs = require("./app/controller/chefs")
 
 const UserController = require("./app/controller/user")
+const ProfileController = require("./app/controller/profiler")
 const SessionController = require("./app/controller/session")
 
 const UserValidator = require("./app/validators/user")
+const ProfileValidator = require("./app/validators/profile")
 const SessionValidator = require("./app/validators/session")
 
 
@@ -62,19 +64,23 @@ routes.post('/admin/forgot-password',SessionValidator.forgot,SessionController.f
 routes.post('/admin/password-reset',SessionValidator.reset,SessionController.reset)
 
 /*=========Users========*/
-routes.get('/admin/users/account',onlyUser, UserController.newAccount) 
-routes.post('/admin/users/account', UserValidator.post,UserController.post) // Cadastrar um usuário
+//routes.get('/admin/users/account',onlyUser, UserController.newAccount) 
+//routes.post('/admin/users/account',UserValidator.post,UserController.post) // Cadastrar um usuário
+
+/*===========Profile======= */
 
 // Rotas de perfil de um usuário logado
-routes.get('/admin/profile',onlyUser,UserValidator.show, UserController.profile) // Mostrar o formulário com dados do usuário logado
-routes.put('/admin/profile', UserValidator.show,UserController.putprofile)// Editar o usuário logado
+routes.get('/admin/profile', ProfileValidator.show,ProfileController.index) // Mostrar o formulário com dados do usuário logado
+routes.put('/admin/profile',ProfileValidator.update,ProfileController.update)// Editar o usuário logado
+
+/*==========rotasUser==========*/
 
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/admin/users',onlyUser, UserController.list) // Mostrar a lista de usuários cadastrados
 routes.post('/admin/users', UserValidator.post,UserController.post) // Cadastrar um usuário
-routes.get('/admin/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
-routes.put('/admin/users/:id', UserController.put) // Editar um usuário
+//routes.get('/admin/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
 routes.get('/admin/users/:id/edit',UserValidator.find, UserController.edit) // Mostrar o formulário de edição de um usuário
+routes.put('/admin/users', UserValidator.update,UserController.put) // Editar um usuário
 // routes.delete('/admin/users/:id', UserController.delete) // Deletar um usuário
 
 

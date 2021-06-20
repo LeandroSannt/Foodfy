@@ -4,7 +4,7 @@
 
 <section class="container user-edit form">
 
-    <form  method ="POST" action="/admin/users/edit?_method=PUT" enctype="multipart/form-data">
+    <form  method ="POST" action="/admin/profile?_method=PUT">
         <div class="header">
             <h1>Bem vindo {{user.name}}</h1>
             <div class="submit-buttons">
@@ -13,8 +13,10 @@
          </div>
 
         <div class="fields">
-            {%include "admin/users/fields.njk" %}
+            {%include "admin/profile/fields.njk" %}
         </div>
+
+        <input type="hidden" name="id"value={{user.id}}>
         
     </form>
 </section>
