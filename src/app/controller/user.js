@@ -9,10 +9,6 @@ module.exports ={
 
         return res.render('admin/users/index',{users})    
     },
-
-    async newAccount(req,res){
-        return res.render("admin/users/account")
-    },
     
     async create(req,res){
         return res.render('admin/users/create')    

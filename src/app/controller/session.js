@@ -58,7 +58,6 @@ module.exports ={
         },
 
         resetForm(req,res){
-            console.log(req.query.token)
             return res.render("admin/session/password-reset",{token:req.query.token})
         },
         

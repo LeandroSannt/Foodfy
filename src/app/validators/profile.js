@@ -14,6 +14,28 @@ function checkAllFields(body){
         }
 }
 
+async function post(req,res,next){
+    try{
+
+    let {email} = req.body
+
+    const user = await User.findOne({
+        where:{email}
+    })
+
+    if(user) return res.render("admin/profile/create",{
+        user: req.body,
+        error:'Usuario ja existe'
+    })
+
+    next()
+
+    }catch(err){
+        console.error(err)
+    }
+    
+}
+
 async function update(req,res,next){
     const fillAllFields =  checkAllFields(req.body)
         if(fillAllFields){
@@ -57,6 +79,7 @@ async function show(req,res,next){
 }
 
 module.exports={
+    post,
     update,
     show
 }

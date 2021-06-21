@@ -12,18 +12,41 @@
                     onblur="Validate.apply(this,'isEmail')"
                      >
             </div>
-        </div>
 
+
+     
         <div class="item">
             <div>Senha</div>
+            {%if errorpassword%}
+            <div class="input ">
+                <input class="errorpassword"
+                    type="password"
+                    name="password"
+                    placeholder ="Digite sua senha"
+                    onblur="Validatepassword.apply(this,'isEmail')"
+                    >
+            </div>
+                    <div class="message-error">{{ errorpassword}}</div>
+            {%else%}
+
             <div class="input">
                 <input 
                     type="password"
                     name="password"
                     placeholder ="Digite sua senha"
+                    onblur="Validatepassword.apply(this,'isEmail')"
                     >
             </div>
+
+            {%endif%}
+            
         </div>
+
+
+
+
+
+        
 
       
 

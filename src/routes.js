@@ -58,7 +58,7 @@ routes.get('/admin/login',SessionController.loginForm)
 routes.post('/admin/login',SessionValidator.login,SessionController.login)
 routes.post('/admin/logout',SessionController.logout)
 
-routes.get('/admin/forgot-password',SessionValidator.forgot,SessionController.forgotForm)
+routes.get('/admin/forgot-password',SessionController.forgotForm)
 routes.get('/admin/password-reset',SessionController.resetForm)
 routes.post('/admin/forgot-password',SessionValidator.forgot,SessionController.forgot)
 routes.post('/admin/password-reset',SessionValidator.reset,SessionController.reset)
@@ -70,6 +70,9 @@ routes.post('/admin/password-reset',SessionValidator.reset,SessionController.res
 /*===========Profile======= */
 
 // Rotas de perfil de um usuário logado
+routes.get('/admin/users/create', ProfileValidator.show,ProfileController.create) // Mostrar o formulário com dados do usuário logado
+routes.post('/admin/profile',ProfileValidator.post,ProfileController.post)// Editar o usuário logado
+
 routes.get('/admin/profile', ProfileValidator.show,ProfileController.index) // Mostrar o formulário com dados do usuário logado
 routes.put('/admin/profile',ProfileValidator.update,ProfileController.update)// Editar o usuário logado
 
@@ -78,7 +81,7 @@ routes.put('/admin/profile',ProfileValidator.update,ProfileController.update)// 
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/admin/users',onlyUser, UserController.list) // Mostrar a lista de usuários cadastrados
 routes.post('/admin/users', UserValidator.post,UserController.post) // Cadastrar um usuário
-//routes.get('/admin/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
+//routes.get('/admin/users/register', UserController.create) // Mostrar o formulário de criação de um usuário
 routes.get('/admin/users/:id/edit',UserValidator.find, UserController.edit) // Mostrar o formulário de edição de um usuário
 routes.put('/admin/users', UserValidator.update,UserController.put) // Editar um usuário
 // routes.delete('/admin/users/:id', UserController.delete) // Deletar um usuário
