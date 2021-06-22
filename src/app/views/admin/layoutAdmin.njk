@@ -29,7 +29,9 @@
                     <a class="menuAdmin" href="/admin/recipes">Receitas</a>     
                     <a class="menuAdmin" href="/admin/chefs">Chefs</a>     
                     <a class="menuAdmin" href="/admin/profile">Minha conta</a> 
-                    <a class="menuAdmin" href="/admin/users">Usuários</a>    
+                    {%if session.isAdmin  == true%}
+                        <a class="menuAdmin" href="/admin/users">Usuários</a>    
+                    {%endif%}
                 </nav>
             </div>
         </div>
@@ -42,6 +44,8 @@
     {% block confirmDelete %}{% endblock confirmDelete %}
     <script src="/scripts.js"></script>
     <script src="/photos.js"></script>
+            <script src="/validates.js"></script>
+
 
 
 </body>

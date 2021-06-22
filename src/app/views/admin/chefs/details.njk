@@ -10,7 +10,9 @@
         <section class="title">
             <div class="cabecalho">
                 <h1>Chef: {{chefs.name}}</h1>
+                {%if isAdmin == true%}
                 <a  class="editDetails" href="/admin/chefs/details/{{chefs.id}}/edit">Editar chef</a>
+                {%endif%}
             </div>
         </section>      
 

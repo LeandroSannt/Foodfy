@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     width: 20rem;
     height: 9rem;
     border-radius: 4px;

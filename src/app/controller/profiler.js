@@ -1,5 +1,8 @@
+const User = require("../models/usersModel")
 const Profile = require('../models/profile')
-const mailer = require("../lib/configs/mailer")
+
+const crypt = require("crypto")
+const { hash } = require('bcryptjs')
 
 module.exports ={
     async index(req,res){
@@ -20,25 +23,6 @@ module.exports ={
             const profile = await Profile.findUser(ProfileId.id);
 
             //req.session.userId = userId;
-    
-            await mailer.sendMail({
-            to: profile.email,
-            from:"recsenha0000@hotmail.com",
-            subject: "Seja bem vindo ao Foodfy",
-            html: `
-            <h2>Seja bem-vindo!</h2>
-            <p>Aqui está sua informação de acesso, seu email e senha gerados pelo sistema e são temporários, você pode alterá-los em seu perfil.</p> 
-            <h5>Email:</h5>
-            ${profile.email}
-            <h5>Senha:</h5>
-            ${profile.password}
-            <p>
-            <a href ="http://localhost:5000/admin/users" target ="_blank">
-                RECUPERAR SENHA
-            </a>
-            </p>
-            `,
-            });
 
             return res.render("admin/profile/create",{
                 success: `Senha enviada para o email, ${profile.email}`
@@ -48,16 +32,17 @@ module.exports ={
         }
     },
 
-
     async update(req,res){
         try{
             const { user } = req
-            let {name, email} = req.body
+            let {name, email, password} = req.body
 
+            password =await hash(password, 8)
 
             await User.update(user.id,{
                 name,
-                email 
+                email,
+                password
             })
 
             return res.render("admin/profile/index",{ 

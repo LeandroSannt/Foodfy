@@ -13,6 +13,7 @@ module.exports ={
     
         login(req,res){
             req.session.userId = req.user.id
+            req.session.isAdmin = req.user.is_admin;
             return res.redirect(`/admin/recipes`)
         },
     
@@ -40,7 +41,7 @@ module.exports ={
     
             await mailer.sendMail({
                 to:user.email,
-                from:"recsenha0000@hotmail.com",
+                from:"lsn_cearamor@hotmail.com",
                 subject:"Recuperação de senha",
                 html: `<h2>Redefina sua senha </h2>
                 <p>clique no link a baixo para recuperar a senha </p>

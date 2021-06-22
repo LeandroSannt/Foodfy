@@ -19,7 +19,7 @@ module.exports ={
             const userId = await User.create(req.body)
             req.session.userId = userId
             
-            return res.render(`admin/recipes/index`,{
+            return res.render(`admin/session/login`,{
                 success: "Conta registrada com sucesso"
             })
         }catch(err){
@@ -38,6 +38,8 @@ module.exports ={
         try{
             const { user } = req
             let {name, email,password} = req.body
+
+            password = user.password
 
             await User.update(user.id,{
                 name,

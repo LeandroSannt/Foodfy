@@ -1,5 +1,8 @@
 const db =require("../lib/configs/db")
 const crypt = require("crypto")
+const { hash } = require('bcryptjs')
+const mailer = require("../lib/configs/mailer")
+
 
 module.exports={
 
@@ -15,14 +18,34 @@ module.exports={
           RETURNING id`;
     
           const newPassword = crypt.randomBytes(8).toString("hex");
-    
+          const password_hash =await hash(newPassword, 8)
+        
           const values = [
             data.name,
             data.email,
-            newPassword,
+            password_hash,
             data.is_admin || false,
           ];
-    
+
+          await mailer.sendMail({
+            to: data.email,
+            from:"lsn_cearamor@hotmail.com",
+            subject: "Seja bem vindo ao Foodfy",
+            html: `
+            <h2>Seja bem-vindo!</h2>
+            <p>Aqui está sua informação de acesso, seu email e senha gerados pelo sistema e são temporários, você pode alterá-los em seu perfil.</p> 
+            <h5>Email:</h5>
+            ${data.email}
+            <h5>Senha:</h5>
+            ${newPassword}
+            <p>
+            <a href ="http://localhost:5000/admin/login" target ="_blank">
+                ALTERAR SENHA
+            </a>
+            </p>
+            `,
+            });
+
           const results = await db.query(query, values);
     
           return results.rows[0];

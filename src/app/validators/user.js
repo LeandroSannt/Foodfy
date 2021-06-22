@@ -54,15 +54,12 @@ async function update(req,res,next){
 
         const user = await User.findOne({where:{id}})
 
-
-
         const fillAllFields =  checkAllFields(req.body)
         if(fillAllFields){
             return res.render(`admin/users/${id}/edit`,fillAllFields)
         }
 
         
-
         req.user = user 
         
         next()
@@ -98,24 +95,6 @@ async function find(req,res,next){
         req.user = user
 
         next()
-}
-
-async function findUser(req,res,next){
-    try{
-        const {userId: id} = req.body
-        const user = await User.findUser({where: {id} })
-
-        if(!user) return res.render("user/register",{
-            error:"Usuario não encontrado"
-        })
-
-        req.user = user
-
-        next()
-
-    }catch(err){
-        console.error(err)
-    }
 }
 
 module.exports={

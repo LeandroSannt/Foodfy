@@ -1,5 +1,7 @@
 const User = require("../models/usersModel")
 const  {compare} = require("bcryptjs")
+const { hash } = require('bcryptjs')
+
 
 function checkAllFields(body){
     const keys =Object.keys(body)
@@ -25,7 +27,12 @@ async function post(req,res,next){
 
     if(user) return res.render("admin/profile/create",{
         user: req.body,
-        error:'Usuario ja existe'
+        error:'Usuario ja cadastrado'
+    })
+
+    if(!email)return res.render("admin/profile/create",{
+        user: req.body,
+        error:'Email não pode ficar em branco'
     })
 
     next()
@@ -41,22 +48,13 @@ async function update(req,res,next){
         if(fillAllFields){
             return res.render("admin/profile/index",fillAllFields)
         }
-
-        const {id, password,passwordRepeat,email} = req.body
-
+           
+        const {id, password,passwordRepeat} = req.body
+        
+        const user = await User.findOne({where:{id}})
         if(password !=  passwordRepeat) return res.render("admin/profile/index",{
             user:req.body,
             error:"Senha e confirmação de senha nao batem"
-        })
-
-        const user = await User.findOne({where:{id}})
-        console.log(User.findOne({where:{id}}))
-
-        const passed = await compare(password,user.password)
-
-        if(!passed) return res.render("admin/profile/index",{
-            user:req.body,
-            error:"Senha incorreta."
         })
 
         req.user = user 
