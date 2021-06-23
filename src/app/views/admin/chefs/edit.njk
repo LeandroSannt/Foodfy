@@ -2,36 +2,25 @@
 
 {% block content %}
 
-
 <div class ="card">
-    <form  method ="POST" action="/admin/chefs?_method=PUT" >
+    <form  method ="POST" action="/admin/chefs?_method=PUT"  enctype="multipart/form-data">
     <section class="title">
         <div class="cabecalho">
             <h1>Editando Receita</h1>
-                <div class="form_position">
-                    <button class="save" type="submit">Salvar chef</button>
-                    <button class="delete" form="form-delete" type="submit">Deletar</button> 
-                </div>
+            <div class="form_position">
+                <button class="save" type="submit">Salvar chef</button>
+                <button class="delete" form="form-delete" type="submit">Deletar</button> 
+            </div>
         </div>
-    <aside class="receitas">
-
-            <div>
-                <h3>Chef</h3>
-                <input type="text" name="name" placeholder='Nome para sua receita' value="{{chefs.name}}"required>
-            </div>
-
-            <div>
-                <h3>Imagem da receita</h3>
-                <input type="text" name="avatar_url" value="{{chefs.avatar_url}}">
-            </div>
-           
-            <input type="hidden" name="id" value="{{chefs.id}}">
-    </aside>
+        <aside class="receitas">
+            {%include "admin/chefs/fields.njk" %}   
+                <input type="hidden" name="id" value="{{chefs.id}}">
+            
+        </aside>
     </section>  
 </form>
 
 <form id="form-delete"   method="POST" action="/admin/chefs?_method=DELETE">
-    
     <input type="hidden" name="id" value ={{chefs.id}}>        
 </form>
 {% endblock content %}

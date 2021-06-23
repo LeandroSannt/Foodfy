@@ -3,21 +3,16 @@
 {% block content %}
 
     <section class="title">
-    {%if isAdmin == true%}
         <div class="cabecalho">
             <h1>Gerenciar chefs</h1>
             <a class ="createReceita" href="/admin/chefs/create">Cadastrar chef</a>
         </div>
-        {%else%}
-        <div class="cabecalho">
-            <h1>Visualizar chefs</h1>
-        </div>
-        {%endif%}
+        
         <div class="cards_chefs">
             {%for  chef in chefs%}
             <div class="card">
                 <div class="img-chefs">
-                    <img class="img-chefs" src="{{chef.avatar_url}}" alt="{{chef.name}}">
+                        <img class="img-chefs" src="{{ chef.image}}" alt="{{ chef.name}}">
                 </div>
                 <div class="card-infos">
                     <p>{{chef.name}}</p>

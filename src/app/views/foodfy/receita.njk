@@ -4,6 +4,15 @@
     <title>{{recipes.title}}</title>
 {% endblock %}
 
+{% block filter %}
+    <div class="filter">
+       <form action="/buscar" method="GET">
+            <input type="text" placeholder="Receita ou Chef" name="filter" value="{{filter}}">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+{% endblock filter %}
+
 {% block content %}
     <div class="content">
         <div class="info_receita">
@@ -13,7 +22,7 @@
                 </div>
                 <div class="vendedor">
                     <h1 class="nome_receita">{{recipes.title}}</h1>
-                    <p >{{recipes.chef_recipes}}</p>
+                    <p class="criador" >{{recipes.chef_recipes}}</p>
                 </div>
             </div>
 

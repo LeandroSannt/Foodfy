@@ -105,9 +105,10 @@ header .logo{
 
 .cards .card img {
     width: 100%;
-    height: 120px;
+    height: 150px;
     border-radius: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+    object-fit: cover;
 }
 
 .info-card {
@@ -117,10 +118,10 @@ header .logo{
 .cards .card .info-card p {
     font-size: 20px;
     color: #111111;
-    min-height: 40px;
+    min-height: 25px;
     
 }
-
+.criador,
 .cards .card .info-card .criador {
     font-size: 15px;
     color: #777777;
@@ -313,7 +314,7 @@ h2 {
     }
     .cards .card .info-card p {
 
-        min-height: 60px;
+        min-height: 25px;
         
     }
     

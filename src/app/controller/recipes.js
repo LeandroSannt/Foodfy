@@ -5,18 +5,19 @@ var Files =require("../models/file")
 module.exports={
     
 async index(req,res){
-    let results = await Recipes.all()
+    
+
+    let results = await Recipes.recipesusers(req.session.userId)
     const recipes = results.rows
 
     if (!recipes) return res.send("receitas não encontradas")
 
-
     async function getImage(RecipeId){
-            let results = await Recipes.files(RecipeId)
+            let results = await Recipes.allfiles(RecipeId)
             const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`)
             return files[0]
         }
-        
+            
         const recipesPromise = recipes.map(async recipe=>{
             recipe.img = await getImage(recipe.id)
 
@@ -66,7 +67,7 @@ async details(req,res){
 
         let results = await Recipes.find(req.params.id)
         let recipe = results.rows[0]
-        const chef = results
+        //const chef = results
 
 
         let files = (await Files.findRecipeFiles(recipe.id)).rows
@@ -82,7 +83,7 @@ async details(req,res){
             files
         }
 
-        return res.render('admin/recipes/details', {recipe,chef, images:recipe.files})
+        return res.render('admin/recipes/details', {recipe, images:recipe.files})
 
     }catch(error){
         throw new Error(error)
@@ -97,7 +98,7 @@ async edit(req,res){
 
         if(!recipes) return res.send('Recipe not found')
 
-        let files = (await Recipes.files(recipes.id)).rows
+        let files = (await Recipes.allfiles(recipes.id)).rows
 
         files = files.map(file => ({
             ...file,

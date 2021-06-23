@@ -9,9 +9,9 @@
     <section class="title">
         <div class="cabecalho">
             <h1 >Receita: {{recipe.title}}</h1>
-            {%if isAdmin == true%}
+            
             <a  class="editDetails" href="/admin/recipes/details/{{recipe.id}}/edit">Editar receita</a>
-            {%endif%}
+            
         </div>
 
         <div class="info_receita" id ="{{recipe.id}}">
@@ -22,7 +22,7 @@
 
                 <div class="vendedor">
                     <h1 class="nome_receita">{{recipe.title}}</h1>
-                    <p >{{recipe.chef_recipe}}</p>
+                    <p >{{recipe.chef_recipes}}</p>
                 </div>
             </div>  
 

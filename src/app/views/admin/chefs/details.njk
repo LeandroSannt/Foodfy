@@ -10,16 +10,14 @@
         <section class="title">
             <div class="cabecalho">
                 <h1>Chef: {{chefs.name}}</h1>
-                {%if isAdmin == true%}
                 <a  class="editDetails" href="/admin/chefs/details/{{chefs.id}}/edit">Editar chef</a>
-                {%endif%}
             </div>
         </section>      
 
         <aside>
             <div class="info_chef">
                  <div class="img_chef">
-                    <img class="img_chef_detail" src="{{chefs.avatar_url}}" alt="{{chefs.name}}">
+                 <img class="img_chef_detail"src="{{ chefFile.path }}" alt="{{ chefs.name }}">
                 </div>
                 <div class="vendedor">
                     <h1 class="nome_chef">{{chefs.name}}</h1>
@@ -34,25 +32,21 @@
                 <h1>Receitas</h1>
             </div>
 
-   
-        <div class="cards" >
-             {% for recipe in recipes %}
-            <div class="card " id="{{recipe.id}}">
+            <div class="cards" >
+                {% for recipe in recipes %}
+                    <div class="card " id="{{recipe.id}}">
+                        <div class="img-receita">
+                            <img class="img-r"src="{{ recipe.image }}" alt="{{ recipe.title}}">
+                        </div>
 
-                <div class="img-receita">
-                    <img class="img-r" src="{{ images[0].src }}" alt="{{recipe.title}}">
-                </div>
-
-                <div class="card-infos">
-                    <h3>{{recipe.title}}</h3>
-                    <p>{{recipe.chefs_name}}</p>
-                   <a class="visu" href="/admin/recipes/details/{{recipe.id}}">Visualizar</a> 
-                </div>
-
-             {% endfor %}
-             
-             </div>
-
+                        <div class="card-infos">
+                            <h3>{{recipe.title}}</h3>
+                            <p>{{recipe.chefs_name}}</p>
+                        <a class="visu" href="/admin/recipes/details/{{recipe.id}}">Visualizar</a> 
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </section>            
     </div>
 

@@ -1,26 +1,14 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 {% block content %}
-<form class ="card" method ="POST" action="/admin/chefs" >
+<form class ="card" method ="POST" action="/admin/chefs"  enctype="multipart/form-data">
         <section class="title">
             <div class="cabecalho">
                 <h1>Criando chef</h1>
                 <button type="submit">Salvar chef</button>
             </div>
                 <aside class="receitas">
-                
-
-                    <div>
-                        <h3>Nome</h3>
-                        <input type="text" name="name" placeholder="Nome do chef" required>
-                    </div>
-
-                    <div class="item">
-            <div>Fotos</div>
-            <div>
-                <input type="url" name="avatar_url">
-        </div>
-          
+                {%include "admin/chefs/fields.njk" %}
             </aside>
     </section>  
 </form>

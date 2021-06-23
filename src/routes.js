@@ -44,13 +44,13 @@ routes.delete("/admin/recipes", recipes.delete); // Deletar uma receita
 /*=========CHEFS========*/
 
 routes.get("/admin/chefs",onlyUser, chefs.index); // Mostrar a lista de receitas
-routes.get("/admin/chefs/create",permitAdmin,onlyUser, chefs.create); // Mostrar formulário de nova receita
+routes.get("/admin/chefs/create",onlyUser, chefs.create); // Mostrar formulário de nova receita
 routes.get("/admin/chefs/details/:id",onlyUser, chefs.details); // Exibir detalhes de uma receita
-routes.get("/admin/chefs/details/:id/edit",permitAdmin, chefs.edit); // Mostrar formulário de edição de receita
+routes.get("/admin/chefs/details/:id/edit", chefs.edit); // Mostrar formulário de edição de receita
 
-routes.post("/admin/chefs",onlyUser,permitAdmin, chefs.post); // Cadastrar nova receita
-routes.put("/admin/chefs",onlyUser,permitAdmin, chefs.put); // Editar uma receita
-routes.delete("/admin/chefs",onlyUser,permitAdmin, chefs.delete); // Deletar uma receita
+routes.post("/admin/chefs",multer.array("chef_photos", 1),onlyUser, chefs.post); // Cadastrar nova receita
+routes.put("/admin/chefs",multer.array("chef_photos", 1),onlyUser, chefs.put); // Editar uma receita
+routes.delete("/admin/chefs",onlyUser, chefs.delete); // Deletar uma receita
 
 /*=========Session=======*/
 

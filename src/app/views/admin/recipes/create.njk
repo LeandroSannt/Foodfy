@@ -2,6 +2,7 @@
 
 {% block content %}
 <form class ="card" method ="POST" action="/admin/recipes" enctype="multipart/form-data">
+<input type="hidden" name="user_id" value ="{{session.userId}}">
         <section class="title">
             <div class="cabecalho">
                 <h1>Criando Receita</h1>

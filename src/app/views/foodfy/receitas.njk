@@ -23,14 +23,12 @@
                         </div>
                         <div class="info-card">
                             <p>{{recipe.title}}</p>
-                            <p class="criador">{{recipe.chefs_name}}</p>
+                            <p class="criador">{{recipe.chef_name}}</p>
                         </div>
                     </div>
                 {% endfor %}
         </aside>
-
-
-                <div class="pagination"
+        <div class="pagination"
             data-page={{pagination.page}}
             data-total={{pagination.total}}
             data-filter={{filter}}

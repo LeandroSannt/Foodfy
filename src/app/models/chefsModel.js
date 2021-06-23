@@ -1,7 +1,6 @@
 var {age, date} =require("../lib/configs/utils")
 var db = require("../lib/configs/db")
 const Recipes = require("../models/recipesModel")
-
 const fs = require('fs')
 
 
@@ -15,30 +14,60 @@ module.exports= {
             GROUP BY chefs.id`)
     },
 
-    create(data){
-    var query =`
-        INSERT INTO chefs(
+    create(data, file_id) {
+        const query = `
+        INSERT INTO chefs (
             name,
-            avatar_url,
-            created_at
-        )VALUES($1,$2,$3)
+            created_at,
+            file_id
+        ) VALUES ($1, $2, $3)
         RETURNING id
-    `
-        var values= [
+        `
+
+        const values = [
             data.name,
-            data.avatar_url,
-            date(Date.now()).iso
+            date(Date.now()).created,
+            file_id
         ]
-       return db.query(query,values)
+
+        return db.query(query, values)
     },
 
-    find(id){
-       return  db.query(`
-        SELECT chefs.*, count(recipes) AS total_recipes
-        FROM chefs
-        LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
+    async find(id) {
+        try {
+            const results = await db.query(`SELECT chefs.*, 
+            count(recipes) AS total_recipes
+            FROM chefs 
+            LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+            WHERE chefs.id = $1
+            GROUP BY chefs.id
+            `, [id])
+
+            return results.rows[0]
+        } catch (err) {
+            console.log(err)
+        }
+    },
+
+    allfind(id){
+        return db.query(`
+        SELECT chefs.*, 
+        count(recipes) AS total_recipes
+        FROM chefs 
+        LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
         WHERE chefs.id = $1
         GROUP BY chefs.id`,[id])
+         
+     },
+
+    async files(id) {
+        try {
+            const results = await db.query(`SELECT files.path FROM files WHERE files.id = $1 `, [id])
+
+            return results.rows
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     findRecipes(id){
@@ -65,44 +94,93 @@ module.exports= {
       return  db.query(query, values)
     },
 
-    async delete(id){
-        //pegar todos os produtos 
-        let results = await db.query("SELECT * FROM chefs LEFT JOIN recipes ON (recipes.chef_id = chefs.id) WHERE chefs.id = $1", [id])
-            const products = results.rows
-        
-        //pegar todas as imagens dos produtos
-        const allFilesPromise = products.map(product =>
-            Recipes.files(product.id))
+    async paginate(params) {
+        let { filter, limit, offset } = params
 
-        let promiseResults = await Promise.all(allFilesPromise)
+        let query = '',
+            filterQuery = '',
+            totalQuery = `(
+                SELECT count(*)
+                FROM chefs 
+            ) AS total`
 
-        //rodar a remoção do usuario
+        if (filter) {
+            filterQuery = `
+                WHERE chefs.name ILIKE '%${filter}%'
+            `
 
-        await db.query('DELETE FROM chefs WHERE id = $1',[id])
+            totalQuery = `(
+                SELECT count(*)
+                FROM chefs 
+                ${filterQuery}
+            ) AS total`
+        }
 
-        //remover as imagens das pastas
+        query = `
+        SELECT chefs.*, count(recipes) AS total_recipes,
+        ${totalQuery}
+        FROM chefs 
+        ${filterQuery}
+        LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+        GROUP BY chefs.id
+        LIMIT $1 OFFSET $2
+        `
 
-        promiseResults.map(results => {
-            results.rows.map(file =>{
-                try{
-                    fs.unlinkSync(file.path)
-                }catch(err){
-                    console.error(err)
-                }
+        const results = await db.query(query, [limit, offset])
 
+        return results.rows
+    },
+
+    async getChefAvatar(id) {
+        try {
+            const results = await db.query(`
+        SELECT files.*
+        FROM files 
+        LEFT JOIN chefs ON 
+        (chefs.file_id = files.id)
+        WHERE chefs.id = $1
+        `, [id])
+
+            return results.rows[0]
+        } catch (err) {
+            console.log(err)
+        }
+    },
+    async findChefRecipes(id) {
+        try {
+            const results = await db.query(`
+            SELECT *
+            FROM chefs 
+            LEFT JOIN recipes
+            ON (recipes.chef_id = chefs.id) 
+            WHERE chefs.id = $1
+            `, [id])
+
+            return results.rows
+        } catch (err) {
+            console.log(err)
+        }
+    },
+
+    async delete(id) {
+        try {
+            await db.query(`DELETE FROM chefs WHERE id = $1`, [id])
+
+            const results = await db.query(`
+            SELECT files.* FROM files
+            LEFT JOIN chefs ON (chefs.file_id = files.id)
+            WHERE chefs.id = $1`, [id])
+            const file = results.rows
+
+            file.map(async file => {
+                fs.unlinkSync(file.path)
+
+                await db.query(`DELETE FROM files 
+                WHERE id = $1`, [file.id])
             })
-            
-        })
-        
-    }
-
-    //  files(id){
-    //     return db.query(`
-    //     SELECT files.*, recipe_files.file_id AS file_id
-    //     FROM files 
-    //     LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)
-    //     WHERE recipe_files.recipe_id = $1
-    //   `,[id]);
-    // },
-  
+        } catch (err) {
+            console.log(err)
+        }
+    },
 }
+

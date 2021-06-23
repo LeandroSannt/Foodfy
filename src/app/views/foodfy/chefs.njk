@@ -16,7 +16,7 @@
                 {%for  chef in chefs%}
                 <div class="card">
                     <div class="img-chefs">
-                        <img class="img-chefs" src="{{chef.avatar_url}}" alt="{{chef.name}}">
+                    <img class="img-chefs" src="{{ chef.image}}" alt="{{ chef.name}}">
                     </div>
                     <div class="card-infos">
                         <p>{{chef.name}}</p>
@@ -25,6 +25,12 @@
                 </div>
                 {%endfor%}
             </div>
+
+            <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
          </div>
     </section>
 
