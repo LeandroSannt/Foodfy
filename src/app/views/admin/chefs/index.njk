@@ -5,7 +5,9 @@
     <section class="title">
         <div class="cabecalho">
             <h1>Gerenciar chefs</h1>
+            {%if session.isAdmin  == true %}
             <a class ="createReceita" href="/admin/chefs/create">Cadastrar chef</a>
+            {%endif%}
         </div>
         
         <div class="cards_chefs">

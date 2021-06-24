@@ -35,22 +35,22 @@ routes.get("/buscar", foodfy.searchRecipes)
 routes.get("/admin/recipes",onlyUser, recipes.index); // Mostrar a lista de receitas
 routes.get("/admin/recipes/create",onlyUser, recipes.create); // Mostrar formulário de nova receita
 routes.get("/admin/recipes/details/:id",onlyUser, recipes.details); // Exibir detalhes de uma receita
-routes.get("/admin/recipes/details/:id/edit", recipes.edit); // Mostrar formulário de edição de receita
+routes.get("/admin/recipes/details/:id/edit",onlyUser, recipes.edit); // Mostrar formulário de edição de receita
 
-routes.post("/admin/recipes",multer.array("photos",5), recipes.post); // Cadastrar nova receita
-routes.put("/admin/recipes",multer.array("photos",5),recipes.put); // Editar uma receita
-routes.delete("/admin/recipes", recipes.delete); // Deletar uma receita
+routes.post("/admin/recipes",onlyUser,multer.array("photos",5), recipes.post); // Cadastrar nova receita
+routes.put("/admin/recipes",onlyUser,multer.array("photos",5),recipes.put); // Editar uma receita
+routes.delete("/admin/recipes",onlyUser, recipes.delete); // Deletar uma receita
 
 /*=========CHEFS========*/
 
 routes.get("/admin/chefs",onlyUser, chefs.index); // Mostrar a lista de receitas
-routes.get("/admin/chefs/create",onlyUser, chefs.create); // Mostrar formulário de nova receita
+routes.get("/admin/chefs/create",onlyUser,permitAdmin,chefs.create); // Mostrar formulário de nova receita
 routes.get("/admin/chefs/details/:id",onlyUser, chefs.details); // Exibir detalhes de uma receita
-routes.get("/admin/chefs/details/:id/edit", chefs.edit); // Mostrar formulário de edição de receita
+routes.get("/admin/chefs/details/:id/edit",onlyUser,permitAdmin, chefs.edit); // Mostrar formulário de edição de receita
 
-routes.post("/admin/chefs",multer.array("chef_photos", 1),onlyUser, chefs.post); // Cadastrar nova receita
-routes.put("/admin/chefs",multer.array("chef_photos", 1),onlyUser, chefs.put); // Editar uma receita
-routes.delete("/admin/chefs",onlyUser, chefs.delete); // Deletar uma receita
+routes.post("/admin/chefs",onlyUser,permitAdmin,multer.array("chef_photos", 1),onlyUser, chefs.post); // Cadastrar nova receita
+routes.put("/admin/chefs",onlyUser,permitAdmin,multer.array("chef_photos", 1),onlyUser, chefs.put); // Editar uma receita
+routes.delete("/admin/chefs",onlyUser,permitAdmin, chefs.delete); // Deletar uma receita
 
 /*=========Session=======*/
 
@@ -70,17 +70,17 @@ routes.post('/admin/register',UserValidator.post,UserController.post) //ok
 /*===========Profile======= */
 // Rotas de perfil de um usuário logado
 routes.get('/admin/profile',onlyUser, ProfileValidator.show,ProfileController.index) // Mostrar o formulário com dados do usuário logado ok
-routes.put('/admin/profile',ProfileValidator.update,ProfileController.update)// Editar o usuário logado ok
+routes.put('/admin/profile',onlyUser,ProfileValidator.update,ProfileController.update)// Editar o usuário logado ok
 
 /*==========rotasUser==========*/
 
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/admin/users',permitAdmin,onlyUser, UserController.list) // Mostrar a lista de usuários cadastrados ok
-routes.get('/admin/users/new',permitAdmin,onlyUser, ProfileValidator.show,ProfileController.create) // criar novo usuario apos logado ok
-routes.post('/admin/users',permitAdmin, ProfileValidator.post,ProfileController.post) // Cadastrar um usuário ok
-routes.get('/admin/users/:id/edit',onlyUser,UserValidator.find, UserController.edit) // Mostrar o formulário de edição de um usuário ok
-routes.put('/admin/users', UserValidator.update,UserController.put) // Editar um usuário ok
-// routes.delete('/admin/users/:id', UserController.delete) // Deletar um usuário
+routes.get('/admin/users/new',permitAdmin,onlyUser,ProfileController.create) // criar novo usuario apos logado ok
+routes.post('/admin/users',permitAdmin,onlyUser, ProfileValidator.post,ProfileController.post) // Cadastrar um usuário ok
+routes.get('/admin/users/:id/edit',permitAdmin,onlyUser,UserValidator.find, UserController.edit) // Mostrar o formulário de edição de um usuário ok
+routes.put('/admin/users',permitAdmin,onlyUser, UserValidator.update,UserController.put) // Editar um usuário ok
+routes.delete('/admin/users',permitAdmin,onlyUser, UserController.delete) // Deletar um usuário
 
 routes.get('not-found', function(req, res) {
     res.render("/views/not-found");

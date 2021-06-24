@@ -67,7 +67,7 @@ async function show(req,res,next){
 
         const user = await User.findOne({where: {id} })
 
-        if(!user) return res.render("user/register",{
+        if(!user) return res.render("user/create",{
             error:"Usuario não encontrado"
         })
 

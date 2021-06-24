@@ -9,7 +9,7 @@
                 id="photos-input"
                 type="file" 
                 name="chef_photos" 
-                multiple 
+                multiple="multiple"
                 accept="image/*"
                 onChange='PhotosUpload.handleFileInput(event)'>
                 <p>
@@ -26,12 +26,12 @@
                         </i>
                     </div>
                 <input type="hidden" name="removed_files">
-                <input type="hidden" name="id" value="{{chefs.id}}">
+                <input type="hidden" name="id" value="{{chef.id}}">
             {% endif %}
         </div>
 </div>
 
 <div class="item">
     <div>Nome</div>
-    <div><input type="text" name="name" value="{{ chef.name}}"></div>
+    <div><input type="text" name="name" value="{{chef.name}}"></div>
 </div>

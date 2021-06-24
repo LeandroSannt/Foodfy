@@ -56,16 +56,17 @@ module.exports ={
     },
     async delete(req,res){
         try{
-          await User.delete(req.body.id)
-          req.session.destroy()
+            const {id} = req.body
+            await User.delete(id)
+            req.session.destroy()
+          return res.render("admin/session/login",{
+            success:"Conta excluida com sucesso"
   
-          return res.render("session/login",{
-            success:"Conta deletada com sucesso"
           })
   
         }catch(err){
           console.error(err)
-          return res.render("user/index",{
+          return res.render("admin/session/login",{
             error:"Error ao tentar deletar sua conta"
   
           })

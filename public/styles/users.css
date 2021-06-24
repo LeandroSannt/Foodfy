@@ -149,7 +149,7 @@ button:hover{
     font-weight: 500px;
 }
 
-.infor-user .actions-user a{
+.infor-user a{
     text-decoration: none;
     font-weight: bold;
     color:red;
@@ -157,9 +157,18 @@ button:hover{
 
 }
 
-.infor-user .actions-user a:first-child{
+.infor-user .action-edit{
     color:#6558C3; 
     margin-right: 20px;
+}
+
+.infor-user  .button.remove{
+    background: transparent;
+    width: initial;
+    font-weight: bold;
+    color:red;
+    font-size: .9rem;
+
 }
 
 

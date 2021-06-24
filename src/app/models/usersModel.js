@@ -77,7 +77,7 @@ module.exports={
     },
 
     async delete(id){
-        await db.query(` DELETE FROM users WHERE id = $1`, [id])
+        await db.query(` DELETE FROM users WHERE id = ${id}`)
         }
 
 

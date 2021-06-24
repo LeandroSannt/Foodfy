@@ -6,9 +6,9 @@ function onlyUser(req,res,next){
 }
 
 function permitAdmin(req,res,next){
-    if(req.session.isAdmin == true)
-        return res.render("admin/session/login",{
-            authorization: "Acesso negado !"
+    if(req.session.isAdmin == false)
+        return res.render("not-found",{
+            authorization: "Acesso negado! tente outra pagina"
         })
         
     next()

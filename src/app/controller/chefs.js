@@ -36,6 +36,7 @@ create(req,res){
     
 async post(req, res) {
     try {
+        console.log(req.body)
         // const keys = Object.keys(req.body)
 
         // for (let key of keys) {
@@ -118,35 +119,45 @@ async edit(req, res) {
 
 async put(req, res) {
     try {
-        const keys = Object.keys(req.body)
+        // const keys = Object.keys(req.body)
 
-        for (let key of keys) {
-            if (req.body[key] == '' && key != "removed_files") {
-                return res.send('Please fill all the fields')
-            }
-        }
+        // for (let key of keys) {
+        //     if (req.body[key] == '' && key != "removed_files") {
+        //         return res.send('Please fill all the fields')
+        //     }
+        // }
 
-        let results = await Recipes.recipeFiles(req.body.id)
-        let fileId = results[0].id
+       // await Chefs.update(req.body)
 
-        if (req.files.length != 0) {
-            const filePromise = req.files.map(file => FileS.create(file))
+       // console.log(req.body)
 
-            const results = await filePromise[0]
-            fileId = results.rows[0].id
-        }
+       
+    //    let results = await Recipes.recipeFiles(req.body.id)
+    //    console.log(results)
+    //     let fileId = results[0].id
+
+         console.log(req.removed_files)
+
+
+
+        // if (req.files.length != 0) {
+        //     const filePromise = req.files.map(file => Files.create(file))
+
+        //     const results = await filePromise[0]
+        //     fileId = results.rows[0].id
+        // }
 
         // if (req.removed_files) {
         //     const removedFiles = req.body.removed_files.split(',')
         //     const lastIndex = removedFiles.length - 1
         //     removedFiles.splice(lastIndex, 1)
 
-            
-
         //     await removedFiles.map(id => Files.chefFileDelete(id))
         // }
 
-        await Chefs.update(req.body, fileId)
+        
+
+        await Chefs.update(req.body)
 
         return res.redirect(`/admin/chefs`)
     } catch (err) {
