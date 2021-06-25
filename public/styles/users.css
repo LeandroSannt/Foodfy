@@ -109,6 +109,19 @@ div + .input{
 
 
 .submit-buttons .button.cancel{
+    padding: 9px 48 px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    width: 10rem;
+    height: 37px;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 19px;
+    transition: 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Roboto', sans-serif;
     margin-left: 20px;
     background-color: gray;
 }

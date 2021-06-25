@@ -50,7 +50,7 @@ async function post(req,res,next){
 async function update(req,res,next){
     try{
 
-        const {email , id} = req.body
+        const {id} = req.body
 
         const user = await User.findOne({where:{id}})
 
@@ -59,7 +59,6 @@ async function update(req,res,next){
             return res.render(`admin/users/${id}/edit`,fillAllFields)
         }
 
-        
         req.user = user 
         
         next()

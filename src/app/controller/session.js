@@ -11,10 +11,15 @@ module.exports ={
             return res.redirect("/")
         },
     
-        login(req,res){
+       async login(req,res){
             req.session.userId = req.user.id
             req.session.isAdmin = req.user.is_admin;
-            return res.redirect(`/admin/recipes`)
+
+            const {userId: id} = req.session
+
+            const user = await User.findOne({where: {id} })
+
+            return res.render(`admin/profile/index`, {user})
         },
     
         loginForm(req,res){

@@ -6,7 +6,6 @@ module.exports={
     
 async index(req,res){
     
-
     let results = await Recipes.recipesusers(req.session.userId)
     const recipes = results.rows
 
@@ -36,54 +35,38 @@ async create(req,res){
     },
     
 async post(req,res){
-                 //validação dos campos 
-            const keys = Object.keys(req.body)
-            for (key of keys) {
-                if (req.body[key] == "") 
-                    return res.send("Dados Faltando")
-                }
-                if(req.files.length == 0)
-                    return res.send("envie todas as imagens")
+             
+    //criando receita    
+    let results = await Recipes.create(req.body)
+    const recipeId = results.rows[0].id
 
-                //criando receita    
+    //vincular foto a receita
+    let filesPromise = req.files.map(file => Files.create(file))
+    results = await Promise.all(filesPromise)
 
-                let results = await Recipes.create(req.body)
-                const recipeId = results.rows[0].id
-         
-                //vincular foto a receita
-                let filesPromise = req.files.map(file => Files.create(file))
-                results = await Promise.all(filesPromise)
-            
-                const recipeFilesPromise = results.map(file => RecipeFiles.create({    
-                    recipe_id:recipeId,
-                    file_id:file.rows[0].id
-                }));
-                results = await Promise.all(recipeFilesPromise)
-                    return res.redirect(`/admin/recipes/details/${recipeId}`)
+    const recipeFilesPromise = results.map(file => RecipeFiles.create({    
+        recipe_id:recipeId,
+        file_id:file.rows[0].id
+    }));
+    results = await Promise.all(recipeFilesPromise)
+        return res.redirect(`/admin/recipes/details/${recipeId}`)
     },
 
 async details(req,res){ 
     try{
-
-        let results = await Recipes.find(req.params.id)
-        let recipe = results.rows[0]
-        //const chef = results
-
-
+        let {recipe} = req
         let files = (await Files.findRecipeFiles(recipe.id)).rows
 
         files = files.map((file) => ({
             ...file,
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
-        if(!recipe) return res.send('Recipe not found')
-
-        recipe = {
+        
+        recipe={
             ...recipe,
             files
         }
-
-        return res.render('admin/recipes/details', {recipe, images:recipe.files})
+        return res.render('admin/recipes/details', {recipe,images:recipe.files})
 
     }catch(error){
         throw new Error(error)
@@ -96,7 +79,9 @@ async edit(req,res){
         let results = await Recipes.find(req.params.id)
         let recipes = results.rows[0]
 
-        if(!recipes) return res.send('Recipe not found')
+        if(!recipes) return res.render("not-found",{
+            authorization: "Receita não encontrada!"
+        })
 
         let files = (await Recipes.allfiles(recipes.id)).rows
 
@@ -120,12 +105,6 @@ async edit(req,res){
     
 async put(req,res){
     try{
-        const keys = Object.keys(req.body)
-
-        for(key of keys){
-            if(req.body[key] == "" && key != "removed_files")
-                return res.send('Please, fill all the form')
-        }
 
         if(req.files.length != 0){
             const newFilesPromise = req.files.map(file => Files.create({...file}))

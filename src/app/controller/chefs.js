@@ -11,7 +11,11 @@ async index(req,res){
         results =await Chefs.all(req.body)
         const chefs = results.rows
 
-        if (!chefs) return res.send("receitas não encontradas")
+        if (!chefs) return res.render("admin/chefs/index",{
+            error:"Não forão encontrados chefs",
+            chefs,
+            chefImage
+        })
 
         async function getImage(chefId) {
             let results = await Chefs.getChefAvatar(chefId)
@@ -36,7 +40,6 @@ create(req,res){
     
 async post(req, res) {
     try {
-        console.log(req.body)
         // const keys = Object.keys(req.body)
 
         // for (let key of keys) {
@@ -45,8 +48,7 @@ async post(req, res) {
         //     }
         // }
 
-        if (req.files.length == 0)
-            return res.send('Por favor, envie pelo menos uma foto')
+        
 
         const filePromise = req.files.map(file => Files.create({ ...file }))
         let results = await filePromise[0]
@@ -67,11 +69,6 @@ async details(req,res){
         const chefs = results.rows[0]
 
         if(!chefs) return res.send("chef não encontrado")
-
-        // const chefRecipes = await Chefs.findChefRecipes(req.params.id)
-        // const recipeExist = chefRecipes[0].id
-        // let recipes = ''
-
 
         chefresults = await  Chefs.findChefRecipes(req.params.id)
         const if_recipes =chefresults[0].id
