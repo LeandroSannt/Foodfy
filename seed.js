@@ -12,8 +12,8 @@ async function createUsers(){
     const password = await hash('1111',8)
 
     users.push({
-        name: "Ricardo santos",
-        email: "admin@admin.com",
+        name: "Leandro Santos",
+        email: "lsn_slim@yahoo.com.br",
         password,
         is_admin:true,
     })
@@ -24,75 +24,75 @@ async function createUsers(){
 
 }
 
-files = []
+// files = []
 
-async function createFiles(){
+// async function createFiles(){
 
-    files.push({
-        //name: "1616638053721-burger.png",
-        path:"public/assets/1616638053721-burger.png",
-    })
-    files.push({
-        //name: "1616638093355-pizza.png",
-        path:"public/assets/1616638093355-pizza.png",
-    })
-    files.push({
-        //name: "1616638106874-asinhas.png",
-        path:"publica/ssets/1616638106874-asinhas.png",
-    })
-    files.push({
-        //name: "1616638076003-lasanha.png",
-        path:"public/assets/1616638076003-lasanha.png",
-    })
-    files.push({
-        //name: "1616638041287-espaguete.png",
-        path:"public/assets/1616638041287-espaguete.png",
-    })
-    files.push({
-        //name: "1616638065230-doce.png",
-        path:"public/assets/1616638065230-doce.png",
-    })
+//     files.push({
+//         //name: "1616638053721-burger.png",
+//         path:"public/assets/1616638053721-burger.png",
+//     })
+//     files.push({
+//         //name: "1616638093355-pizza.png",
+//         path:"public/assets/1616638093355-pizza.png",
+//     })
+//     files.push({
+//         //name: "1616638106874-asinhas.png",
+//         path:"publica/ssets/1616638106874-asinhas.png",
+//     })
+//     files.push({
+//         //name: "1616638076003-lasanha.png",
+//         path:"public/assets/1616638076003-lasanha.png",
+//     })
+//     files.push({
+//         //name: "1616638041287-espaguete.png",
+//         path:"public/assets/1616638041287-espaguete.png",
+//     })
+//     files.push({
+//         //name: "1616638065230-doce.png",
+//         path:"public/assets/1616638065230-doce.png",
+//     })
 
-    const filesPromise = files.map(file => Filesc.create(file))
+//     const filesPromise = files.map(file => Filesc.create(file))
 
-    ChefsIds = await Promise.all(filesPromise)
+//     ChefsIds = await Promise.all(filesPromise)
 
-}
+// }
 
-chefs =[]
+// chefs =[]
 
-async function createChefs(){
-    file_id = 1
-    chefs.push({
-        name: 1,
-        file_id
-    })
-    chefs.push({
-        name: "Fabiana Melo",
-        file_id:2
-    })
-    chefs.push({
-        name: "Vania Steroski",
-        file_id:3
-    })
-    chefs.push({
-        name: "Juliano Vieira",
-        file_id:4
-    })
-    chefs.push({
-        name: "Júlia Kinoto",
-        file_id:5
-    })
-    chefs.push({
-        name: "Ricardo Golvea",
-        file_id:6
-    })
+// async function createChefs(){
+//     file_id = 1
+//     chefs.push({
+//         name: 1,
+//         file_id
+//     })
+//     chefs.push({
+//         name: "Fabiana Melo",
+//         file_id:2
+//     })
+//     chefs.push({
+//         name: "Vania Steroski",
+//         file_id:3
+//     })
+//     chefs.push({
+//         name: "Juliano Vieira",
+//         file_id:4
+//     })
+//     chefs.push({
+//         name: "Júlia Kinoto",
+//         file_id:5
+//     })
+//     chefs.push({
+//         name: "Ricardo Golvea",
+//         file_id:6
+//     })
 
-    const chefsPromise = chefs.map(chef => Chef.create(chef))
+//     const chefsPromise = chefs.map(chef => Chef.create(chef))
 
-    ChefsIds = await Promise.all(chefsPromise)
+//     ChefsIds = await Promise.all(chefsPromise)
 
-}
+// }
 
 // recipefiles = []
 
