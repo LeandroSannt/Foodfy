@@ -40,7 +40,7 @@ async function details(req,res,next){
 
         const { id} = req.params
 
-        let recipe = await Recipes.findOne({where:{id}})
+        let recipe = await Recipes.findRecipeOne({where:{id}})
         
         if(!recipe) return res.render("not-found",{
             authorization: "Receita não encontrada!"

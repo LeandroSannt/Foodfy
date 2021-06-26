@@ -66,6 +66,7 @@ module.exports= {
         ]
        return db.query(query,values)
     },
+    
 
     find(id){
        return db.query(`
@@ -74,6 +75,22 @@ module.exports= {
         LEFT JOIN chefs ON(recipes.chef_id = chefs.id)
         WHERE  recipes.id = $1`,[id])
         
+    },
+
+    async findRecipeOne(filters,id){
+        let query = "SELECT recipes.*, chefs.name AS chef_recipes from recipes "
+
+        Object.keys(filters).map(key =>{
+            query = `
+            ${query}
+            LEFT JOIN chefs ON(recipes.chef_id = chefs.id)
+            ${key} recipes.` 
+            Object.keys(filters[key]).map(field =>{
+               query = `${query} ${field} = '${filters[key][field]}'`
+            })
+        })
+        const results = await db.query(query)
+        return results.rows[0]
     },
     
     findBy(filter){

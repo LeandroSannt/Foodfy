@@ -1,7 +1,7 @@
 {% extends "foodfy/layout.njk" %}
 
 {% block title %}
-    <title>Receitas-Foodfy</title>
+    <title>Error 404 - Not found</title>
 {% endblock %}
 
 {% block style %}
@@ -14,11 +14,15 @@
 {% endblock  %}
 
 {% block content %}
-    <div class="content" >
-        {{authorization}}
-        <h1>Desculpe, mas a receita não foi encontrada =/ </h1>
-        <p>para retornar a pagina de receitas,<a href="/receitas">clique aqui</a> </p>
-    </div>
+
+    {%if authorization%}
+        <h1>{{authorization}}</h1>
+        <p>para retornar a pagina Anterior,<a href="/receitas">clique aqui</a> </p>
+    {%else%}
+        <h1>Desculpe, pagina não encontrada =/ </h1>
+        <p>para retornar a pagina de anterior,<a href="javascript:history.back()">clique aqui</a> </p>
+    {%endif%}
+    
 {% endblock %}
 
 {%block script%}

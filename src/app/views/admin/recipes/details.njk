@@ -9,26 +9,44 @@
     <section class="title">
         <div class="cabecalho">
             <h1 >Receita: {{recipe.title}}</h1>
+            
             <a  class="editDetails" href="/admin/recipes/details/{{recipe.id}}/edit">Editar receita</a>
         </div>
-
         <div class="info_receita" id ="{{recipe.id}}">
             <div class="loja">
                 <div class="img_receita">
-                    <img class="img-r" src="{{ images[0].src }}" alt="{{recipe.title}}">
-                </div>
-                <div class="vendedor">
-                    <h1 class="nome_receita">{{recipe.title}}</h1>
-                    <p >{{recipe.chef_recipes}}</p>
-                </div>
-            </div>  
-
-            <div class="galery">
-                {%for image  in images %}
-                    <div class="container-img">
-                        <img src = "{{image.src}}">
+                    <div class="gallery">
+                        <div class="highlight">
+                            {% if not images [0] %}
+                            <img src="http://placehold.it/500x500?text=PRODUTO SEM FOTO" />
+                            {% else %}
+                            <img 
+                                class="img-r" 
+                                src="{{images[0].src}}"
+                                alt="{{images[0].name}}" 
+                                onClick="lightbox.open()">
+                            {% endif %}  
+                            
+                        </div>
                     </div>
-                {%endfor%}
+                    <div class="vendedor">
+                        <h1 class="nome_receita">{{recipe.title}}</h1>
+                        <p>{{recipe.chef_recipes}}</p>
+                    </div>
+                </div>  
+
+                <div class="galery">
+                    {%for image  in images %}
+                        <div class="container-img">
+                            <img src = "{{image.src}} " 
+                            {% if loop.index0 ==0 %}
+                                class="active"
+                            {% endif %}
+                            onClick ="ImageGallery.setImage(event)"
+                            >
+                        </div>
+                    {%endfor%}
+                </div>
             </div>
 
             <div class="ingredientes_receita">

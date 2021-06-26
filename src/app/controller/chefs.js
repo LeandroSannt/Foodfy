@@ -68,7 +68,9 @@ async details(req,res){
         let results = await Chefs.allfind(req.params.id)
         const chefs = results.rows[0]
 
-        if(!chefs) return res.send("chef não encontrado")
+        if(!chefs) return res.render("not-found",{
+            authorization: "Chef não encontrado!"
+        })
 
         chefresults = await  Chefs.findChefRecipes(req.params.id)
         const if_recipes =chefresults[0].id

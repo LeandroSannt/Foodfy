@@ -84,41 +84,36 @@ form .item #photos-preview img{
     border-radius: 4px;
 }
 
-.product-single .gallery {
-    width: 100%;
 
-}
-.product-single .highlight >img{
+.highlight >img{
     width: 100%;
-    height: 280px;
-  
+    height: 360px;
     object-position: 50% 50%;
-    border:1px solid #efefef;
-    cursor: zoom-in; 
-}
-.product-single .gallery-preview img{
-    height: 100px;
-    width: 100%;
+    border: 1px solid #efefef;
     object-fit: cover;
-    opacity: 0.6;
-    cursor: pointer;
-    transition: 200ms;
+    margin-bottom: 20px;
 }
-
-.product-single .gallery img {
+.galery{
+    display: flex;
+    justify-content: flex-end;
     width: 100%;
- 
+    height: 100px;
 }
 
-.product-single .gallery-preview{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 2px;
- 
+.container-img img{
+        width: 85px;
+        height: 75px;
+        margin-left: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: 200ms;
 }
 
-.product-single .gallery-preview img:hover,
-.product-single .gallery-preview img.active{
+
+.container-img img:hover,
+.container-img  img.active{
     opacity: 1;  
 
 }
