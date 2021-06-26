@@ -83,7 +83,3 @@ function deletePreparation(event){
 
 
 
-
-
-
-

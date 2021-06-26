@@ -1,25 +1,19 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 {% block content %}
-
-<section class="container user-edit form">
-
-    <form  method ="POST" action="/admin/users">
-        <div class="header">
-            <h1>Criar Usuário</h1>
-            <div class="submit-buttons">
-                <button class="button" type ="submit">Salvar</button>
-                <a href="/admin/recipes" class="button cancel">Cancelar</a>
+    <section class="container user-edit form">
+        <form  method ="POST" action="/admin/users">
+            <div class="header">
+                <h1>Criar Usuário</h1>
+                <div class="submit-buttons">
+                    <button class="button" type ="submit">Salvar</button>
+                    <a href="/admin/recipes" class="button cancel">Cancelar</a>
+                </div>
             </div>
-         </div>
-
-        <div class="fields">
-             {%include "admin/users/fields-account.njk" %}  
-        </div>
-        <input type="hidden" name="id"value={{user.id}}>
-
-    </form>
-</section>
-
-
+            <div class="fields">
+                {%include "admin/users/fields-account.njk" %}  
+            </div>
+            <input type="hidden" name="id"value={{user.id}}>
+        </form>
+    </section>
 {% endblock  %}

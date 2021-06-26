@@ -4,15 +4,6 @@
     <title>Receitas-Foodfy</title>
 {% endblock %}
 
-{% block filter %}
-    <div class="filter">
-        <form action="/buscar" method="GET">
-            <input type="text" placeholder="Receita ou Chef" name="filter" value="{{filter}}">
-            <button type="submit" value="{{filter}}">Buscar</button>
-        </form>
-    </div>
-{% endblock filter %}
-
 {% block content %}
     <div class="content">
         <aside class="cards" id="cursor">
@@ -34,26 +25,13 @@
             data-filter={{filter}}
         ></div>
     </div>
-
-    <script>
-
-        const cards = document.querySelectorAll(".card")
-        for (let card of cards) {
-    card.addEventListener("click", () => {
-        const cardId = card.getAttribute("id")
-        window.location.href = `/receita/${cardId}`
-        console.log(cardId)
-    })
-}
-
-    </script>
-
 {% endblock %}
 
 {% block pagination %}
-<script src="/pagination.js"></script>
+    <script src="/scripts/pagination.js"></script>
 {% endblock pagination %}
 
 {%block script%}
-    <script src="/scripts.js"></script>
-    {%endblock%}
+    <script src="/scripts/scripts.js"></script>
+    <script src="/scripts/cardId.js"></script>
+{%endblock%}

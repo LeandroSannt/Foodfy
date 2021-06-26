@@ -1,13 +1,11 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 {% block content %}
-
     <section class="title">
         <div class="cabecalho">
             <h1>Usuários</h1>
             <a class ="createReceita" href="/admin/users/new">Cadastar Usuário</a>
         </div>
-
         <div class="card-user">
             {%for  user in users%}
                 <div class="infor-user">
@@ -19,26 +17,14 @@
                         <input type='hidden' name='id' value={{user.id}}>
                     </form> 
                 </div>
-                
              {%endfor%}
          </div>
     </section>
 
 {% endblock content %}
 
-
-
 {% block confirmDelete %}
-    <script>
-        const formDelete= document.querySelector("#form-delete")
-        formDelete.addEventListener("submit",function(event){
-            const confirmation = confirm("Deseja deletar o usuário?")
-            if(!confirmation){
-                event.preventDefault()
-        }
-    })
-    </script>
-
+    <script src="/scripts/formdelete.js"></script>
 {% endblock confirmDelete %}
 
 

@@ -9,9 +9,7 @@
     <section class="title">
         <div class="cabecalho">
             <h1 >Receita: {{recipe.title}}</h1>
-            
             <a  class="editDetails" href="/admin/recipes/details/{{recipe.id}}/edit">Editar receita</a>
-            
         </div>
 
         <div class="info_receita" id ="{{recipe.id}}">
@@ -19,7 +17,6 @@
                 <div class="img_receita">
                     <img class="img-r" src="{{ images[0].src }}" alt="{{recipe.title}}">
                 </div>
-
                 <div class="vendedor">
                     <h1 class="nome_receita">{{recipe.title}}</h1>
                     <p >{{recipe.chef_recipes}}</p>
@@ -32,13 +29,12 @@
                         <img src = "{{image.src}}">
                     </div>
                 {%endfor%}
-                </div>
+            </div>
 
             <div class="ingredientes_receita">
                 <div class="ingredientes ">
                     <div class="btn">
                         <h2 class="ingre">Ingredientes</h2>
-                        
                     </div>
                     <ul class=" lista ">
                         {% for ingredients in recipe.ingredients %}
@@ -49,8 +45,7 @@
 
                 <div class="ingredientes">
                     <div class="btn">
-                        <h2 class="ingre">Modo de preparo</h2>
-                        
+                        <h2 class="ingre">Modo de preparo</h2> 
                     </div>
                     <ul class=" lista">
                         {% for preparation in recipe.preparation %}
@@ -62,11 +57,9 @@
                 <div class="ingredientes">
                     <div class="btn">
                         <h2 class="ingre">Informaçoes adicionais</h2>
-                        
                     </div>
                     <ul class="lista">
                         <li>{{recipe.information}}</li>
-
                     </p>
                 </div>
             </div>
@@ -75,6 +68,4 @@
 
 {% endblock %}
 
-{%block script%}
-    
-    {%endblock%}
+{%block script%}{%endblock%}

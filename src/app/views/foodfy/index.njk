@@ -3,18 +3,7 @@
     <title>Foodfy</title>
 {% endblock %}
 
-
-{% block filter %}
-    <div class="filter">
-       <form action="/buscar" method="GET">
-            <input type="text" placeholder="Receita ou Chef" name="filter" value="{{filter}}">
-            <button type="submit">Buscar</button>
-        </form>
-    </div>
-{% endblock filter %}
-
 {% block content %}
-
     <div class="content">
         <section class="chamada">
             <div class="intro">
@@ -43,5 +32,4 @@
             </div>
         </aside>
     </div>
-    
 {% endblock %}

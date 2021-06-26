@@ -1,3 +1,6 @@
+const User = require('../models/usersModel')
+
+
 function onlyUser(req,res,next){
     if(!req.session.userId)
         return res.redirect("/admin/login")
@@ -14,8 +17,23 @@ function permitAdmin(req,res,next){
     next()
 }
 
+async function NotPermitDelete(req,res,next){
+
+    let results = await User.all()
+    const users = results.rows
+
+    if (req.session.userId == req.body.id){
+        return res.render("admin/users/index",{
+            users,
+            error: "Não é possivel deletar a propria conta"
+        })
+    }
+    next()
+}
+
 module.exports = {
     onlyUser,
-    permitAdmin
+    permitAdmin,
+    NotPermitDelete
     
 }

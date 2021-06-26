@@ -1,24 +1,18 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 {% block content %}
-
-<section class="container user-edit form">
-
-    <form  method ="POST" action="/admin/profile?_method=PUT">
-        <div class="header">
-            <h1>Bem vindo {{user.name}}</h1>
-            <div class="submit-buttons">
-                <button class="button" type ="submit">Salvar</button>
+    <section class="container user-edit form">
+        <form  method ="POST" action="/admin/profile?_method=PUT">
+            <div class="header">
+                <h1>Bem vindo {{user.name}}</h1>
+                <div class="submit-buttons">
+                    <button class="button" type ="submit">Salvar</button>
+                </div>
             </div>
-         </div>
-
-        <div class="fields">
-            {%include "admin/profile/fields.njk" %}
-        </div>
-
-        <input type="hidden" name="id"value={{user.id}}>
-        
-    </form>
-</section>
-
+            <div class="fields">
+                {%include "admin/profile/fields.njk" %}
+            </div>
+            <input type="hidden" name="id"value={{user.id}}>
+        </form>
+    </section>
 {% endblock  %}

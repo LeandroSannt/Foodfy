@@ -1,7 +1,7 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 {% block content %}
-<form class ="card" method ="POST" action="/admin/chefs"  enctype="multipart/form-data">
+    <form class ="card" method ="POST" action="/admin/chefs"  enctype="multipart/form-data">
         <section class="title">
             <div class="cabecalho">
                 <h1>Criando chef</h1>
@@ -10,8 +10,6 @@
                 <aside class="receitas">
                 {%include "admin/chefs/fields.njk" %}
             </aside>
-    </section>  
-</form>
-
-
+        </section>  
+    </form>
 {% endblock content %}

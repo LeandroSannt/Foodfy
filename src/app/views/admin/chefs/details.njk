@@ -26,14 +26,12 @@
                      <p >{{chefs.total_recipes}} receitas</p>
                 </div>
             </div>
-  
         </aside>
 
         <section class="title">
             <div class="cabecalho">
                 <h1>Receitas</h1>
             </div>
-
             <div class="cards" >
                 {% for recipe in recipes %}
                     <div class="card " id="{{recipe.id}}">
@@ -51,9 +49,6 @@
             </div>
         </section>            
     </div>
-
 {% endblock %}
 
-{%block script%}
-    
-    {%endblock%}
+{%block script%}{%endblock%}

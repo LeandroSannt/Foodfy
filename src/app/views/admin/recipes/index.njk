@@ -1,13 +1,11 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 {% block content %}
-
     <section class="title">
         <div class="cabecalho">
             <h1>Gerenciar receitas</h1>
             <a class ="createReceita" href="/admin/recipes/create">Cadastrar receita</a>
         </div>
-
         <div class="cards">
             {%for  recipe in recipes%}
             <div class="card" id="{{recipe.id}}">
@@ -23,8 +21,6 @@
              {%endfor%}
         </div>
     </section>
-
-
 {% endblock content %}
 
 

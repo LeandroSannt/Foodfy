@@ -106,7 +106,6 @@
         </form>
 
         <form id="form-delete"   method="POST" action="/admin/recipes?_method=DELETE">
-            
             <input type="hidden" name="id" value ={{recipes.id}}>        
         </form>
     </div>
@@ -114,16 +113,7 @@
 {% endblock content %}
 
 {% block confirmDelete %}
-    <script>
-        const formDelete= document.querySelector("#form-delete")
-        formDelete.addEventListener("submit",function(event){
-            const confirmation = confirm("Deseja deletar a receita ?")
-            if(!confirmation){
-                event.preventDefault()
-        }
-    })
-    </script>
-
+    <script src="/scripts/formdelete.js"></script>
 {% endblock confirmDelete %}
 
 

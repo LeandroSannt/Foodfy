@@ -1,7 +1,6 @@
 {% extends "admin/layoutAdmin.njk" %}
 
 {% block content %}
-
     <section class="title">
         <div class="cabecalho">
             <h1>Gerenciar chefs</h1>
@@ -9,7 +8,6 @@
             <a class ="createReceita" href="/admin/chefs/create">Cadastrar chef</a>
             {%endif%}
         </div>
-        
         <div class="cards_chefs">
             {%for  chef in chefs%}
             <div class="card">
@@ -23,9 +21,5 @@
              </div>
              {%endfor%}
         </div>
-  
-
     </section>
-       
-
 {% endblock content %}
