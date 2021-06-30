@@ -13,7 +13,7 @@
 <img src="public/assets/read-me/foodfy.png">
 <h2>
 
-<p align="justify">Um sistema feito para usuarios que querem registrar suas receitas e vinculalas a um chef aonde cada usuario criar edita sua receita e mostrala para todos </p>
+<p align="justify">Um sistema feito para usuarios que querem registrar suas receitas e vinculalas a um chef aonde cada usuario pode criar e edita suas receitas</p>
 
 ### **Diferenciais**: <br>
 Controle de pefis de usuários | Filtro por receita ou chef | Paginação por numero de paginas  | Totalmente responsivo
