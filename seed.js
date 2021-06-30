@@ -12,8 +12,8 @@ async function createUsers(){
     const password = await hash('1111',8)
 
     users.push({
-        name: "Leandro Santos",
-        email: "lsn_slim@yahoo.com.br",
+        name: "admin",
+        email: "admin@admin.com",
         password,
         is_admin:true,
     })
@@ -21,7 +21,6 @@ async function createUsers(){
     const usersPromise = users.map(user => User.create(user))
 
     usersIds = await Promise.all(usersPromise)
-
 }
 
 // files = []

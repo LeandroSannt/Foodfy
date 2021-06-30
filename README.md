@@ -10,31 +10,35 @@
 **<h3>Site</h3>**
 
 <h2 align ="center"> 
-<img src="public/assets/site.gif">
+<img src="public/assets/read-me/foodfy.png">
 <h2>
 
-<p align="justify">Nesse site é possivel ver uma relação de receitas  e chefs onde cada chef vai registrar sua receita e exibir no site, alem disso tambem é possivel ver uma area onde apresenta quantas receitas cada chef possui. </p>
+<p align="justify">Um sistema feito para usuarios que querem registrar suas receitas e vinculalas a um chef aonde cada usuario criar edita sua receita e mostrala para todos </p>
 
 ### **Diferenciais**: <br>
-Filtro por receita ou chef | Paginação por numero de paginas  | Totalmente responsivo
+Controle de pefis de usuários | Filtro por receita ou chef | Paginação por numero de paginas  | Totalmente responsivo
 <br>
 
 
 **<h3>Admin</h3>**
 
 <h2 align ="center"> 
-<img src="public/assets/admin.gif">
+<img src="public/assets/read-me/admin.png">
 <h2>
 
-<p align="justify">Nessa area é possivel registrar, atualizar e deletar, receitas e chefs que são apresentados no site principal  </p>
+<p align="justify">No painel administrativo so tera acesso a todos os usuarios a conta que receber um perfil de administrador aonde ele pode cadastrar usuarios dentro do sistema e enviar a senha para o email desse usuario, cadastrar chefs receitas, caso não seja admin so poderar criar receitas  </p>
 
  
 <br>
 <h1>Tecnologias utilizadas</h1>
 
-<li>Html 5
-<li>Css 3
-<li>JavaScript
-<li>NodeJs
-<li>Express
-<li>PostgresSQL
+<li>Html 5 | Css 3 | JavaScript | NodeJs | Express 
+
+<br>
+<br>
+
+
+Obs: para utilizar o sistema basta rodar fazer o clone do projeto e depois npm install para instalar todas as dependencias logo apos basta rodar o arquivos seed.js para poder criar uma conta padrao administrador
+
+Login: admin@admin.com <br>
+Senha: 1111
