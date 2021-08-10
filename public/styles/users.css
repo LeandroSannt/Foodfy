@@ -37,8 +37,10 @@
 }
 
 .user-register form{
-     min-width: 500px;
+     min-width:50%;
+     max-width:500px;
      margin: 0 auto;
+     width: 100%;
 }
 
 
@@ -197,4 +199,41 @@ button:hover{
 
 .input.checkbox label{
     margin-left: 20px;
+}
+
+
+.user-edit .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+@media (max-width:600px) {
+    .user-edit .header{
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .user-edit .header h1{
+        margin-bottom: 20px;
+    }
+
+    .user-edit .fields{
+        grid-template-columns:1fr
+    }
+
+    .buttons a{
+        font-size:.8rem;
+    }
+
+    .buttons{
+        flex-direction: column;
+
+    }
+
+    .buttons a + a{
+        margin:15px 0
+    }
+
 }

@@ -81,7 +81,6 @@ BEFORE UPDATE ON chefs
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
 
--- INSERT INTO recipes(name, file_id) VALUES('Cleide, ');
 
 WITH (OIDS=FALSE);
 ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY key ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;

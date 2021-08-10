@@ -79,21 +79,40 @@ module.exports= {
        WHERE chefs.id = $1`,[id])
     },
 
-    update(data, file_id) {
-        const query = ` 
-        UPDATE chefs SET
-        name=($1),
-        file_id=($2)
-        WHERE id = $3 
-        `
+    // update(data, file_id) {
+    //     const query = ` 
+    //     UPDATE chefs SET
+    //     name=($1),
+    //     file_id=($2)
+    //     WHERE id = $3 
+    //     `
 
-        const values = [
-            data.name,
-            file_id,
-            data.id
-        ]
+    //     const values = [
+    //         data.name,
+    //         file_id,
+    //         data.id
+    //     ]
 
-        return db.query(query, values)
+    //     return db.query(query, values)
+    // },
+
+    async updatee(id,fields){
+        let query = "UPDATE chefs SET"
+
+        Object.keys(fields).map((key,index,array)=>{
+            if((index+1) < array.length){
+                query = `${query} 
+                    ${key} = '${fields[key]}',
+                `
+            }else{
+                query= `${query}
+                ${key} = '${fields[key]}'
+                WHERE id = ${id}
+                `
+            }
+        })
+        await db.query(query)
+        return
     },
     async paginate(params) {
         let { filter, limit, offset } = params
